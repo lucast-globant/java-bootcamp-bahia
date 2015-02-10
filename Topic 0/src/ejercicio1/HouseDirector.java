@@ -2,6 +2,7 @@ package ejercicio1;
 
 /**
  * Director del patrón
+ * 
  * @author fcuenca
  *
  */

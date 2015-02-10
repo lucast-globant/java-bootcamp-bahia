@@ -4,8 +4,6 @@ public class Basic extends HospitalRoom {
 
 	private boolean hasBathroom;
 
-
-
 	public boolean isHasBathroom() {
 		return hasBathroom;
 	}

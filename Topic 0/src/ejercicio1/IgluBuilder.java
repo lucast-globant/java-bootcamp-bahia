@@ -2,6 +2,7 @@ package ejercicio1;
 
 /**
  * Builder Correspondiente a una casa del tipo "Iglú"
+ * 
  * @author fcuenca
  *
  */
@@ -9,8 +10,8 @@ public class IgluBuilder implements HouseBuilder {
 
 	private House casa;
 
-	public IgluBuilder(){
-		casa= new House();
+	public IgluBuilder() {
+		casa = new House();
 	}
 
 	@Override

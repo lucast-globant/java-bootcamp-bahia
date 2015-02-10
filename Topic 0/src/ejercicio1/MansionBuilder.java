@@ -2,6 +2,7 @@ package ejercicio1;
 
 /**
  * Builder Correspondiente a una casa del tipo "Mansion"
+ * 
  * @author fcuenca
  *
  */
@@ -9,9 +10,8 @@ public class MansionBuilder implements HouseBuilder {
 
 	private House casa;
 
-	
-	public MansionBuilder(){
-		casa= new House();
+	public MansionBuilder() {
+		casa = new House();
 	}
 
 	@Override

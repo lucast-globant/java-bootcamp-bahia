@@ -9,10 +9,11 @@ public class Hospital {
 	private ArrayList<Room> rooms;
 	private ArrayList<Doctor> doctors;
 
-	public Hospital(){
+	public Hospital() {
 		rooms = new ArrayList<Room>();
-		doctors= new ArrayList<Doctor>();
+		doctors = new ArrayList<Doctor>();
 	}
+
 	public ArrayList<Doctor> getDoctors() {
 		return doctors;
 	}
@@ -47,27 +48,26 @@ public class Hospital {
 
 	@Override
 	public String toString() {
-		String ret = "Hospital Name: " + name + "\n" + "Doctors \n"
-				+ printDoctors() + "\n" + "Rooms: \n" + printRooms() + "\n";
+		String ret = "Hospital Name: " + name + "\n" + "Doctors \n" + printDoctors() + "\n" + "Rooms: \n" + printRooms() + "\n";
 		return ret;
 
 	}
 
 	private String printRooms() {
-		String ret="";
-		int counter=1;
+		String ret = "";
+		int counter = 1;
 		for (Room r : rooms) {
-			ret+= counter+") "+r.toString()+"\n";
+			ret += counter + ") " + r.toString() + "\n";
 			counter++;
 		}
 		return ret;
 	}
 
 	private String printDoctors() {
-		String ret="";
-		int counter=1;
+		String ret = "";
+		int counter = 1;
 		for (Doctor d : doctors) {
-			ret+= counter+") "+d.toString()+"\n";
+			ret += counter + ") " + d.toString() + "\n";
 			counter++;
 		}
 		return ret;

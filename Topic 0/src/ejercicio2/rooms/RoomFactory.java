@@ -2,7 +2,7 @@ package ejercicio2.rooms;
 
 public class RoomFactory {
 
-	public Room factory(String type)  {
+	public Room factory(String type) {
 
 		switch (type) {
 		case "therapy":
@@ -11,7 +11,7 @@ public class RoomFactory {
 			return new Basic();
 		case "surgery":
 			return new Surgery();
-		
+
 		}
 		return null;
 	}

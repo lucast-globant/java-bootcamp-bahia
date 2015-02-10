@@ -8,11 +8,11 @@ public abstract class HospitalRoom implements Room {
 	private int price;
 	private int number;
 
+	public String toString() {
+		return "Room n° " + number + " Price: $" + price;
 
-	public String toString(){
-		return "Room n° "+number+ " Price: $"+price;
-		
 	}
+
 	public ArrayList<String> patients() {
 		return patients;
 

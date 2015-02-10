@@ -34,8 +34,7 @@ public class HospitalPenna implements HospitalBuilder {
 		hospital.addRoom(r3);
 	}
 
-	private Room createSurgery(ArrayList<String> patients, int capacity,
-			int price, int number, boolean isEmpty) {
+	private Room createSurgery(ArrayList<String> patients, int capacity, int price, int number, boolean isEmpty) {
 		RoomFactory roomFactory = new RoomFactory();
 		Surgery r = (Surgery) roomFactory.factory("surgery");
 		r.setPatients(patients);
@@ -47,8 +46,7 @@ public class HospitalPenna implements HospitalBuilder {
 
 	}
 
-	private Room createBasicRoom(ArrayList<String> patients, int capacity,
-			int price, int number, boolean hasBathroom) {
+	private Room createBasicRoom(ArrayList<String> patients, int capacity, int price, int number, boolean hasBathroom) {
 		RoomFactory roomFactory = new RoomFactory();
 		Basic r = (Basic) roomFactory.factory("basic");
 		r.setPatients(patients);
@@ -60,8 +58,7 @@ public class HospitalPenna implements HospitalBuilder {
 
 	}
 
-	private Room createTherapyRoom(ArrayList<String> patients, int capacity,
-			int price, int number, boolean fullyEquipped) {
+	private Room createTherapyRoom(ArrayList<String> patients, int capacity, int price, int number, boolean fullyEquipped) {
 		RoomFactory roomFactory = new RoomFactory();
 		IntensiveCare r = (IntensiveCare) roomFactory.factory("therapy");
 		r.setPatients(patients);
@@ -81,11 +78,11 @@ public class HospitalPenna implements HospitalBuilder {
 
 	@Override
 	public void buildCrew() {
-		Doctor doc=new Doctor();
+		Doctor doc = new Doctor();
 		doc.setName("Francisco Cuenca");
 		doc.setMat(44);
 		hospital.addDoctor(doc);
-		
+
 	}
 
 }

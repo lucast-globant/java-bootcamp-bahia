@@ -57,9 +57,7 @@ public class House {
 		ret = "Esta casa, esta ubicada  en: " + direccion + "\n";
 		ret += "Posee exactamente: " + metrosCuadrados + " metros cuadrados\n";
 		ret += "Está tasada en un precio de: " + precio + "\n";
-		ret += "y tiene: " + habitaciones.size()
-				+ " habitaciones, las cuales son: \n"
-				+ this.printHabitaciones();
+		ret += "y tiene: " + habitaciones.size() + " habitaciones, las cuales son: \n" + this.printHabitaciones();
 		return ret;
 	}
 
