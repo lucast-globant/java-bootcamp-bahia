@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Topic 0</name>
+	<name>Project</name>
 	<comment></comment>
 	<projects>
-		<project>Globant Bootcamp</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
