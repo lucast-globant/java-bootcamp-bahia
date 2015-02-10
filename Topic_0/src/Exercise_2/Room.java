@@ -2,32 +2,32 @@ package Exercise_2;
 
 public class Room {
 	private String name, dimension;
-	
-	public Room(String n, String d){
+
+	public Room(String n, String d) {
 		name = n;
 		dimension = d;
 	}
-	
-	public void setName(String n){
+
+	public void setName(String n) {
 		name = n;
 	}
-	
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
-	
-	public void setDimension(String d){
+
+	public void setDimension(String d) {
 		dimension = d;
 	}
-	
-	public String getDimension(){
+
+	public String getDimension() {
 		return dimension;
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		String s = "";
-		s += "Name: "+name+" Dimension: "+dimension;
+		s += "Name: " + name + " Dimension: " + dimension;
 		return s;
 	}
-	
+
 }

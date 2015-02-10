@@ -3,7 +3,7 @@ package Exercise_2;
 public class MainE2 {
 
 	public static void main(String[] args) {
-		HouseBuilder hb = new SHouseBuilder(); 
+		HouseBuilder hb = new SHouseBuilder();
 		HouseDirector hd = new HouseDirector(hb);
 		hd.constructHouse();
 		System.out.println("House 1:");
