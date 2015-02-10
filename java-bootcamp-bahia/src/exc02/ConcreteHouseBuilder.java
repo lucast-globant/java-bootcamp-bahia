@@ -1,6 +1,7 @@
 package exc02;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /* A concrete builder of houses made of concrete */
 
@@ -36,7 +37,7 @@ public class ConcreteHouseBuilder implements HouseBuilder {
 		r3.setSize(45);
 		r3.setMaterial(" Concrete ");
 
-		ArrayList<Room> rooms = new ArrayList<Room>();
+		List<Room> rooms = new ArrayList<Room>();
 		rooms.add(r1);
 		rooms.add(r2);
 		rooms.add(r3);
