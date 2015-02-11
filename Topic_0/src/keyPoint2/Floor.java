@@ -1,6 +1,7 @@
 package keyPoint2;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Floor {
@@ -24,6 +25,17 @@ public class Floor {
 
 	public int getNumber() {
 		return this.floorNumber;
+	}
+	
+	public String toString(){
+		String output = "Floor number " + floorNumber + "\n";
+		Iterator<Room> iteratorRooms = rooms.iterator();
+
+		while(iteratorRooms.hasNext()){
+		  Room aRoom = iteratorRooms.next();
+		  output = output.concat(aRoom.getName() + "\n");
+		}
+		return(output);
 	}
 
 	public Room getRoomNo(int roomNo) {
