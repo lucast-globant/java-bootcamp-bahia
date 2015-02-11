@@ -1,12 +1,14 @@
 package exercise1to6;
 
-
-public abstract class PaymentType implements Payment{
+public abstract class PaymentType implements Payment {
 	Discount discount;
-	
-	public void applyDiscount(){
-		discount.makeDiscount();
+
+	public PaymentType(Discount discount) {
+		this.discount = discount;
 	}
 
+	public Discount getDiscount() {
+		return discount;
+	}
 
 }

@@ -1,11 +1,10 @@
 package exercise1to6;
 
+import java.util.List;
 
-public class Discount {
 
-	public void makeDiscount() {
-		// TODO Auto-generated method stub
-		
-	}
+public interface Discount {
+
+	public double makeDiscount(List<Product> items);
 
 }

@@ -1,12 +1,36 @@
 package exercise1to6;
 
-
 public class Paypal extends PaymentType {
+
+	private String email;
+	private String password;
+
+	public Paypal(String email, String password,Discount discount) {
+		super(discount);
+		this.email = email;
+		this.password = password;
+	}
 
 	@Override
 	public void pay(double total) {
-		// TODO Auto-generated method stub
-		
+		// make payment with Paypal
+
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

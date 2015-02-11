@@ -1,8 +1,9 @@
 package exercise1to6;
 
 
+
 public interface Payment {
-	public void applyDiscount();
+	public Discount getDiscount();
 	public void pay(double total);
 
 }
