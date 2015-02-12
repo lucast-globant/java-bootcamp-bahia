@@ -1,13 +1,15 @@
-package exercise1to6;
+package exercise1to6.discount;
 
 import java.util.List;
 
+import exercise1to6.Item;
+import exercise1to6.Product;
+
 public class CreditDiscount implements Discount {
 
-	@Override
-	public double makeDiscount(List<Product> items) {
+	public double makeDiscount(List<Item> items) {
 		double total = 0;
-		for (Product product : items) {
+		for (Item product : items) {
 			total = total + product.getPrice();
 		}
 		return total * 0.1;

@@ -1,5 +1,7 @@
 package exercise1to6;
 
+import exercise1to6.payments.Payment;
+
 public class Transaction {
 	private static int idTransaction = 1;
 	private static int ID;

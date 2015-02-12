@@ -1,4 +1,6 @@
-package exercise1to6;
+package exercise1to6.payments;
+
+import exercise1to6.discount.Discount;
 
 public class Paypal extends PaymentType {
 

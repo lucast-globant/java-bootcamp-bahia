@@ -3,22 +3,30 @@ package exercise1to6;
 import java.util.ArrayList;
 import java.util.List;
 
+import exercise1to6.payments.Payment;
+
 public class ShoppingCart {
 	private Payment payment;
-	private List<Product> items;
+	private List<Item> items;
 
 	public ShoppingCart() {
-		items = new ArrayList<Product>();
+		items = new ArrayList<Item>();
 	}
 
 	public Transaction checkOut() {
-		return null;
+		double total=payment.getDiscount().makeDiscount(items);
+		payment.pay(total);
+		items.clear();
+		Transaction t= new Transaction(total, payment);
+		//notify
+		return t;
+		
 	}
 
-	public void addItem(Product item) {
+	public void addItem(Item item) {
 		this.items.add(item);
 	}
-	public void removeItem(Product item) {
+	public void removeItem(Item item) {
 		this.items.remove(item);
 	}
 
@@ -28,6 +36,9 @@ public class ShoppingCart {
 
 	public void setPayment(Payment payment) {
 		this.payment = payment;
+	}
+	public void clear(){
+		items.clear();
 	}
 
 }
