@@ -1,18 +1,18 @@
 package key_seven;
 
-public class AudioContext implements AudioState{
+public class AudioContext implements AudioState {
 
 	private AudioState audioState;
-	
-	public AudioContext(AudioState audioState){
+
+	public AudioContext(AudioState audioState) {
 		this.audioState = audioState;
 	}
-	
-	public void setState( AudioState state){
+
+	public void setState(AudioState state) {
 		this.audioState = state;
 	}
-	
-	public AudioState getState(){
+
+	public AudioState getState() {
 		return audioState;
 	}
 
@@ -20,5 +20,5 @@ public class AudioContext implements AudioState{
 	public void doAction() {
 		audioState.doAction();
 	}
-	
+
 }
