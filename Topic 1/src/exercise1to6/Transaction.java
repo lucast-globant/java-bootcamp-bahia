@@ -18,7 +18,7 @@ public class Transaction {
 		return idTransaction++;
 	}
 
-	private int getIdTransaction() {
+	public int getIdTransaction() {
 		return ID;
 	}
 
@@ -36,5 +36,10 @@ public class Transaction {
 
 	public void setPayment(Payment payment) {
 		this.payment = payment;
+	}
+
+	public String toString() {
+
+		return "Transaction ID: " + this.getIdTransaction() +"\n"+ "Total to pay: " + total+"\n";
 	}
 }

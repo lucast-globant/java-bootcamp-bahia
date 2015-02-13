@@ -1,6 +1,7 @@
 package exercise1to6.payments;
 
 import exercise1to6.discount.Discount;
+import exercise1to6.discount.PaypalDiscount;
 
 public class Paypal extends PaymentType {
 
@@ -8,14 +9,15 @@ public class Paypal extends PaymentType {
 	private String password;
 
 	public Paypal(String email, String password,Discount discount) {
-		super(discount);
+		super(new PaypalDiscount() );
+
 		this.email = email;
 		this.password = password;
 	}
 
 	@Override
 	public void pay(double total) {
-		// make payment with Paypal
+		System.out.println("Payment Made by: PAYPAL \n");
 
 	}
 

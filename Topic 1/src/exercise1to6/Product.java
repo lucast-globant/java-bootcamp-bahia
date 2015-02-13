@@ -26,7 +26,7 @@ public class Product implements Item {
 	}
 
 	public String toString() {
-		return "Item Name ....$ " + price +"\n";
+		return "Item Name "+name+ " ....$ " + price +"\n";
 	}
 
 }

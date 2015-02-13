@@ -1,21 +1,22 @@
 package exercise1to6.payments;
 
-import exercise1to6.discount.Discount;
+import exercise1to6.discount.CreditDiscount;
 
 public class CreditCard extends PaymentType {
 
 	private double creditNumber;
 	private String name;
 
-	public CreditCard(Discount discount, double creditNumber, String name) {
-		super(discount);
+	public CreditCard( double creditNumber, String name) {
+		super(new CreditDiscount() );
 		this.creditNumber = creditNumber;
 		this.name = name;
 	}
 
 	@Override
 	public void pay(double total) {
-		// make payment with Paypal
+		System.out.println("Payment Made by: CREDIT CARD \n");
+
 
 	}
 

@@ -33,7 +33,7 @@ public class Offer implements Item {
 		String ret = "Offer... " + name + "$ " + price + "\n";
 
 		for (Item item : items) {
-			ret+=item.toString();
+			ret+="\t"+item.toString();
 		}
 		return ret;
 
