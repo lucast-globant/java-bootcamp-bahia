@@ -2,7 +2,7 @@
 
 public interface Item {
 
-	public int getPrice();
+	public float getPrice();
 
 	public String getName();
 
@@ -12,7 +12,7 @@ public interface Item {
 
 	public void setCode(String code);
 
-	public void setPrice(int price);
+	public void setPrice(float price);
 
 	public String toString();
 

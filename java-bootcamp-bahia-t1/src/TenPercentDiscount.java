@@ -5,8 +5,8 @@ import java.util.List;
 public class TenPercentDiscount implements Discount {
 
 	@Override
-	public void applyDiscount(List<Item> items) {
-
+	public float applyDiscount(List<Item> items, float total) {
+		return total - ((total * 10) / 100);
 	}
 
 }

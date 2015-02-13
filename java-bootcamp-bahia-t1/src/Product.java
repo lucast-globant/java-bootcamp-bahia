@@ -2,40 +2,52 @@
 
 public class Product implements Item {
 
+	private float price;
+	private String name;
+	private String code;
+
+	public Product(int price, String name, String code) {
+		super();
+		this.price = price;
+		this.name = name;
+		this.code = code;
+	}
+
 	@Override
-	public int getPrice() {
-		// TODO Auto-generated method stub
-		return 0;
+	public float getPrice() {
+		return price;
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
 	public void setName(String name) {
-		// TODO Auto-generated method stub
+		this.name = name;
 
 	}
 
 	@Override
 	public String getCode() {
-		// TODO Auto-generated method stub
-		return null;
+		return code;
 	}
 
 	@Override
 	public void setCode(String code) {
-		// TODO Auto-generated method stub
+		this.code = code;
 
 	}
 
 	@Override
-	public void setPrice(int price) {
-		// TODO Auto-generated method stub
+	public void setPrice(float price) {
+		this.price = price;
 
+	}
+
+	public String toString() {
+		return "- Item name: " + name + " ...... " + " $" + price;
 	}
 
 }

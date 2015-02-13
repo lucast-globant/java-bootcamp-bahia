@@ -6,6 +6,7 @@ public class CredictCardPayment implements Payment {
 	private String cardNumber;
 	private String cvv;
 	private String dateOfExpiry;
+	private Discount discount;
 
 	public CredictCardPayment(String name, String cardNumber, String cvv, String dateOfExpiry) {
 		super();
@@ -13,6 +14,7 @@ public class CredictCardPayment implements Payment {
 		this.cardNumber = cardNumber;
 		this.cvv = cvv;
 		this.dateOfExpiry = dateOfExpiry;
+		discount = new TenPercentDiscount();
 	}
 
 	public String getName() {
@@ -48,7 +50,18 @@ public class CredictCardPayment implements Payment {
 	}
 
 	@Override
-	public void pay(int total) {
+	public void pay(float total) {
+
+		System.out.println("Your purchase in credit card for $" + total + " was succed !");
+		System.out.println("You have a 10% for buying with credit card");
+		System.out.println("Calculating new cost..");
+
+	}
+
+	@Override
+	public Discount getDiscount() {
+
+		return discount;
 
 	}
 

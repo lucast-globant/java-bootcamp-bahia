@@ -7,15 +7,27 @@
 public class Transaction {
 
 	private ShoppingCart cart;
+	private static int ID = 0;
 
-	public Transaction(int iD) {
+	public Transaction(ShoppingCart cart, Payment paymentMethod) {
+
+		this.cart = cart;
+		Transaction.ID++;
 
 	}
 
-	public void pay(Payment paymentMethod) {
-		int total = cart.totalPrice();
+	public void Purchase(Payment paymentMethod) {
+
+		float total = cart.totalPrice();
 
 		paymentMethod.pay(total);
+
+		float totalDiscounted = paymentMethod.getDiscount().applyDiscount(cart.getItems(), total);
+
+		System.out.println("Total cost of purchase : $" + totalDiscounted + " thanks for buying!");
+
+		System.out.println("------Number of transaction : " + ID);
+
 	}
 
 }

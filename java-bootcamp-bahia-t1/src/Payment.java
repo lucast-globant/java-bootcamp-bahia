@@ -2,6 +2,8 @@
 
 public interface Payment {
 
-	void pay(int total);
+	void pay(float total);
+
+	Discount getDiscount();
 
 }

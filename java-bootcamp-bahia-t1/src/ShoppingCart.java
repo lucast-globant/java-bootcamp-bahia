@@ -6,6 +6,7 @@ import java.util.List;
 public class ShoppingCart {
 
 	List<Item> items;
+	int totalPrice;
 
 	public ShoppingCart() {
 		items = new ArrayList<Item>();
@@ -23,15 +24,27 @@ public class ShoppingCart {
 		this.removeItem(i);
 	}
 
-	public int totalPrice() {
+	public float totalPrice() {
 
-		int sum = 0;
+		float sum = 0;
 
 		for (Item i : this.items)
 
 			sum += i.getPrice();
 
 		return sum;
+	}
+
+	public List<Item> getItems() {
+		return this.items;
+	}
+
+	public String toString() {
+		String resu = "";
+		for (Item item : items) {
+			resu += item.toString() + '\n';
+		}
+		return resu;
 	}
 
 }

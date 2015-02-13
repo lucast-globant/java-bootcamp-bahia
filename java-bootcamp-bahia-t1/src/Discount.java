@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface Discount {
 
-	public void applyDiscount(List<Item> items);
+	public float applyDiscount(List<Item> items, float total);
 }

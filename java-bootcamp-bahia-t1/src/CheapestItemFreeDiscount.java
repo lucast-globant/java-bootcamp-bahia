@@ -5,9 +5,28 @@ import java.util.List;
 public class CheapestItemFreeDiscount implements Discount {
 
 	@Override
-	public void applyDiscount(List<Item> items) {
-		// TODO Auto-generated method stub
+	public float applyDiscount(List<Item> items, float total) {
+		Item cheapest = lessExpensive(items);
+		return total - cheapest.getPrice();
 
+	}
+
+	private Item lessExpensive(List<Item> items) {
+		Item lessItem = items.get(0);
+		float lessPrice = items.get(0).getPrice();
+
+		for (Item i : items) {
+
+			float price = i.getPrice();
+
+			if (price < lessPrice) {
+				lessPrice = price;
+				lessItem = i;
+			}
+
+		}
+
+		return lessItem;
 	}
 
 }
