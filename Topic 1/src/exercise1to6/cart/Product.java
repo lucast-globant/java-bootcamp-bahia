@@ -1,17 +1,13 @@
-package exercise1to6;
+package exercise1to6.cart;
 
-import java.util.List;
-
-public class Offer implements Item {
+public class Product implements Item {
 	private String name;
 	private double price;
-	private List<Item> items;
 
-	public Offer(String name, double price, List<Item> items) {
+	public Product(String name, double price) {
 		super();
 		this.name = name;
 		this.price = price;
-		this.items = items;
 	}
 
 	public double getPrice() {
@@ -30,13 +26,7 @@ public class Offer implements Item {
 	}
 
 	public String toString() {
-		String ret = "Offer... " + name + "$ " + price + "\n";
-
-		for (Item item : items) {
-			ret+="\t"+item.toString();
-		}
-		return ret;
-
+		return "Item Name "+name+ " ....$ " + price +"\n";
 	}
 
 }

@@ -1,4 +1,4 @@
-package exercise1to6.exercise7;
+package exercise7;
 
 public class MusicPlayer implements Player {
 	private State state;

@@ -1,4 +1,4 @@
-package exercise1to6;
+package exercise1to6.cart;
 
 import exercise1to6.payments.Payment;
 
