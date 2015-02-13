@@ -28,6 +28,10 @@ public class Transaction {
 
 		System.out.println("------Number of transaction : " + ID);
 
+		System.out.println(" ");
+
+		MailListManager.getInstance().setMessage(" New Transaction was made ID: " + Transaction.ID);
+
 	}
 
 }

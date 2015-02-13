@@ -10,11 +10,14 @@ public class TransactionTest {
 
 		/* Simulate items that the costumer its going to buy */
 
+		MarketManager mm = new MarketManager(" Peter Russo ", " Pensilvania ");
+		MailListManager.getInstance().addObserver(mm);
+
 		ShoppingCart cart = new ShoppingCart();
 
-		Item i1 = new Product(20, " Plate ", "1");
-		Item i2 = new Product(10, " Fork ", "2");
-		Item i3 = new Product(8, " Spoon ", "3");
+		Item i1 = new Product(20, " Plate ", 1);
+		Item i2 = new Product(10, " Fork ", 2);
+		Item i3 = new Product(8, " Spoon ", 3);
 
 		/* Add items to the cart */
 
@@ -24,16 +27,16 @@ public class TransactionTest {
 
 		/* Simulate an offer of the same products */
 
-		Item i4 = new Product(10, " Plate ", "1");
-		Item i5 = new Product(5, " Fork ", "2");
-		Item i6 = new Product(4, " Spoon ", "3");
+		Item i4 = new Product(10, " Plate ", 1);
+		Item i5 = new Product(5, " Fork ", 2);
+		Item i6 = new Product(4, " Spoon ", 3);
 
 		List<Item> offer = new ArrayList<Item>();
 
 		offer.add(i4);
 		offer.add(i5);
 		offer.add(i6);
-		Item i7 = new Offer(" Kitchen Offer", "4", offer);
+		Item i7 = new Offer(" Kitchen Offer", 4, offer);
 
 		cart.addItem(i7);
 
@@ -61,6 +64,13 @@ public class TransactionTest {
 
 		Transaction t = new Transaction(cart, paymentMethod);
 		t.Purchase(paymentMethod);
+
+		/* Container changes */
+
+		Container c = new Container();
+
+		c.changePrice(2, 17);
+		c.addItem(i6);
 
 	}
 

@@ -8,10 +8,10 @@ public class Offer implements Item {
 
 	private float price;
 	private String name;
-	private String code;
+	private int code;
 	private List<Item> items;
 
-	public Offer(String name, String code, List<Item> items) {
+	public Offer(String name, int code, List<Item> items) {
 		this.name = name;
 		this.code = code;
 		this.items = items;
@@ -41,12 +41,12 @@ public class Offer implements Item {
 	}
 
 	@Override
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
 	@Override
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
 
 	}

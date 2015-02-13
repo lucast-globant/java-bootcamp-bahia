@@ -8,9 +8,9 @@ public interface Item {
 
 	public void setName(String name);
 
-	public String getCode();
+	public int getCode();
 
-	public void setCode(String code);
+	public void setCode(int code);
 
 	public void setPrice(float price);
 

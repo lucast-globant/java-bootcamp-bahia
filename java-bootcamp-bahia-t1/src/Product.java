@@ -4,9 +4,9 @@ public class Product implements Item {
 
 	private float price;
 	private String name;
-	private String code;
+	private int code;
 
-	public Product(int price, String name, String code) {
+	public Product(int price, String name, int code) {
 		super();
 		this.price = price;
 		this.name = name;
@@ -30,12 +30,12 @@ public class Product implements Item {
 	}
 
 	@Override
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
 	@Override
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
 
 	}
