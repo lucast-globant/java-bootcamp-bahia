@@ -14,7 +14,8 @@ public abstract class Payment {
 		nextTransactionNumber++;
 	}
 	
-	abstract float applyDiscount();
+	public abstract float applyDiscount();
+	public abstract String toString();
 	
 	float totalPayment(){
 		return shopCart.getTotal();

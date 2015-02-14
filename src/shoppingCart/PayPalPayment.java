@@ -16,7 +16,7 @@ public class PayPalPayment extends Payment {
 	}
 
 	@Override
-	float applyDiscount() {
+	public float applyDiscount() {
 		if (!shopCart.equals(null)) {
 			Item cheapest = shopCart.getCheapestItem();
 			float discount = cheapest.getProduct().getPrice();
@@ -43,6 +43,17 @@ public class PayPalPayment extends Payment {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return date.toString() + "\nTransaction:"
+				+ String.format("%06d", transactionNumber) + "\nClient: "
+				+ clientID + "\nPaying via PayPal. E-mail: " + email + "\n"
+				+ shopCart.toString() + "__________________________\nTotal: "
+				+ String.format("%.2f", shopCart.getTotal())
+				+ "\n__________________________\nWith discount: "
+				+ String.format("%.2f", this.applyDiscount());
 	}
 
 }

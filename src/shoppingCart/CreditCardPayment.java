@@ -16,7 +16,7 @@ public class CreditCardPayment extends Payment {
 	}
 
 	@Override
-	float applyDiscount() {
+	public float applyDiscount() {
 		if (!shopCart.equals(null)) {
 			return (shopCart.getTotal() * 0.9f);
 		} else {
@@ -38,6 +38,18 @@ public class CreditCardPayment extends Payment {
 
 	public void setClientName(String clientName) {
 		this.clientName = clientName;
+	}
+
+	@Override
+	public String toString() {
+		return date.toString() + "\nTransaction:"
+				+ String.format("%06d", transactionNumber) + "\nClient: "
+				+ clientID + "\nPaying with Credit card No." + creditCardNo
+				+ "\n" + shopCart.toString()
+				+ "__________________________\nTotal: "
+				+ String.format("%.2f", shopCart.getTotal())
+				+ "\n__________________________\nWith discount: "
+				+ String.format("%.2f", this.applyDiscount());
 	}
 
 }

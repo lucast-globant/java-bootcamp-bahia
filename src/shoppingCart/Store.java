@@ -11,7 +11,7 @@ public class Store {
 
 	private List<Item> stockOfProducts;
 
-	public void initializeStore() {
+	public Store() {
 		stockOfProducts = new SparseArrayList<>();
 		// The first position -zero-, is not a valid one, so it keeps a null
 		// value:
@@ -26,7 +26,7 @@ public class Store {
 	// given position.
 	public boolean addProduct(Product product, float quantity) {
 		int position = product.getCode();
-		if (position <= stockOfProducts.size()) {
+		if (position < stockOfProducts.size()) {
 			if (stockOfProducts.get(position).equals(null)) {
 				stockOfProducts.add(position, new Item(product,
 						quantity));
@@ -91,5 +91,9 @@ public class Store {
 		} else {
 			// error
 		}
+	}
+	
+	public Product getProduct(int productCode){
+		return stockOfProducts.get(productCode).getProduct();
 	}
 }

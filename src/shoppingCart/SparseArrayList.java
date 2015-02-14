@@ -14,7 +14,7 @@ public class SparseArrayList<E> extends ArrayList<E> {
 		// If there is already an object in the given index, it replaces the
 		// existing object with the new one. Else, it inserts nulls between the
 		// size and the given index
-		if (index >= 0 && index <= size()) {
+		if (index >= 0 && index < size()) {
 			super.set(index, element);
 		} else {
 			int insertNulls = index - size();

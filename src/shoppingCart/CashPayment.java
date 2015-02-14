@@ -12,7 +12,7 @@ public class CashPayment extends Payment {
 	}
 
 	@Override
-	float applyDiscount() {
+	public float applyDiscount() {
 		if (!shopCart.equals(null)) {
 			Item mostExpensive = shopCart.getMostExpensiveItem();
 			float discount = mostExpensive.getProduct().getPrice() * 0.9f;
@@ -25,4 +25,14 @@ public class CashPayment extends Payment {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return date.toString() + "\nTransaction:"
+				+ String.format("%06d", transactionNumber) + "\nClient: "
+				+ clientID + "\nPaying in Cash\n" + shopCart.toString()
+				+ "__________________________\nTotal: "
+				+ String.format("%.2f", shopCart.getTotal())
+				+ "\n__________________________\nWith discount: "
+				+ String.format("%.2f", this.applyDiscount());
+	}
 }

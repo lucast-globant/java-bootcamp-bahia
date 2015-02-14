@@ -82,4 +82,13 @@ public class ShoppingCart {
 		}
 		return mostExpensiveItem;
 	}
+	
+	public String toString()
+	{
+		String output ="";
+		for(Item actualItem : listOfItems){
+			output=output.concat(actualItem.toString());
+		}
+		return output;
+	}
 }

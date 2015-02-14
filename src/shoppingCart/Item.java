@@ -1,6 +1,6 @@
 package shoppingCart;
 
-class Item {
+public class Item {
 	private Product product;
 	private float quantity;
 
@@ -31,15 +31,16 @@ class Item {
 
 	public String toString() {
 		String output = "";
+
+		output = output.concat(product.toString() + "\t\t x");
+
 		if (product.isUnit()) {
-			output = output.concat(String.format("- %.0f ", quantity));
+			output = output.concat(String.format("%.0f", quantity));
 		} else {
-			output = output.concat(String.format("- %.3f ", quantity));
+			output = output.concat(String.format("%.3f", quantity));
 		}
 
-		return (output.concat(product.getName()
-				+ "...... $"
-				+ String.format("%.2f ($%.2f each)", product.getPrice()
-						* quantity, product.getPrice()) + "\n"));
+		return (output.concat(String.format(" ... $%.2f \n", product.getPrice()
+				* quantity)));
 	}
 }
