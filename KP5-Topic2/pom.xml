@@ -1,0 +1,14 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.aguirre</groupId>
+  <artifactId>KP5-Topic2</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>KP5-Topic2 Maven Multi Project</name>
+  <url>http://maven.apache.org</url>
+  <modules>
+	<module>KP1-Topic2</module>
+	<module>KP4-Topic2</module>
+  </modules>
+</project>
