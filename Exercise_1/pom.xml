@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>Exercise_1</groupId>
+  <artifactId>Exercise_1</artifactId>
+  <packaging>jar</packaging>
+
+  <name>Exercise_1</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <parent>
+  	<groupId>Exercise_5</groupId>
+  	<artifactId>Exercise_5</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+  	<relativePath>../Exercise_5</relativePath>
+  </parent>
+</project>
