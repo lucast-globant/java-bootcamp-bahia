@@ -1,0 +1,15 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>topic2_5</groupId>
+  <artifactId>multiModule</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>multiModule</name>
+  <modules>
+  	<module>../../Desktop/GLOBANT/java-bootcamp-bahia/topi2_1</module>
+  	<module>
+  		../../Desktop/GLOBANT/java-bootcamp-bahia/topic2_4
+  	</module>
+  </modules>
+</project>
