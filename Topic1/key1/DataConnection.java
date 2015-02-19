@@ -20,7 +20,7 @@ public class DataConnection {
 	/**
 	 * @return a list that contain only ConcreteProducts (simple product list)
 	 */
-	public static ArrayList<ConcreteProduct> retrieveData(){
+	public static List<ConcreteProduct> retrieveData(){
 		
 		return makeCatalog1();
 		
@@ -30,14 +30,14 @@ public class DataConnection {
 	/**
 	 * @return a list of products that contains Offers
 	 */
-	public static ArrayList<Product> retrieveOffers(){
+	public static List<Product> retrieveOffers(){
 			
 			
 			return makeCatalog3();
 		
 	}
 		
-	private static ArrayList<ConcreteProduct> makeCatalog1(){
+	private static List<ConcreteProduct> makeCatalog1(){
 		ArrayList<ConcreteProduct> catalog=new ArrayList<ConcreteProduct>();
 		
 		catalog.add(new ConcreteProduct("coca", "", "", "20.00"));
@@ -47,7 +47,7 @@ public class DataConnection {
 		return catalog;
 	}
 	
-	private static ArrayList<Product> makeCatalog2(){
+	private static List<Product> makeCatalog2(){
 		ArrayList<Product> catalog=new ArrayList<Product>();
 	
 		
@@ -62,7 +62,7 @@ public class DataConnection {
 		return catalog;
 	}
 	
-	private static ArrayList<Product> makeCatalog3(){
+	private static List<Product> makeCatalog3(){
 		ArrayList<Product> catalog=new ArrayList<Product>();
 	
 		ArrayList<Product> productlist=new ArrayList<Product>();

@@ -3,10 +3,6 @@ package Topic1.key1;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-
 
 
 public abstract class Product {

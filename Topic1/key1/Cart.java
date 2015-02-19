@@ -1,9 +1,8 @@
 package Topic1.key1;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 /**
  * @author Jordan
@@ -11,7 +10,7 @@ import org.w3c.dom.Element;
  */
 public class Cart {
 
-	protected ArrayList<Item> products;
+	protected List<Item> products;
 	
 	public Cart(){
 		products=new ArrayList<Item>();
@@ -26,7 +25,7 @@ public class Cart {
 		return last;
 	}
 	
-	public ArrayList<Item> getItems(){
+	public List<Item> getItems(){
 		return products;
 	}
 	

@@ -1,14 +1,9 @@
 package Topic1.key5;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.List;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-import Topic1.key1.Cart;
-import Topic1.key1.Item;
 import Topic1.key1.Product;
 
 /**
@@ -18,17 +13,17 @@ import Topic1.key1.Product;
  *  if you want to know the real price, you´ll need to use the calculateRealPrice() procedure 
  */
 public class Offer extends Product{
-	protected ArrayList<Product> productsOffer;
+	protected List<Product> productsOffer;
 	//inhirids name and price
 	
-	public Offer(ArrayList<Product> productsOffer, String name, String price) {
+	public Offer(List<Product> productsOffer, String name, String price) {
 		super();
 		this.productsOffer = productsOffer;
 		this.price=new BigDecimal(price); //offer price is independent of the calculatedPrice
 		this.name=name;
 	}
 	
-	public ArrayList<Product> getProductsOffer() {
+	public List<Product> getProductsOffer() {
 		return productsOffer;
 	}
 

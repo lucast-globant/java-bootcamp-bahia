@@ -7,20 +7,20 @@ import java.util.List;
 public class MailingList {
 	
 	private List<IObserver> observerList= new ArrayList<IObserver>();
-	private Notification state;
+	private Notification notification;
 	
-	public Notification getState() {
-		return state;
+	public Notification getNotification() {
+		return notification;
 	}
 	
-	public void setState(Notification state) {
-		this.state = state;
+	public void setNotification(Notification notify) {
+		this.notification = notify;
 		stateChanged();
 	}
 	
 	private void stateChanged() {
 		for (IObserver iObserver : observerList) {
-			iObserver.update(getState());
+			iObserver.update(getNotification());
 		}
 		
 	}

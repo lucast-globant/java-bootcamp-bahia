@@ -1,7 +1,5 @@
 package Topic1.key6;
 
-import javax.security.auth.Subject;
-
 
 
 public class testClient {
@@ -11,8 +9,8 @@ public class testClient {
 		IObserver ob=new Manager();
 		
 		ml.attach(ob);
-		ml.setState(new Notification(Notification.PRICE_CHANGED));
-		ml.setState(new Notification(Notification.TRANSACTION_DONE));
+		ml.setNotification(new Notification(Notification.PRICE_CHANGED));
+		ml.setNotification(new Notification(Notification.TRANSACTION_DONE));
 		
 	}
 

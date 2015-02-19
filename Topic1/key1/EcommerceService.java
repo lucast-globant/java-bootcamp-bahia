@@ -1,11 +1,11 @@
 package Topic1.key1;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import Topic1.key3.Counter;
-import Topic1.key5.Offer;
+import Topic1.key6.MailingList;
+import Topic1.key6.Notification;
 
 /**
  * @author Jordan
@@ -14,7 +14,7 @@ import Topic1.key5.Offer;
  * The cheapest item is for free when the user pay by Paypal.
  * 90% of the most expensive item is free if the user pays by Cash.
  */
-public class EcommerceWebPage {
+public class EcommerceService {
 	
 	/**
 	 * how many sales(as transactions) the site has made
@@ -26,6 +26,8 @@ public class EcommerceWebPage {
 	 *  because at checkout would be a mess if i need to search each item y is contained in a offer or not
 	 */
 	protected List<Product> productListOffer;
+	
+	protected MailingList mailingList;
 		
 	public enum payMethod {
 		CREDITCARD, PAYPAL, CASH
@@ -34,9 +36,10 @@ public class EcommerceWebPage {
 	
 
 //----CONSTRUCTORS
-	public EcommerceWebPage(List<Product> productListOffer) {
+	public EcommerceService(List<Product> productListOffer) {
 		transactions=0;
 		this.productListOffer = productListOffer;
+		mailingList=new MailingList();
 	}
 
 	
@@ -59,10 +62,10 @@ public class EcommerceWebPage {
 	 * @param method available payment methods (CREDITCARD, PAYPAL, CASH) 
 	 * @param customer
 	 */
-	public void checkout( payMethod method, Customer customer){
+	public void checkout( payMethod method, CustomerAccount customer){
 		BigDecimal total=new BigDecimal("0.00");
 		Cart cart=customer.getMyShoppingCart();
-		ArrayList<Item> products=cart.getItems();
+		List<Item> products=cart.getItems();
 		
 		for (Item i : products) {
 			total=total.add(i.getProduct().getPrice()).multiply(
@@ -127,6 +130,7 @@ public class EcommerceWebPage {
 		//log transaction
 		Counter.getCounterInstance().next();
 		transactions=Counter.getCount();
+		mailingList.setNotification(new Notification(Notification.TRANSACTION_DONE));
 		System.out.println("transaction: "+transactions);
 		//end transaction
 	}

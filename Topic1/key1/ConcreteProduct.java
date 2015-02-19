@@ -1,7 +1,5 @@
 package Topic1.key1;
 
-import java.math.BigDecimal;
-
 
 public class ConcreteProduct extends Product{
 	
