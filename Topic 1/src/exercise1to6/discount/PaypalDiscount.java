@@ -9,15 +9,17 @@ public class PaypalDiscount implements Discount {
 
 	@Override
 	public double makeDiscount(List<Item> items) {
-		Item cheapest = items.get(0); // first element
-		for (Item product : items) {
-			if (cheapest.getPrice() > product.getPrice())
-				cheapest = product;
+		if (!items.isEmpty()) {
+			Item cheapest = items.get(0); // first element
+			for (Item product : items) {
+				if (cheapest.getPrice() > product.getPrice())
+					cheapest = product;
+			}
+			return cheapest.getPrice();
 		}
-		return cheapest.getPrice();
+		else
+			return 0;
 
 	}
 
 }
-
-
