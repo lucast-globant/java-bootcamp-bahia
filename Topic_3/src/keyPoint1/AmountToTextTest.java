@@ -104,5 +104,8 @@ public class AmountToTextTest {
 		checkAmount.set(10845100.13);
 		textCheck = checkAmount.toText();
 		assertEquals("Ten million eight hundred forty-five thousand one hundred and 13/100 dollars", textCheck);
+		checkAmount.set(1000000.13);
+		textCheck = checkAmount.toText();
+		assertEquals("One million and 13/100 dollars", textCheck);
 	}
 }
