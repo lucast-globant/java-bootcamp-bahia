@@ -3,6 +3,7 @@ package notifications;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import shoppingCart.ShoppingCart;
 
@@ -10,18 +11,17 @@ import shoppingCart.ShoppingCart;
  * This class is a copy of the 'Payment' class in package 'shoppingCart' that implements the Subject interface 
  * */
 public abstract class ObservablePayment implements Subject {
-	static int nextTransactionNumber = 1;
-	int transactionNumber;
-	Date date;
-	String clientID;
-	ShoppingCart shopCart;
+	private static AtomicInteger nextTransactionNumber = new AtomicInteger(0);
+	private int transactionNumber;
+	private Date date;
+	private String clientID;
+	private ShoppingCart shopCart;
 
 	List<Observer> observers;
 
 	public ObservablePayment() {
 		observers = new ArrayList<Observer>();
-		transactionNumber = nextTransactionNumber;
-		nextTransactionNumber++;
+		transactionNumber = nextTransactionNumber.incrementAndGet();
 		notifyChange();
 	}
 

@@ -1,11 +1,13 @@
 package shoppingCart;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Product {
 	private int code, category;
 	private String name, description;
 	private float price;
 	private boolean isUnit;
-	private static int nextCode = 1; // This should be initialized to the last
+	private static AtomicInteger nextCode = new AtomicInteger (0); // This should be initialized to the last
 										// used code in the database
 
 	/*
@@ -16,8 +18,7 @@ public class Product {
 		this.name = name;
 		this.price = price;
 		this.isUnit = isUnit;
-		this.code = nextCode;
-		nextCode++;
+		this.code = nextCode.incrementAndGet();
 	}
 
 	public void setName(String name) {

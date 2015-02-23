@@ -2,6 +2,7 @@ package notifications;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /*
  * This class is a copy of the 'Product' class in package 'shoppingCart' that implements the Subject interface 
@@ -12,15 +13,14 @@ public class ObservableProduct implements Subject {
 	private String name, description;
 	private float price;
 	private boolean isUnit;
-	private static int nextCode = 1;
+	private static AtomicInteger nextCode = new AtomicInteger(0);
 
 	public ObservableProduct(String name, float price, boolean isUnit) {
 		observers = new ArrayList<Observer>();
 		this.name = name;
 		this.price = price;
 		this.isUnit = isUnit;
-		this.code = nextCode;
-		nextCode++;
+		this.code = nextCode.incrementAndGet();
 		notify();
 	}
 
