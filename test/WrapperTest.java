@@ -14,7 +14,7 @@ public class WrapperTest {
 	public void example1() {
 		WordWrapper WordWrapper = new WordWrapper();
 		List<String> result = WordWrapper.wrapTxt("wut.", 60);
-		assertEquals("First run word-wrapping.", result.get(0));
+		assertEquals("wut.", result.get(0));
 	}
 
 	@Test
