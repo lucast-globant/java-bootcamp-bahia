@@ -1,5 +1,7 @@
 package Topic1.key1;
 
+import Topic1.key2.DiscountPaypal;
+
 public class PaypalAccount extends FinancialPayment{
 	
 	private String username;
@@ -13,6 +15,8 @@ public class PaypalAccount extends FinancialPayment{
 		this.password = password;
 		this.email = email;
 		setBalance(bal);
+		
+		discount=new DiscountPaypal();
 	}
 	
 	public String getUsername() {
@@ -33,7 +37,7 @@ public class PaypalAccount extends FinancialPayment{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 
 	
 }

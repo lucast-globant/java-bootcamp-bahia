@@ -1,5 +1,6 @@
 package Topic1.key1;
 
+import Topic1.key2.DiscountCreditCard;
 
 
 public class CreditCard extends FinancialPayment{
@@ -14,6 +15,8 @@ public class CreditCard extends FinancialPayment{
 		this.titularName = titularName;
 		this.cardNumber = cardNumber;
 		setBalance(balance);
+		
+		discount=new DiscountCreditCard(); //how will manage the discounts
 	}
 	
 	
@@ -30,6 +33,7 @@ public class CreditCard extends FinancialPayment{
 	public void setCardNumber(int cardNumber) {
 		this.cardNumber = cardNumber;
 	}
+
 	
 	
 	

@@ -1,11 +1,6 @@
 package Topic1.key1;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.List;
 
-import Topic1.key1.EcommerceService.payMethod;
 
 public class CustomerAccount {
 	
@@ -16,25 +11,17 @@ public class CustomerAccount {
 	/**
 	 * money that has in his wallet   
 	 */
-	private BigDecimal money;
+	private Cash money;
 	
 	protected Cart myShoppingCart;
 
 	
-	public CustomerAccount(String name, String money) {
-		super();
-		this.name = name;
-		this.money = new BigDecimal(money).setScale(2, RoundingMode.UP);
-		this.myShoppingCart = new Cart();
-	}
-
-	
-	public CustomerAccount(String name, CreditCard creditCard, PaypalAccount paypal, String money) {
+	public CustomerAccount(String name, CreditCard creditCard, PaypalAccount paypal, Cash money) {
 		super();
 		this.name = name;
 		this.creditCard = creditCard;
 		this.paypal = paypal;
-		this.money = new BigDecimal(money).setScale(2, RoundingMode.UP);;
+		this.money = money;
 		this.myShoppingCart = new Cart();
 	}
 
@@ -56,12 +43,12 @@ public class CustomerAccount {
 		this.creditCard = creditCard;
 	}
 	
-	public BigDecimal getMoney() {
+	public Cash getMoney() {
 		return money;
 	}
 
-	public void setMoney(String money) {
-		this.money = new BigDecimal(money).setScale(2, RoundingMode.UP);
+	public void setMoney(Cash money) {
+		this.money = money;
 	}
 
 	public PaypalAccount getPaypal() {
@@ -70,9 +57,7 @@ public class CustomerAccount {
 
 	public void setPaypal(PaypalAccount paypal) {
 		this.paypal = paypal;
-	}
-	
-	
+	}	
 
 	public Cart getMyShoppingCart() {
 		return myShoppingCart;
@@ -84,33 +69,6 @@ public class CustomerAccount {
 	}
 
 
-	
-	
-	/**
-	 * @param category
-	 * @return all items that contains a product with that category
-	 */
-	public List<Item> getProductsByCategory(String category){
-		ArrayList<Item> listByCategory=new ArrayList<Item>();
-		for (Item item : myShoppingCart.getItems()) {
-			if (item.getProduct().getCategory().equals(category))
-				listByCategory.add(item);
-		}
-		
-		return listByCategory;
-	}
-	
-	/**
-	 * pay the products in my cart
-	 * @param method how'll you pay? CASH, PAYPAL or CREDITCARD 
-	 * @param where where you will buy this products?
-	 */
-	public void checkout(payMethod method, EcommerceService where){
-		assert(method==payMethod.PAYPAL || method==payMethod.CREDITCARD || method==payMethod.CASH);
-		 where.checkout(method, this);		
-		
-	}
-	
 	
 
 }

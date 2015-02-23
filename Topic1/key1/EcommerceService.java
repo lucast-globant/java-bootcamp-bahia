@@ -1,11 +1,11 @@
 package Topic1.key1;
 
-import java.math.BigDecimal;
 import java.util.List;
 
-import Topic1.key3.Counter;
+import Topic1.key6.IObserver;
 import Topic1.key6.MailingList;
-import Topic1.key6.Notification;
+import Topic1.key6.EMail;
+
 
 /**
  * @author Jordan
@@ -21,6 +21,12 @@ public class EcommerceService {
 	 */
 	private int transactions;
 
+	//notification messages (constants)
+	private static final String PRICE_CHANGED="PRICE_CHANGED";
+	private static final String TRANSACTION_DONE="TRANSACTION_DONE";
+	private static final String PRODUCT_ADDED="PRODUCT_ADDED";
+	
+	
 	/**
 	 * product and offers are treated like the same thing (offers are prodructs too)
 	 *  because at checkout would be a mess if i need to search each item y is contained in a offer or not
@@ -28,10 +34,6 @@ public class EcommerceService {
 	protected List<Product> productListOffer;
 	
 	protected MailingList mailingList;
-		
-	public enum payMethod {
-		CREDITCARD, PAYPAL, CASH
-	}
 	
 	
 
@@ -40,6 +42,10 @@ public class EcommerceService {
 		transactions=0;
 		this.productListOffer = productListOffer;
 		mailingList=new MailingList();
+		
+		IObserver ob=new EMail();
+		mailingList.attach(ob);
+		
 	}
 
 	
@@ -62,77 +68,17 @@ public class EcommerceService {
 	 * @param method available payment methods (CREDITCARD, PAYPAL, CASH) 
 	 * @param customer
 	 */
-	public void checkout( payMethod method, CustomerAccount customer){
-		BigDecimal total=new BigDecimal("0.00");
-		Cart cart=customer.getMyShoppingCart();
-		List<Item> products=cart.getItems();
+ 	public Transaction checkout( FinancialPayment method, CustomerAccount customer){
 		
-		for (Item i : products) {
-			total=total.add(i.getProduct().getPrice()).multiply(
-					new BigDecimal(""+i.getQuantity()) );
-		}
-	
-		switch (method) {
-		case CREDITCARD:
-			if(customer.getCreditCard()!=null && 
-			 customer.getCreditCard().getBalance().compareTo(total)==1 )
-				
-				
-				customer.getCreditCard().setBalance(
-						""+customer.getCreditCard().getBalance().subtract(
-								total.subtract( 
-										//total menos el 10% discount
-										enterPercentageDiscount(total, "0.1" )
-								)));
-			else
-				System.out.println("creditcard error");
-			System.out.println("ahora tengo "+customer.getCreditCard().getBalance()+" $");
-			break;
-			
-		case PAYPAL:
-			
-			assert(customer.getPaypal()!=null);
-			if(customer.getPaypal()!=null && 
-					customer.getPaypal().getBalance().compareTo(total)==1 )
-				
-				//cheapest free
-				customer.getPaypal().setBalance(
-						""+customer.getPaypal().getBalance().subtract(
-								total.subtract(cheapestProduct(cart).getPrice() ))
-								);
-			else{
-				System.out.println("paypal error");
-				break;
-			}
-			System.out.println("ahora tengo "+customer.getPaypal().getBalance()+" $");
-			break;
-			
-		case CASH:
-			if(customer.getMoney().compareTo(total)==1)//if has to pay the total
-				customer.setMoney(
-						""+customer.getMoney().subtract(
-								total.subtract( 
-										//90% of the most expensive item is free if the user pays by Cash.
-										enterPercentageDiscount(
-												mostExpensiveProduct(cart).getPrice(), "0.9" )
-								)));
-			else
-				System.out.println("you dont have that money");
-			System.out.println("ahora tengo "+customer.getMoney()+" $");
-			break;
-	
-		default:
-			//no deberia pasar
-			System.out.println("invalid payment method");
-			break;
-		}
 		
-		//log transaction
-		Counter.getCounterInstance().next();
-		transactions=Counter.getCount();
-		mailingList.setNotification(new Notification(Notification.TRANSACTION_DONE));
-		System.out.println("transaction: "+transactions);
+		//begin transaction
+		Transaction t=new Transaction(method, customer);				
+		
+		transactions=t.getId();
+		mailingList.notify(TRANSACTION_DONE+"("+transactions+")");
 		//end transaction
+		
+		return t;
 	}
 	
 	
@@ -162,57 +108,34 @@ public class EcommerceService {
 		return list.toString();
 	}
 	
-	
 	/**
-	 * simply to a shortcut to enter discounts
-	 * @param balance
-	 * @param discount a float percentage in form as a String (10%=""+0.1)
-	 * @return the final price
+	 * add product to the service stock
+	 * @param product
 	 */
-	private BigDecimal enterPercentageDiscount(BigDecimal balance,String discount){
+	public void addProduct(Product product) {
+		productListOffer.add(product);
+		mailingList.notify(PRODUCT_ADDED+" :"+ product.getName());
+	}
 	
-		return //balance.subtract(
-				balance.multiply(new BigDecimal(discount)) ;
+	public void changePrice(String prod, String price){
+		Product p=searchProduct(prod);
+		if(p!=null){
+			String oldPrice=p.getPrice().toString();
+			p.setPrice(price);
+			mailingList.notify(PRICE_CHANGED+" ("+ oldPrice+" -> "+p.getPrice()+")");
+		}			
+
+	}
+
+
+
+	public void addProductToCart(Product searchedProduct, int i, Cart myShoppingCart) {
 		
+		myShoppingCart.addToCart(searchedProduct, i);
 	}
+		
 	
-	private Product cheapestProduct(Cart myshoppingCart){
 
-		if(myshoppingCart.getItems().size()>0){
-			//declare and inicialization of return variable
-			Product cheapest=myshoppingCart.getItems().get(0).getProduct();
-
-			//search cheapest
-			for (Item it : myshoppingCart.getItems()) {
-				if(it.getProduct().getPrice().compareTo(cheapest.getPrice())==-1)
-					cheapest=it.getProduct();
-			}
-
-			return cheapest;
-		}
-
-		//if no products
-		return null;
-	}
-
-	private Product mostExpensiveProduct(Cart myshoppingCart) {
-
-		if (myshoppingCart.getItems().size() > 0) {
-			// declare and inicialization of return variable
-			Product mep = myshoppingCart.getItems().get(0).getProduct();
-
-			// search cheapest
-			for (Item item : myshoppingCart.getItems()) {
-				if (item.getPrice().compareTo(mep.getPrice()) == 1)
-					mep = item.getProduct();
-			}
-
-			return mep;
-		}
-
-		// if no products
-		return null;
-	}
 	
 	
 

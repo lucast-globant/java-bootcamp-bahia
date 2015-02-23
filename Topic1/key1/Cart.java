@@ -33,5 +33,19 @@ public class Cart {
 		products=new ArrayList<Item>();
 	}
 	
+	/**
+	 * @param category
+	 * @return all items that contains a product with that category
+	 */
+	public List<Item> getProductsByCategory(String category){
+		ArrayList<Item> listByCategory=new ArrayList<Item>();
+		for (Item item : products) {
+			if (item.getProduct().getCategory().equals(category))
+				listByCategory.add(item);
+		}
+		
+		return listByCategory;
+	}
+	
 	
 }
