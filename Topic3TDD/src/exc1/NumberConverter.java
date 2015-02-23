@@ -18,6 +18,7 @@ public class NumberConverter {
 	};
 
 	private String convert(int n) {
+
 		if (n < 0) {
 			return "minus " + convert(-n);
 		}
@@ -45,27 +46,42 @@ public class NumberConverter {
 		return convert(n / 1000000000) + " billion" + ((n % 1000000000 != 0) ? " " : "") + convert(n % 1000000000);
 	}
 
-	public String maskConverter(int n) {
-		String result = convert(n);
-		result = result + addAfterComma(n);
-		return result + " dollars";
+	public String maskConverter(double amount) {
+		String text = " ";
+		String resu = "";
+		String num = String.format("%.2f", amount);
+
+		text = decimalPart(num);
+
+		num = num.substring(0, num.length() - 3);
+
+		int integerPart = Integer.parseInt(num);
+
+		if (integerPart == 0) {
+			if (text.equals("dollars")) {
+				text = "zero " + text;
+			}
+			return text;
+		}
+
+		if (!text.equals("dollars")) {
+			text = "and " + text;
+		}
+
+		resu += convert(integerPart);
+
+		return resu + " " + text;
 
 	}
 
-	private String commaNumbers(double number) {
-		String s = String.valueOf(number);
-		String[] result = s.split("\\.");
-		return result[1];
-	}
+	private String decimalPart(String num) {
 
-	private String addAfterComma(double number) {
-		String commaNumber = commaNumbers(number);
-		if (!commaNumber.equals("0")) {
-			commaNumber = " and " + commaNumber;
-			commaNumber += "\100";
-			return commaNumber;
-		} else
-			return "";
-	}
+		String decimal = num.substring(num.length() - 2, num.length());
 
+		if ("00".equals(decimal)) {
+			return "dollars";
+		}
+		return decimal + "/100 dollars";
+
+	}
 }
