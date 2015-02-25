@@ -1,6 +1,7 @@
 package keys_four_six_and_seven;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Photo {
@@ -8,7 +9,7 @@ public class Photo {
 	private int photoId;
 	private byte[] photo;
 	// likes saves a list of users id which like the photo
-	private LinkedList<Integer> likes;
+	private List<Integer> likes;
 	private static final AtomicInteger count = new AtomicInteger(0);
 
 	public Photo() {
@@ -32,7 +33,7 @@ public class Photo {
 		likes.add(userId);
 	}
 
-	public LinkedList<Integer> getAllLikes() {
+	public List<Integer> getAllLikes() {
 		return likes;
 	}
 }

@@ -3,6 +3,7 @@ package keys_four_six_and_seven;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -27,7 +28,7 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public LinkedList<User> getAllUsers() {
+	public List<User> getAllUsers() {
 		LinkedList<User> toR = new LinkedList<User>();
 		Iterator<Entry<Integer, User>> it = users.entrySet().iterator();
 		while (it.hasNext()) {

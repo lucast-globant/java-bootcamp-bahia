@@ -1,6 +1,7 @@
 package key_two;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class PayPalStrategy implements PaymentStrategy {
 
@@ -20,7 +21,7 @@ public class PayPalStrategy implements PaymentStrategy {
 
 	@Override
 	// the cheapest item is for free
-	public float calculatePrice(LinkedList<ItemElement> items) {
+	public float calculatePrice(List<ItemElement> items) {
 		float sum = 0;
 		float cheapest = 0;
 		for (ItemElement item : items) {

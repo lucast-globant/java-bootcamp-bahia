@@ -1,6 +1,7 @@
 package key_two;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class CashStrategy implements PaymentStrategy {
 
@@ -12,7 +13,7 @@ public class CashStrategy implements PaymentStrategy {
 
 	@Override
 	// 90% of the most expensive item is free
-	public float calculatePrice(LinkedList<ItemElement> items) {
+	public float calculatePrice(List<ItemElement> items) {
 		float sum = 0;
 		float mostExpensive = 0;
 		for (ItemElement item : items) {

@@ -1,6 +1,7 @@
 package keys_four_six_and_seven;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class UserServiceJmsClient implements UserService {
 
@@ -26,7 +27,7 @@ public class UserServiceJmsClient implements UserService {
 	}
 
 	@Override
-	public LinkedList<User> getAllUsers() {
+	public List<User> getAllUsers() {
 		return jmsObject.getAllUsers();
 	}
 

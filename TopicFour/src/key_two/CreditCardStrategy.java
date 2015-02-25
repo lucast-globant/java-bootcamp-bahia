@@ -1,6 +1,7 @@
 package key_two;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class CreditCardStrategy implements PaymentStrategy {
 
@@ -20,7 +21,7 @@ public class CreditCardStrategy implements PaymentStrategy {
 
 	@Override
 	// 10% discount
-	public float calculatePrice(LinkedList<ItemElement> items) {
+	public float calculatePrice(List<ItemElement> items) {
 		float sum = 0;
 		for (ItemElement item : items) {
 			sum = sum + item.getPrice();

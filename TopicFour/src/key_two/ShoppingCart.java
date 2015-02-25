@@ -1,10 +1,11 @@
 package key_two;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class ShoppingCart {
 
-	private LinkedList<ItemElement> shoppingList;
+	private List<ItemElement> shoppingList;
 	private Shopping shopping;
 
 	public ShoppingCart(Shopping shopping) {

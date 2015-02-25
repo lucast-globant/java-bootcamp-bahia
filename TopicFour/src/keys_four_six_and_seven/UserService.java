@@ -1,6 +1,7 @@
 package keys_four_six_and_seven;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public interface UserService {
 
@@ -10,7 +11,7 @@ public interface UserService {
 
 	public void updateUser(User user);
 
-	public LinkedList<User> getAllUsers();
+	public List<User> getAllUsers();
 
 	public User getUserById(int userId);
 

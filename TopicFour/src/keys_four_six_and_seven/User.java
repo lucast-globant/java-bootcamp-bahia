@@ -1,6 +1,7 @@
 package keys_four_six_and_seven;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class User {
@@ -9,7 +10,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private LinkedList<User> friends;
+	private List<User> friends;
 	private static final AtomicInteger count = new AtomicInteger(0);
 
 	public User() {
@@ -50,7 +51,7 @@ public class User {
 		friends.add(friend);
 	}
 
-	public LinkedList<User> getAllFriends() {
+	public List<User> getAllFriends() {
 		return friends;
 	}
 

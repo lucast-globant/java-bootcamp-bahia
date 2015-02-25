@@ -1,10 +1,11 @@
 package key_two;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class OfferItems implements ItemElement {
 
-	private LinkedList<ItemElement> items;
+	private List<ItemElement> items;
 	private String offerName;
 	private float priceFactor;
 

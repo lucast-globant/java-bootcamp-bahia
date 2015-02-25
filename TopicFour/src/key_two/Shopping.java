@@ -1,10 +1,11 @@
 package key_two;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Shopping {
 
-	private LinkedList<ItemElement> shoppingStock;
+	private List<ItemElement> shoppingStock;
 
 	public Shopping() {
 		shoppingStock = new LinkedList<ItemElement>();
@@ -23,7 +24,7 @@ public class Shopping {
 	}
 
 	public void newSale(PaymentTransaction paymentTransaction) {
-		LinkedList<ItemElement> aux = paymentTransaction.getItems();
+		List<ItemElement> aux = paymentTransaction.getItems();
 		for (ItemElement item : aux) {
 			shoppingStock.remove(item);
 		}
