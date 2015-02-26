@@ -38,4 +38,9 @@ public class ShoppingServiceWebServiceClient implements ShoppingService {
 	public String getStockAsString() {
 		return webService.getStockAsString();
 	}
+	
+	@Override
+	public void addManagerToNotify(NotificationObserver notificationObserver) {
+		webService.addManagerToNotify(notificationObserver);
+	}
 }

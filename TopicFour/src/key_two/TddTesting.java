@@ -6,20 +6,17 @@ import org.junit.Test;
 
 public class TddTesting {
 
-	@Test
-	public void createShoppingApi() {
-		ShoppingService service = ShoppingServiceFactory.getLocalService();
-	}
+	private ShoppingService service = ShoppingServiceFactory.getLocalService();
 
 	@Test
 	public void addItemToShopping() {
-		ShoppingService service = ShoppingServiceFactory.getLocalService();
-		service.addItemToStock(new Mouse());
+		ItemElement item = new Mouse();
+		service.addItemToStock(item);
+		service.deleteItemFromStock(item);
 	}
 
 	@Test
 	public void deleteItemFromShopping() {
-		ShoppingService service = ShoppingServiceFactory.getLocalService();
 		ItemElement item = new Mouse();
 		service.addItemToStock(item);
 		service.deleteItemFromStock(item);
@@ -27,7 +24,6 @@ public class TddTesting {
 
 	@Test
 	public void isDeletedItemFromShopping() {
-		ShoppingService service = ShoppingServiceFactory.getLocalService();
 		ItemElement item = new Mouse();
 		service.addItemToStock(item);
 		service.deleteItemFromStock(item);
@@ -35,19 +31,17 @@ public class TddTesting {
 	}
 
 	@Test
-	public void isnDeletedItemFromShopping() {
-		ShoppingService service = ShoppingServiceFactory.getLocalService();
+	public void isAddedToCart() {
 		ItemElement item = new Mouse();
 		service.addItemToStock(item);
-		assertEquals("ITEM: mouse b3 $100.0\n", service.getStockAsString());
 		ShoppingCart cart = service.createBuyingCart();
 		cart.addItem(item);
-		cart.getCantItems();
+		assertEquals(1, cart.getCantItems());
+		service.deleteItemFromStock(item);
 	}
 	
 	@Test
 	public void testCantItemsInCart() {
-		ShoppingService service = ShoppingServiceFactory.getLocalService();
 		ItemElement item = new Mouse();
 		service.addItemToStock(item);
 		ShoppingCart cart = service.createBuyingCart();
@@ -57,7 +51,6 @@ public class TddTesting {
 	
 	@Test
 	public void testPayItems() {
-		ShoppingService service = ShoppingServiceFactory.getLocalService();
 		ItemElement item = new Mouse();
 		ItemElement item2 = new Mouse();
 		service.addItemToStock(item);
@@ -66,5 +59,23 @@ public class TddTesting {
 		cart.addItem(item2);
 		assertEquals(2, cart.getCantItems());
 		cart.pay(new PayPalStrategy("asd", "asd"));
+		service.deleteItemFromStock(item);
+		service.deleteItemFromStock(item2);
 	}
+	
+	@Test
+	public void testAddManagerForNotify() {
+		service.addManagerToNotify(new Manager("Pedro"));
+		ItemElement item = new Mouse();
+		ItemElement item2 = new Mouse();
+		service.addItemToStock(item);
+		ShoppingCart cart = service.createBuyingCart();
+		cart.addItem(item);
+		cart.addItem(item2);
+		assertEquals(2, cart.getCantItems());
+		cart.pay(new PayPalStrategy("asd", "asd"));
+		service.deleteItemFromStock(item);
+		service.deleteItemFromStock(item2);
+	}
+	
 }

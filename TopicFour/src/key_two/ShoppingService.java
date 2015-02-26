@@ -13,4 +13,6 @@ public interface ShoppingService {
 	public ShoppingCart createBuyingCart();
 
 	public String getStockAsString();
+	
+	public void addManagerToNotify(NotificationObserver notificationObserver);
 }

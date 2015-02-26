@@ -37,4 +37,9 @@ public class ShoppingServiceJmsClient implements ShoppingService {
 	public String getStockAsString() {
 		return jmsObject.getStockAsString();
 	}
+	
+	@Override
+	public void addManagerToNotify(NotificationObserver notificationObserver) {
+		jmsObject.addManagerToNotify(notificationObserver);
+	}
 }

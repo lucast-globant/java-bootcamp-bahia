@@ -2,10 +2,10 @@ package key_two;
 
 public class ShoppingServiceImplementation implements ShoppingService {
 
-	private Shopping theShopping;
+	private SingletonShopping theShopping;
 
 	protected ShoppingServiceImplementation() {
-		theShopping = new Shopping();
+		theShopping = SingletonShopping.getInstance();
 	};
 
 	@Override
@@ -20,7 +20,7 @@ public class ShoppingServiceImplementation implements ShoppingService {
 
 	@Override
 	public ShoppingCart createBuyingCart() {
-		return new ShoppingCart(theShopping);
+		return new ShoppingCart();
 	}
 
 	@Override
@@ -36,6 +36,11 @@ public class ShoppingServiceImplementation implements ShoppingService {
 	@Override
 	public void deleteOffer(OfferItems offer) {
 		theShopping.deleteItem(offer);
+	}
+
+	@Override
+	public void addManagerToNotify(NotificationObserver notificationObserver) {
+		theShopping.addObserver(notificationObserver);
 	}
 
 }

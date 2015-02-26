@@ -6,11 +6,11 @@ import java.util.List;
 public class ShoppingCart {
 
 	private List<ItemElement> shoppingList;
-	private Shopping shopping;
+	private SingletonShopping shopping;
 
-	public ShoppingCart(Shopping shopping) {
+	public ShoppingCart() {
 		shoppingList = new LinkedList<ItemElement>();
-		this.shopping = shopping;
+		shopping = SingletonShopping.getInstance();
 	}
 
 	public void addItem(ItemElement item) {

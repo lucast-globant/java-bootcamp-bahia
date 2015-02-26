@@ -37,5 +37,10 @@ public class ShoppingServiceProxy implements ShoppingService {
 	public String getStockAsString() {
 		return implementation.getStockAsString();
 	}
+	
+	@Override
+	public void addManagerToNotify(NotificationObserver notificationObserver) {
+		implementation.addManagerToNotify(notificationObserver);
+	}
 
 }

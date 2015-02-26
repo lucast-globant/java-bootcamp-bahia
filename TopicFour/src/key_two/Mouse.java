@@ -31,7 +31,7 @@ public class Mouse implements ItemElement {
 	@Override
 	public void changePrice(float newPrice) {
 		this.price = newPrice;
-		SingletonNotificationManager.getInstance().newNotification(
+		SingletonShopping.getInstance().newNotification(
 				"Mouse price changed");
 	}
 }
