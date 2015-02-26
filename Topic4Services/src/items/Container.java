@@ -3,8 +3,6 @@ package items;
 import java.util.ArrayList;
 import java.util.List;
 
-import notifications.MailListManager;
-
 /* Contain a list on items on stock and offers*/
 
 public class Container {
@@ -33,7 +31,6 @@ public class Container {
 	public void addItem(Item i) {
 
 		this.items.add(i);
-		MailListManager.getInstance().setMessage(" A new item/offer - CODE : " + i.getCode() + " was added to the container stock");
 
 	}
 
@@ -43,7 +40,6 @@ public class Container {
 
 			if (i.getCode() == code) {
 				i.setPrice(price);
-				MailListManager.getInstance().setMessage(" The price of item of code : " + code + " was changed to : $" + price);
 
 				break;
 			}

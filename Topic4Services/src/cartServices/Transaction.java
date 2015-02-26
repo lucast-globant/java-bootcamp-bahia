@@ -1,6 +1,5 @@
 package cartServices;
 
-import notifications.MailListManager;
 import payments.Payment;
 
 /* Represents a transaction :
@@ -30,8 +29,6 @@ public class Transaction {
 		paymentMethod.pay(total);
 
 		double totalDiscount = paymentMethod.getDiscount().applyDiscount(cart.getItems(), total);
-
-		MailListManager.getInstance().setMessage(" New Transaction was made ID: " + Transaction.ID);
 
 		return totalDiscount;
 
