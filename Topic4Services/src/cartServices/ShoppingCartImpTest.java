@@ -1,6 +1,7 @@
 package cartServices;
 
 import static org.junit.Assert.*;
+import items.Container;
 import items.Item;
 import items.Product;
 
@@ -58,6 +59,7 @@ public class ShoppingCartImpTest {
 
 	public void findItemTest() {
 
-	}
+		Item item = shoppingCartService.findItem(" Plate ", " ");
 
+	}
 }

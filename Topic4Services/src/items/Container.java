@@ -1,7 +1,4 @@
-package cartServices;
-
-import items.Item;
-import items.Product;
+package items;
 
 import java.util.ArrayList;
 import java.util.List;
