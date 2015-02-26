@@ -44,8 +44,5 @@ public class WebTransaction implements Transaction {
 
 	public void execute() {
 		value = paymentStrategy.pay(items);
-		System.out.println("-----End of transaction ID: " + id + "-----");
-		System.out.println();
-		MailList.getInstance().notify("New transaction ID " + id + ".");
 	}
 }

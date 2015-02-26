@@ -41,10 +41,7 @@ public class PaypalStrategy implements PaymentStrategy {
 				cheapestItem = item;
 			}
 		}
-		System.out.println("Cost of the buy: $" + total + ".");
 		total -= cheapestItem.getValue();
-		System.out.println("The cheapest item for $" + cheapestItem.getValue() + " is free by paying with Paypal.");
-		System.out.println("Final cost: $" + total);
 		return total;
 	}
 }

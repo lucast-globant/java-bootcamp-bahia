@@ -1,13 +1,15 @@
 package interfaces;
 
 import java.awt.Image;
+
+import classes.WebUser;
 import classes.WebUserServiceResult;
 
 public interface UserService {
 
 	public WebUserServiceResult createUser(String mail, String password, String name, String lastName);
 
-	public User readUser(String mail);
+	public WebUser readUser(String mail);
 
 	public WebUserServiceResult updateUser(String mail, String password, String name, String lastName);
 

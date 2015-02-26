@@ -18,10 +18,7 @@ public class CashStrategy implements PaymentStrategy {
 				mostExpensiveItem = item;
 			}
 		}
-		System.out.println("Cost of the buy: $" + total + ".");
 		total -= mostExpensiveItem.getValue() * 0.9;
-		System.out.println("You have a discount of 90% in the most expensive item for paying by cash.");
-		System.out.println("Final cost: $" + total);
 		return total;
 	}
 }

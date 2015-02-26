@@ -35,10 +35,7 @@ public class CreditCardStrategy implements PaymentStrategy {
 		for (Item item : items) {
 			total += item.getValue();
 		}
-		System.out.println("Cost of the buy: $" + total + ".");
 		total *= 0.9;
-		System.out.println("You have a discount of 10% for paying by Credit Card.");
-		System.out.println("Final cost: $" + total + ".");
 		return total;
 	}
 }

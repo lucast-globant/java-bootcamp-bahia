@@ -3,70 +3,57 @@ package classes;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
-import interfaces.User;
 
-public class WebUser implements User {
+public class WebUser {
 
-	private String mail;
-	private String password;
-	private String name;
-	private String lastName;
+	private User user;
 	private Image photo;
-	private List<User> friends;
-	private List<User> likesPhoto;
+	private List<WebUser> friends;
+	private List<WebUser> likesPhoto;
 
 	public WebUser(String mail, String password, String name, String lastName) {
-		updateUser(mail, password, name, lastName);
+		user = new User(mail, password, name, lastName);
 		photo = null;
-		friends = new ArrayList<User>();
-		likesPhoto = new ArrayList<User>();
+		friends = new ArrayList<WebUser>();
+		likesPhoto = new ArrayList<WebUser>();
 	}
 
-	@Override
 	public void updateUser(String mail, String password, String name, String lastName) {
-		this.mail = mail;
-		this.password = password;
-		this.name = name;
-		this.lastName = lastName;
+		user.setMail(mail);
+		user.setPassword(password);
+		user.setName(name);
+		user.setLastName(lastName);
 	}
 
-	@Override
 	public String getMail() {
-		return mail;
+		return user.getMail();
 	}
 
-	@Override
 	public String getPassword() {
-		return password;
+		return user.getPassword();
 	}
 
-	@Override
 	public String getName() {
-		return name;
+		return user.getName();
 	}
 
-	@Override
 	public String getLastName() {
-		return lastName;
+		return user.getLastName();
 	}
 
-	@Override
 	public void setPhoto(Image photo) {
 		this.photo = photo;
 	}
 
-	@Override
-	public void addFriend(User user) {
+	public void addFriend(WebUser user) {
 		friends.add(user);
 	}
 
-	@Override
-	public void addLikePhoto(User user) {
+	public void addLikePhoto(WebUser user) {
 		likesPhoto.add(user);
 	}
 
-	@Override
-	public boolean areFriends(User user) {
+	public boolean areFriends(WebUser user) {
 		return friends.contains(user);
 	}
 }
