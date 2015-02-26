@@ -6,7 +6,8 @@ public class CashStrategy implements PaymentStrategy {
 
 	@Override
 	public void pay(PaymentTransaction paymentTransaction) {
-		System.out.println(paymentTransaction.getAmountOfMoney() + " paid using cash.");
+		System.out.println(paymentTransaction.getAmountOfMoney()
+				+ " paid using cash.");
 	}
 
 	@Override

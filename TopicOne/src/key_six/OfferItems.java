@@ -38,6 +38,7 @@ public class OfferItems implements ItemElement {
 	@Override
 	public void changePrice(float newPrice) {
 		this.priceFactor = newPrice;
-		SingletonNotificationManager.getInstance().newNotification("Offer " + offerName + " price changed");
+		SingletonShopping.getInstance().newNotification(
+				"Offer " + offerName + " price changed");
 	}
 }

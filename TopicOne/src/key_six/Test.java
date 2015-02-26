@@ -8,7 +8,7 @@ public class Test {
 
 		SingletonShopping s = SingletonShopping.getInstance();
 		Manager ma = new Manager("Roman");
-		SingletonNotificationManager.getInstance().addObserver(ma);
+		SingletonShopping.getInstance().addObserver(ma);
 
 		Computer c = new Computer();
 		Mouse m = new Mouse();

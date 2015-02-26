@@ -1,11 +1,17 @@
 package key_six;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Set;
 
-public class SingletonShopping {
+public class SingletonShopping implements NotificationSubject {
 
 	private static SingletonShopping shoppingInstance = null;
 	private LinkedList<ItemElement> shoppingStock = new LinkedList<ItemElement>();
+	// this set is the mail list.
+	Set<NotificationObserver> mailList = new HashSet<NotificationObserver>();
+	private String message = "";
 
 	private SingletonShopping() {
 	}
@@ -19,7 +25,7 @@ public class SingletonShopping {
 
 	public void addItem(ItemElement item) {
 		shoppingStock.add(item);
-		SingletonNotificationManager.getInstance().newNotification("New item " + item.toString() + " added");
+		newNotification("New item " + item.toString() + " added");
 	}
 
 	public void newSale(PaymentTransaction paymentTransaction) {
@@ -27,8 +33,8 @@ public class SingletonShopping {
 		for (ItemElement item : aux) {
 			shoppingStock.remove(item);
 		}
-		SingletonNotificationManager.getInstance().newNotification(
-				"A transaction for " + paymentTransaction.getAmountOfMoney() + "$ was made");
+		newNotification("A transaction for "
+				+ paymentTransaction.getAmountOfMoney() + "$ was made");
 	}
 
 	public String getStockAsString() {
@@ -37,5 +43,29 @@ public class SingletonShopping {
 			toR += item.toString() + '\n';
 		}
 		return toR;
+	}
+
+	@Override
+	public void addObserver(NotificationObserver notificationObserver) {
+		mailList.add(notificationObserver);
+	}
+
+	@Override
+	public void removeObserver(NotificationObserver notificationObserver) {
+		mailList.remove(notificationObserver);
+	}
+
+	@Override
+	public void doNotify() {
+		Iterator<NotificationObserver> it = mailList.iterator();
+		while (it.hasNext()) {
+			NotificationObserver notificationObserver = it.next();
+			notificationObserver.mail(message);
+		}
+	}
+
+	public void newNotification(String message) {
+		this.message = message;
+		doNotify();
 	}
 }

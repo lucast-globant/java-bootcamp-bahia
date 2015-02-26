@@ -18,7 +18,8 @@ public class ShoppingCart {
 
 	public void pay(PaymentStrategy paymentMethod) {
 		float amount = paymentMethod.calculatePrice(shoppingList);
-		PaymentTransaction newTransaction = new PaymentTransaction(amount, shoppingList);
+		PaymentTransaction newTransaction = new PaymentTransaction(amount,
+				shoppingList);
 		paymentMethod.pay(newTransaction);
 		shopping.newSale(newTransaction);
 	}

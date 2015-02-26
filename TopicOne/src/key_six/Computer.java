@@ -7,7 +7,8 @@ public class Computer implements ItemElement {
 	private String cpu;
 	private String hardDisk;
 
-	public Computer(int price, String name, String ram, String cpu, String hardDisk) {
+	public Computer(int price, String name, String ram, String cpu,
+			String hardDisk) {
 		this.price = price;
 		this.ram = ram;
 		this.cpu = cpu;
@@ -45,6 +46,7 @@ public class Computer implements ItemElement {
 	@Override
 	public void changePrice(float newPrice) {
 		this.price = newPrice;
-		SingletonNotificationManager.getInstance().newNotification("Computer " + cpu + " price changed");
+		SingletonShopping.getInstance().newNotification(
+				"Computer " + cpu + " price changed");
 	}
 }
