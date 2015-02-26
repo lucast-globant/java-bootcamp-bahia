@@ -1,34 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
+package items;
 
 
-
-/* An Offer : include other individual products or other offers*/
-
-@SuppressWarnings("unused")
-public class Offer implements Item {
+public class Product implements Item {
 
 	private float price;
 	private String name;
 	private int code;
-	private List<Item> items;
 
-	public Offer(String name, int code, List<Item> items) {
+	public Product(int price, String name, int code) {
+		super();
+		this.price = price;
 		this.name = name;
 		this.code = code;
-		this.items = items;
 	}
 
 	@Override
 	public float getPrice() {
-		int price = 0;
-
-		for (Item i : items)
-
-			price += i.getPrice();
-
 		return price;
-
 	}
 
 	@Override
@@ -60,11 +48,7 @@ public class Offer implements Item {
 	}
 
 	public String toString() {
-		String resu = "* Offer Name: " + name + " ....... " + " $" + getPrice() + "\n";
-		for (Item item : items) {
-			resu += "\t" + item.toString() + "\n";
-		}
-		return resu;
+		return "- Item name: " + name + " ...... " + " $" + price;
 	}
 
 }

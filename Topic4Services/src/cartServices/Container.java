@@ -1,6 +1,12 @@
+package cartServices;
+
+import items.Item;
+import items.Product;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import notifications.MailListManager;
 
 /* Contain a list on items on stock and offers*/
 
@@ -53,5 +59,9 @@ public class Container {
 			resu += item.toString() + '\n';
 		}
 		return resu;
+	}
+
+	public List<Item> items() {
+		return items;
 	}
 }

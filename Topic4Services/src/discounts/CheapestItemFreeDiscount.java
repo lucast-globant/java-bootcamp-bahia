@@ -1,6 +1,8 @@
+package discounts;
+
+import items.Item;
+
 import java.util.List;
-
-
 
 /* A concrete discount ; the cheapest item its for free */
 

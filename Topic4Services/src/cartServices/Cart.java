@@ -1,14 +1,18 @@
+package cartServices;
+
+import items.Item;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /* Represent a  shopping cart , contains a list of items that the costumer its buying */
 
-public class ShoppingCart {
+public class Cart {
 
 	List<Item> items;
 	int totalPrice;
 
-	public ShoppingCart() {
+	public Cart() {
 		items = new ArrayList<Item>();
 
 	}
@@ -17,6 +21,10 @@ public class ShoppingCart {
 
 		this.items.add(i);
 
+	}
+
+	public void addItems(List<Item> items) {
+		this.items.addAll(items);
 	}
 
 	public void removeItem(Item i) {
