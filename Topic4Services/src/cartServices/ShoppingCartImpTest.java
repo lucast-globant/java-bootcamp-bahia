@@ -57,9 +57,33 @@ public class ShoppingCartImpTest {
 
 	}
 
+	@Test
 	public void findItemTest() {
 
-		Item item = shoppingCartService.findItem(" Plate ", " ");
+		Item item = shoppingCartService.findItem(" Plate ", " Plates ");
+		assertEquals(" Plate ", item.getName());
 
 	}
+
+	@Test
+	public void getCartTest() {
+
+		assertEquals(cart, shoppingCartService.getCart());
+
+	}
+
+	@Test
+	public void saveCartTest() {
+
+		assertTrue(shoppingCartService.saveCart(cart));
+
+	}
+
+	@Test
+	public void getItemsTest() {
+
+		assertEquals(container.items(), shoppingCartService.getItems());
+
+	}
+
 }

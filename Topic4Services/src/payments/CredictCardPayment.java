@@ -55,10 +55,6 @@ public class CredictCardPayment implements Payment {
 	@Override
 	public void pay(float total) {
 
-		System.out.println("Your purchase in credit card for $" + total + " was succed !");
-		System.out.println("You have a 10% for buying with credit card");
-		System.out.println("Calculating new cost..");
-
 	}
 
 	@Override

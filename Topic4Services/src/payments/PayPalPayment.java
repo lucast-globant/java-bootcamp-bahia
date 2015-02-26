@@ -35,9 +35,6 @@ public class PayPalPayment implements Payment {
 	@Override
 	public void pay(float total) {
 
-		System.out.println("Your purchase on PayPal for $" + total + " was succed !");
-		System.out.println("You have the cheapest item for free!");
-		System.out.println("Calculating new cost..");
 	}
 
 	@Override

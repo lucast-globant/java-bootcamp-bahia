@@ -2,7 +2,6 @@ package cartServices;
 
 import notifications.MailListManager;
 import payments.Payment;
-import items.*;
 
 /* Represents a transaction :
  *  0. Receives a full cart from customer.
@@ -19,7 +18,7 @@ public class Transaction {
 	public Transaction(Cart cart, Payment paymentMethod) {
 
 		this.cart = cart;
-		Transaction.ID++;
+		ID = Counter.getInstance().getUniqueId();
 		this.paymentMethod = paymentMethod;
 
 	}
