@@ -1,0 +1,21 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `courseName`(course_id int) RETURNS varchar(50) CHARSET utf8
+BEGIN
+	DECLARE output VARCHAR (50);
+    select concat('Course: ',cs_name) into output
+	from highschool.course 
+	where cs_id = course_id;
+
+RETURN output;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `teacherAssigned`(course_id int) RETURNS varchar(72) CHARSET utf8
+BEGIN
+	DECLARE output VARCHAR (72);
+    select concat('Teacher: ',tc_lastName,', ',tc_firstName) into output
+	from highschool.teacher join highschool.course on (cs_id = course_id and tc_id = cs_asignedTeacher);
+RETURN output;
+END$$
+DELIMITER ;
