@@ -9,16 +9,19 @@ import java.sql.Statement;
 
 
 public class HighschoolService {
-	protected Connection conexionBD = null;
+	protected Connection connectionDB = null;
 
 	public HighschoolService(){
 
 	}
 
 
+	/**
+	 * connect to database
+	 */
 	private void connect()
 	{
-		if (this.conexionBD == null)
+		if (this.connectionDB == null)
 		{
 			try
 			{
@@ -31,13 +34,13 @@ public class HighschoolService {
 
 			try
 			{
-				String servidor = "localhost:3306";
-				String baseDatos = "highschool";
-				String usuario = "root";
-				String clave = "";
-				String uriConexion = "jdbc:mysql://" + servidor + "/" + baseDatos;
+				String server = "localhost:3306";
+				String dataBase = "highschool";
+				String user = "root";
+				String password = "";
+				String uriConnection = "jdbc:mysql://" + server + "/" + dataBase;
 
-				this.conexionBD = DriverManager.getConnection(uriConexion, usuario, clave);
+				this.connectionDB = DriverManager.getConnection(uriConnection, user, password);
 			}
 			catch (SQLException ex)
 			{
@@ -46,14 +49,17 @@ public class HighschoolService {
 		}
 	}
 
-	private void desconectarBD()
+	/**
+	 * disconnect from database
+	 */
+	private void disconnect()
 	{
-		if (this.conexionBD != null)
+		if (this.connectionDB != null)
 		{
 			try
 			{
-				this.conexionBD.close();
-				this.conexionBD = null;
+				this.connectionDB.close();
+				this.connectionDB = null;
 			}
 			catch (SQLException ex)
 			{
@@ -67,20 +73,19 @@ public class HighschoolService {
 	public void showCourseData(int cid){
 		try{
 			connect();
-			Statement stmt = this.conexionBD.createStatement();
+			Statement stmt = this.connectionDB.createStatement();
 
 			String sql="SELECT firstname,lastname "
 					+ "FROM (person NATURAL JOIN teacher) NATURAL JOIN teacher_dictate_course"
 					+ " WHERE course_id=+"+cid+" AND teacher_id=id "
 					+ "ORDER BY lastname ASC;";
 
-			// se ejecuta la sentencia y se recibe un resultset
 			ResultSet rs = stmt.executeQuery(sql);
 
 			StringBuffer resultString=new StringBuffer();
 			resultString.append("Course id: "+cid+"\nTeachers: ");
 
-			// se recorre el resulset y se actualiza la tabla en pantalla
+			// show the results from the resultset
 			int i = 0;
 			while (rs.next())
 			{
@@ -104,12 +109,11 @@ public class HighschoolService {
 			}
 			System.out.println(resultString.toString());
 			
-			// se cierran los recursos utilizados para recuperar la memoria
-			// utilizada
+			// close the open resourses to free memory
 			rs.close();
 			stmt.close();
 
-			desconectarBD();
+			disconnect();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -118,20 +122,20 @@ public class HighschoolService {
 	public void showFinalNotes(int studentId){
 		try{
 			connect();
-			Statement stmt = this.conexionBD.createStatement();
+			Statement stmt = this.connectionDB.createStatement();
 
 			String sql="SELECT course.name, final_note"
 					+ " FROM student_takes_course NATURAL JOIN course "
 					+ "WHERE registerNumber="+studentId+" AND course_id=course.id"
 					+ " ORDER BY final_note, course.name;";
 
-			// se ejecuta la sentencia y se recibe un resultset
+
 			ResultSet rs = stmt.executeQuery(sql);
 
 			StringBuffer resultString=new StringBuffer();
 			resultString.append("Student:"+ studentId+"\n[Course name , Final note] \n");
 
-			// se recorre el resulset y se actualiza la tabla en pantalla
+			// show to console the results from the resultSet
 			int i = 0;
 			while (rs.next())
 			{
@@ -142,12 +146,11 @@ public class HighschoolService {
 		
 			System.out.println(resultString.toString());
 
-			// se cierran los recursos utilizados para recuperar la memoria
-			// utilizada
+			// close open resourses to free memory
 			rs.close();
 			stmt.close();
 
-			desconectarBD();
+			disconnect();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
