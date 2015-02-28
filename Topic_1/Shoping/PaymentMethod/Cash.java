@@ -1,16 +1,21 @@
 package PaymentMethod;
 
-import Discounts.DiscountCash;
+import ShopingCart.Cart;
 
-public class Cash extends PaymentMethod {
+public class Cash implements PaymentMethod {
 
 	public Cash() {
-		discount = new DiscountCash();
+		
 	}
-
+	
+	public float applyDiscount(Cart cart) {
+		return cart.getSubtotal() - cart.getMostExpensiveItem().getPrice() * 0.9f;
+	}
+	
 	public String toString() {
 		String s = "Payment by cash.";
 		return s;
 	}
 
+	
 }

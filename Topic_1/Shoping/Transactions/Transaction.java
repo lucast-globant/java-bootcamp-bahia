@@ -9,13 +9,13 @@ public class Transaction {
 	protected int number;
 	protected PaymentMethod paymentm;
 	protected List<Item> items;
-	protected double total;
+	protected float total;
 
-	public Transaction(PaymentMethod pa, List<Item> l, double pr) {
+	public Transaction(PaymentMethod paymentm, List<Item> items, float total) {
 		number = TransactionNumber.getInstance().getTransactionNum();
-		paymentm = pa;
-		items = l;
-		total = pr;
+		this.paymentm = paymentm;
+		this.items = items;
+		this.total = total;
 	}
 
 	public int getNumber() {
@@ -30,11 +30,7 @@ public class Transaction {
 		return items;
 	}
 
-	public void setItems(List<Item> i) {
-		items = i;
-	}
-
-	public double getTotal() {
+	public float getTotal() {
 		return total;
 	}
 

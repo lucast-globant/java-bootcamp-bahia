@@ -1,8 +1,10 @@
 package Transactions;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class TransactionNumber {
 	private static TransactionNumber transaction = null;
-	private static int number = 1;
+	private static final AtomicInteger number = new AtomicInteger(0);
 
 	private TransactionNumber() {
 	}
@@ -14,6 +16,6 @@ public class TransactionNumber {
 	}
 
 	public int getTransactionNum() {
-		return number++;
+		return number.incrementAndGet();
 	}
 }

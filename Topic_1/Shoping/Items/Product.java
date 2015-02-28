@@ -1,16 +1,12 @@
 package Items;
 
-import java.util.List;
-
-public class Offer implements Item {
+public class Product implements Item {
 	protected String name;
 	protected float price;
-	protected List<Item> items;
 
-	public Offer(String name, float price, List<Item> items) {
+	public Product(String name, float price) {
 		this.name = name;
 		this.price = price;
-		this.items = items;
 	}
 
 	public String getName() {
@@ -30,11 +26,7 @@ public class Offer implements Item {
 	}
 
 	public String toString() {
-		String s = "";
-		s += name + " ....... $" + price + "\n";
-		for (Item i : items) {
-			s += "\t" + i.toString();
-		}
+		String s = name + " ....... " + " $ " + price + "\n";
 		return s;
 	}
 

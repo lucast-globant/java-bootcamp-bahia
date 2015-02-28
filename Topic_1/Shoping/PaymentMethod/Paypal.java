@@ -1,14 +1,13 @@
 package PaymentMethod;
 
-import Discounts.DiscountPaypal;
+import ShopingCart.Cart;
 
-public class Paypal extends PaymentMethod {
+public class Paypal implements PaymentMethod {
 	protected String email, pass;
 
-	public Paypal(String e, String p) {
-		email = e;
-		pass = p;
-		discount = new DiscountPaypal();
+	public Paypal(String email, String pass) {
+		this.email = email;
+		this.pass = pass;
 	}
 
 	public String getEmail() {
@@ -26,11 +25,17 @@ public class Paypal extends PaymentMethod {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-
+	
+	@Override
+	public float applyDiscount(Cart cart) {
+		return cart.getSubtotal() - cart.getCheapestItem().getPrice();
+	}
+	
 	public String toString() {
-		String s = "Payment by Paypal. \n";
-		s += "Email: " + email;
+		String s = "Payment by Paypal.";
 		return s;
 	}
+
+	
 
 }

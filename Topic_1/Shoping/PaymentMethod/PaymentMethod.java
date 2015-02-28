@@ -1,15 +1,11 @@
 package PaymentMethod;
 
-import java.util.List;
+import ShopingCart.Cart;
 
-import Discounts.Discount;
-import Items.Item;
+public interface PaymentMethod {
 
-public abstract class PaymentMethod {
-	protected Discount discount;
-
-	public double applyDiscount(List<Item> items, double price) {
-		return discount.applyDiscount(items, price);
-	}
+	public float applyDiscount(Cart cart);
+	
+	public String toString();
 
 }

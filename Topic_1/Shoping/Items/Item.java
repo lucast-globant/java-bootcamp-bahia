@@ -1,34 +1,14 @@
 package Items;
 
-public class Item {
-	protected String name;
-	protected double price;
+public interface Item {
 
-	public Item(String n, double p) {
-		name = n;
-		price = p;
-	}
+	public String getName();
 
-	public String getName() {
-		return name;
-	}
+	public void setName(String name);
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	public float getPrice();
 
-	public double getPrice() {
-		return price;
-	}
+	public void setPrice(float price);
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public String toString() {
-		String s = "";
-		s += "- " + name + " ......." + " $ " + price + "\n";
-		return s;
-	}
-
+	public String toString();
 }
