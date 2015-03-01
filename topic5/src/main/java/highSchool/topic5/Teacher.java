@@ -70,7 +70,7 @@ public class Teacher {
 		}
 	}
 
-	public void printInfoCoursesTeacher(String teacher, ResultSet resultSet)
+	private void printInfoCoursesTeacher(String teacher, ResultSet resultSet)
 			throws SQLException {
 		String day;
 		Time from, to;

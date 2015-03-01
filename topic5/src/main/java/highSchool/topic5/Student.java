@@ -58,7 +58,7 @@ public class Student {
 		
 	}
 
-	public void printInfoStudent(String firstNameStudent, String lastNameStudent, ResultSet resultSet)
+	private void printInfoStudent(String firstNameStudent, String lastNameStudent, ResultSet resultSet)
 			throws SQLException {
 		System.out.println("Student: " + lastNameStudent + ", " +firstNameStudent);
 		System.out.println("Final notes:");
