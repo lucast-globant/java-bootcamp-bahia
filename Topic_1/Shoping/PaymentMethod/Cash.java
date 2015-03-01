@@ -9,7 +9,8 @@ public class Cash implements PaymentMethod {
 	}
 	
 	public float applyDiscount(Cart cart) {
-		return cart.getSubtotal() - cart.getMostExpensiveItem().getPrice() * 0.9f;
+		if(cart.getMostExpensiveItem() == null) return cart.getSubtotal();
+		else return cart.getSubtotal() - cart.getMostExpensiveItem().getPrice() * 0.9f;
 	}
 	
 	public String toString() {

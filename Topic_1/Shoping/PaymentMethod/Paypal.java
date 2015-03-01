@@ -28,7 +28,8 @@ public class Paypal implements PaymentMethod {
 	
 	@Override
 	public float applyDiscount(Cart cart) {
-		return cart.getSubtotal() - cart.getCheapestItem().getPrice();
+		if(cart.getCheapestItem() == null) return cart.getSubtotal();
+		else return cart.getSubtotal() - cart.getCheapestItem().getPrice();
 	}
 	
 	public String toString() {
