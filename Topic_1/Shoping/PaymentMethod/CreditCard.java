@@ -26,16 +26,14 @@ public class CreditCard implements PaymentMethod {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public float applyDiscount(Cart cart) {
 		return cart.getSubtotal() * 0.9f;
 	}
-	
+
 	public String toString() {
 		String s = "Payment by credit card.";
 		return s;
 	}
-
-	
 
 }

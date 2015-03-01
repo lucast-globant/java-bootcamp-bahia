@@ -25,18 +25,18 @@ public class Paypal implements PaymentMethod {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	
+
 	@Override
 	public float applyDiscount(Cart cart) {
-		if(cart.getCheapestItem() == null) return cart.getSubtotal();
-		else return cart.getSubtotal() - cart.getCheapestItem().getPrice();
+		if (cart.getCheapestItem() == null)
+			return cart.getSubtotal();
+		else
+			return cart.getSubtotal() - cart.getCheapestItem().getPrice();
 	}
-	
+
 	public String toString() {
 		String s = "Payment by Paypal.";
 		return s;
 	}
-
-	
 
 }

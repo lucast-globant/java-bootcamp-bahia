@@ -43,9 +43,10 @@ public class Cart implements Subject {
 	public float getSubtotal() {
 		return subtotal;
 	}
-	
-	public Item getMostExpensiveItem(){
-		if (items.size() == 0) return null;
+
+	public Item getMostExpensiveItem() {
+		if (items.size() == 0)
+			return null;
 		Item expensive = items.get(0);
 		for (Item i : items) {
 			if (i.getPrice() > expensive.getPrice())
@@ -53,9 +54,10 @@ public class Cart implements Subject {
 		}
 		return expensive;
 	}
-	
-	public Item getCheapestItem(){
-		if (items.size() == 0) return null;
+
+	public Item getCheapestItem() {
+		if (items.size() == 0)
+			return null;
 		Item cheapest = items.get(0);
 		for (Item i : items) {
 			if (i.getPrice() < cheapest.getPrice())
@@ -63,7 +65,7 @@ public class Cart implements Subject {
 		}
 		return cheapest;
 	}
-	
+
 	public Transaction buy(PaymentMethod paymentm) {
 		float total = paymentm.applyDiscount(this);
 		Transaction transaction = new Transaction(paymentm, items, total);
