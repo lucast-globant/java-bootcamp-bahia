@@ -11,7 +11,7 @@ public class IntToWords {
 
 	}
 
-	public String getDecimalPart(float number) {
+	private String getDecimalPart(float number) {
 		String aux = String.format("%.2f", number);
 		String toReturn = aux.substring(aux.length() - 2, aux.length());
 		return toReturn += "/100 dollars";
@@ -32,7 +32,7 @@ public class IntToWords {
 		return integerPart + " and " + decimalPart;
 	}
 
-	public String lessThanHundreds(int number) {
+	private String lessThanHundreds(int number) {
 		if (number < 20)
 			return numNames[number];
 		String tens = tensNames[number / 10];
@@ -42,7 +42,7 @@ public class IntToWords {
 		return tens + "-" + units;
 	}
 
-	public String lessThanThousands(int number) {
+	private String lessThanThousands(int number) {
 		String lHundred = "";
 		if (number % 100 != 0)
 			lHundred = lessThanHundreds(number % 100);

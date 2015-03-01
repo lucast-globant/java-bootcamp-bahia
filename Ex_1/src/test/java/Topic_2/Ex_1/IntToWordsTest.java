@@ -6,13 +6,6 @@ import org.junit.Test;
 public class IntToWordsTest {
 
 	@Test
-	public void testDecimals() {
-		IntToWords number = new IntToWords();
-		String result = number.getDecimalPart(13.06f);
-		assertEquals("06/100 dollars", result);
-	}
-
-	@Test
 	public void testOneDigit() {
 		IntToWords number = new IntToWords();
 		String result = number.convert(0.00f);

@@ -23,22 +23,13 @@ public class RecentFileList {
 	}
 
 	public void add(File file) {
-		int index = 0;
-		boolean present = false;
-		while (index < getSize() && !present) {
-			if (fileList.get(index).equals(file)) {
-				present = true;
-				fileList.add(fileList.remove(index));
-			}
-			index++;
-		}
-		if (!present) {
-			if (isFull()) {
-				fileList.remove(0);
-				fileList.add(file);
-			} else
-				fileList.add(file);
-		}
+		if (fileList.contains(file))
+			fileList.remove(file);
+		if (isFull()) {
+			fileList.remove(0);
+			fileList.add(file);
+		} else
+			fileList.add(file);
 	}
 
 	public File getMostRecentFile() {
