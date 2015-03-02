@@ -8,7 +8,7 @@ import ex2.Payments.Payment;
 import ex2.Services.CartService;
 
 public class ShoppingCart extends Observable implements CartService {
-
+	private double total;
 	private List<Item> items;
 	private Stock stock;
 
@@ -20,9 +20,10 @@ public class ShoppingCart extends Observable implements CartService {
 
 	public Transaction checkOut(Payment payment) {
 		double total = payment.getDiscount().makeDiscount(items);
+		this.total -=total;
 		payment.pay(total);
 		items.clear();
-		Transaction t = new Transaction(total, payment);
+		Transaction t = new Transaction(this.total, payment);
 		notifyTransactionChange(t);
 
 		return t;
@@ -32,6 +33,7 @@ public class ShoppingCart extends Observable implements CartService {
 	public void addItem(Item item) {
 		if (stock.avilable(item)) {
 			this.notifyItemAdded(item);
+			this.total+=item.getPrice();
 			this.items.add(item);
 		} else
 			System.out.println("Item: " + item.getName() + "out of stock \n");
@@ -40,6 +42,7 @@ public class ShoppingCart extends Observable implements CartService {
 
 	public void removeItem(Item item) {
 		this.items.remove(item);
+		this.total-=item.getPrice();
 	}
 
 
@@ -68,14 +71,11 @@ public class ShoppingCart extends Observable implements CartService {
 
 	@Override
 	public List<Item> getItems() {
-		// TODO Auto-generated method stub
-		return null;
+		return items;
 	}
 
-	@Override
-	public float getSubtotal() {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getTotal() {
+		return total;
 	}
 
 }

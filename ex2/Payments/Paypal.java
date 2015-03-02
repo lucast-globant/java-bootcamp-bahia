@@ -8,9 +8,8 @@ public class Paypal extends PaymentType {
 	private String email;
 	private String password;
 
-	public Paypal(String email, String password,Discount discount) {
+	public Paypal(String email, String password) {
 		super(new PaypalDiscount() );
-
 		this.email = email;
 		this.password = password;
 	}

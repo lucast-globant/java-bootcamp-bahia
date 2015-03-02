@@ -5,7 +5,7 @@ import ex2.Discount.*;
 
 public class Cash extends PaymentType {
 
-	public Cash(Discount discount) {
+	public Cash() {
 		super(new CashDiscount() );
 
 

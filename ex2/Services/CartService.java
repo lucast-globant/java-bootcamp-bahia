@@ -13,7 +13,7 @@ public interface CartService {
 
 	public List<Item> getItems();
 
-	public float getSubtotal();
+	public double getTotal();
 
 	public Transaction checkOut(Payment payment);
 

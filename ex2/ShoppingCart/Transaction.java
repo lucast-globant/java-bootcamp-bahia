@@ -1,5 +1,6 @@
 package ex2.ShoppingCart;
 
+
 import ex2.Payments.Payment;
 
 public class Transaction {
@@ -10,7 +11,7 @@ public class Transaction {
 
 	public Transaction(double total, Payment payment) {
 		this.setPayment(payment);
-		this.setTotal(total);
+		this.total=total;
 		this.ID = this.getNewIDTransaction();
 	}
 
@@ -26,9 +27,6 @@ public class Transaction {
 		return total;
 	}
 
-	public void setTotal(double total) {
-		this.total = total;
-	}
 
 	public Payment getPayment() {
 		return payment;

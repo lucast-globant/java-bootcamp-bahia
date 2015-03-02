@@ -25,11 +25,11 @@ public class CartServiceProxy {
 		return implementation.getItems();
 	}
 
-	public float getSubtotal() {
-		return implementation.getSubtotal();
+	public double getSubtotal() {
+		return implementation.getTotal();
 	}
 
-	public Transaction buy(Payment paymentm) {
+	public Transaction checkOut(Payment paymentm) {
 		return implementation.checkOut(paymentm);
 	}
 

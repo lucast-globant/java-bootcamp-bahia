@@ -17,6 +17,7 @@ public class Main {
 		Payment payment=(new CreditCard(4444	, "Francisco Cuenca"));
 		System.out.println(cart.toString());
 		Transaction t= cart.checkOut(payment);
+		System.out.println("Total with discount \n"+t.getTotal());
 		////Offers ////
 		
 		Product p1 = new Product("Sneaky", 1000);
@@ -31,6 +32,8 @@ public class Main {
 		System.out.println(cart.toString());
 		
 		 t= cart.checkOut(payment);
+		System.out.println("Total with discount \n"+t.getTotal());
+
 		System.out.println(t.toString());
 		
 		
