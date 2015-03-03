@@ -45,17 +45,17 @@ public class App {
 			boolean correct;
 			switch (option) {
 			case 1: // courses
-				Course infoCourse = new Course(dao.getConnection());
+				CourseInfoPrinterService courseInfoPrinter = new CourseInfoPrinterService(dao.getConnection());
 				correct = true;
 				if (args.length != 4) {
 					correct = false;
 				} else {
 					if (args[1].equals("-info")) {
 						if (args[2].equals("-name")) {
-							infoCourse.infoForCourse(args[3]);
+							courseInfoPrinter.printInfoForCourse(args[3]);
 						} else {
 							if (args[2].equals("-id")) {
-								infoCourse.infoForCourse(Integer
+								courseInfoPrinter.printInfoForCourse(Integer
 										.parseInt(args[3]));
 							} else {
 								correct = false;
@@ -64,10 +64,10 @@ public class App {
 					} else {
 						if (args[1].equals("-perc")) {
 							if (args[2].equals("-name")) {
-								infoCourse.percentagePassFail(args[3]);
+								courseInfoPrinter.printPercentagePassFailForCourse(args[3]);
 							} else {
 								if (args[2].equals("-id")) {
-									infoCourse.percentagePassFail(Integer
+									courseInfoPrinter.printPercentagePassFailForCourse(Integer
 											.parseInt(args[3]));
 								} else {
 									correct = false;
@@ -84,20 +84,20 @@ public class App {
 				}
 				break;
 			case 2: // students
-				Student infoStudent = new Student(dao.getConnection());
-				infoStudent.finalNotesCourses(Integer.parseInt(args[1]));
+				StudentInfoPrinterService studentInfoPrinter = new StudentInfoPrinterService(dao.getConnection());
+				studentInfoPrinter.printFinalNotesForStudent(Integer.parseInt(args[1]));
 				break;
 			case 3: // teachers
 				correct = true;
-				Teacher infoTeacher = new Teacher(dao.getConnection());
+				TeacherInfoPrinterService teacherInfoPrinter = new TeacherInfoPrinterService(dao.getConnection());
 				if (args.length != 3) {
 					correct = false;
 				} else {
 					if (args[1].equals("-name")) {
-						infoTeacher.infoSchedule(args[2]);
+						teacherInfoPrinter.printInfoScheduleForTeacher(args[2]);
 					} else {
 						if (args[1].equals("-id")) {
-							infoTeacher.infoSchedule(Integer.parseInt(args[2]));
+							teacherInfoPrinter.printInfoScheduleForTeacher(Integer.parseInt(args[2]));
 						} else {
 							correct = false;
 						}
