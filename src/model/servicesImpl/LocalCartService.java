@@ -38,7 +38,7 @@ public class LocalCartService implements CartService {
 		int index = getPositionOfUserCart(userName);
 		Cart mycart;
 		if(index>-1){
-			mycart = cartsRepo.get(index);//.getOwnerAccount().getCart();
+			mycart = cartsRepo.get(index);
 			mycart.add(product,quantity);
 			cartsRepo.set(index, mycart);
 		}
@@ -48,7 +48,7 @@ public class LocalCartService implements CartService {
 	@Override
 	public void removeItem(String userName, Item prod) {
 		int index = getPositionOfUserCart(userName);
-		Cart cart = cartsRepo.get(index);//.getOwnerAccount().getCart();
+		Cart cart = cartsRepo.get(index);
 		cart.removeItem(prod);
 		cartsRepo.set(index, cart);
 		
@@ -68,7 +68,7 @@ public class LocalCartService implements CartService {
 	@Override
 	public void cleanCart(String username) {
 		int index = getPositionOfUserCart(username);
-		Cart mycart=cartsRepo.get(index);//.getOwnerAccount().getCart();
+		Cart mycart=cartsRepo.get(index);
 		mycart.cleanCart();	
 		
 	}
