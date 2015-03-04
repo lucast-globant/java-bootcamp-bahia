@@ -1,18 +1,17 @@
-package Model;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import API.CartService;
-import API.UserService;
-import Model.paymentMethods.Cash;
-import Model.paymentMethods.CreditCard;
-import Model.paymentMethods.FinancialPayment;
-import Model.paymentMethods.PaypalAccount;
+import model.paymentMethods.Cash;
+import model.paymentMethods.CreditCard;
+import model.paymentMethods.FinancialPayment;
+import model.paymentMethods.PaypalAccount;
 
 
 
-public class CustomerAccount implements CustomerService {
+
+public class User {
 	
 	protected String userName;
 	private CreditCard creditCard;
@@ -24,11 +23,11 @@ public class CustomerAccount implements CustomerService {
 	
 	protected Cart myShoppingCart;
 	
-	protected List<CustomerService> friends;
+	protected List<User> friends;
 	protected ProfilePhoto profilePhoto;
 
 	
-	public CustomerAccount(String username, CreditCard creditCard, PaypalAccount paypal, Cash money) {
+	public User(String username, CreditCard creditCard, PaypalAccount paypal, Cash money) {
 		super();
 		this.userName = username;
 		this.creditCard = creditCard;
@@ -36,7 +35,7 @@ public class CustomerAccount implements CustomerService {
 		this.money = money;
 		this.myShoppingCart = new Cart(this);
 		
-		friends=new ArrayList<CustomerService>();
+		friends=new ArrayList<User>();
 		profilePhoto=new ProfilePhoto();
 	}
 	
@@ -44,7 +43,7 @@ public class CustomerAccount implements CustomerService {
 	 * a default account with 100$ in each paymentMethods
 	 * @param username
 	 */
-	public CustomerAccount(String username) {
+	public User(String username) {
 		super();
 		this.userName = username;
 		this.creditCard = new CreditCard(username, 0, "100.00");
@@ -52,7 +51,7 @@ public class CustomerAccount implements CustomerService {
 		this.money = new Cash("100.00");
 		this.myShoppingCart = new Cart(this);
 		
-		friends=new ArrayList<CustomerService>();
+		friends=new ArrayList<User>();
 	}
 
 
@@ -85,37 +84,34 @@ public class CustomerAccount implements CustomerService {
 		return paypal;
 	}
 
-	@Override
 	public void setPaypalAccount(PaypalAccount paypal) {
 		this.paypal = paypal;
 	}	
 	
-	@Override
+
 	public Cart getCart() {
 		return myShoppingCart;
 	}
 
 
-	@Override
 	public void giveALike() {
 		
 		profilePhoto.addLike();
 	}
 
-	@Override
+
 	public void uploadPerfilPhoto(String url) {
 	
 		profilePhoto.setPhoto(url);
 	}
 
-	@Override
-	public void addFriend(CustomerService friend) {
+	public void addFriend(User friend) {
 	
 		friends.add(friend);
 	}
 
-	@Override
-	public List<CustomerService> friends() {
+
+	public List<User> friends() {
 		return friends;
 	}
 	

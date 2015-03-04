@@ -1,8 +1,9 @@
-package Model.Discounts;
+package model.discounts;
 
 import java.math.BigDecimal;
 import java.util.List;
-import Model.Item;
+
+import model.Item;
 
 public class DiscountCreditCard implements Discount {
 

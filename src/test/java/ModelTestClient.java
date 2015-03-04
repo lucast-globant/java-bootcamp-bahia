@@ -1,13 +1,16 @@
-package Model;
+package test.java;
 
-import API.UserService;
-import Model.paymentMethods.Cash;
-import Model.paymentMethods.CreditCard;
-import Model.paymentMethods.PaypalAccount;
+import model.User;
+import model.DataConnection;
+import model.EcommerceService;
+import model.Transaction;
+import model.paymentMethods.Cash;
+import model.paymentMethods.CreditCard;
+import model.paymentMethods.PaypalAccount;
 
 
 
-public class testClient {
+public class ModelTestClient {
 
 	public static void main(String[] args) {
 		
@@ -16,7 +19,7 @@ public class testClient {
 		web.listItems();
 		web.listOffers();
 		
-		CustomerAccount newCustomer1=new CustomerAccount("jordan", new CreditCard("jordan", 12, "100.00"),
+		User newCustomer1=new User("jordan", new CreditCard("jordan", 12, "100.00"),
 				new PaypalAccount("jordan", "123", "", "100.00"), new Cash("100.00"));
 		
 		newCustomer1.getCart().add(web.searchProduct("Oferta del Bootcamp"), 1);

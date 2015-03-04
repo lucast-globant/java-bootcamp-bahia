@@ -1,6 +1,8 @@
-package Model;
+package model.servicesImpl;
 
-import API.UserService;
+import model.User;
+import api.UserService;
+
 
 public class UserServiceProxy implements UserService{
 
@@ -11,12 +13,12 @@ public class UserServiceProxy implements UserService{
 	}
 	
 	@Override
-	public void create(CustomerService user) {
+	public void create(User user) {
 		implementation.create(user);
 	}
 
 	@Override
-	public CustomerService getUser(String userName) {
+	public User getUser(String userName) {
 		return implementation.getUser(userName);
 	}
 
@@ -31,23 +33,23 @@ public class UserServiceProxy implements UserService{
 	}
 
 	@Override
-	public void update(String userName, CustomerService userUpdate) {
+	public void update(String userName, User userUpdate) {
 		implementation.update(userName, userUpdate);
 	}
 
 	@Override
-	public void addFriend(CustomerService user, CustomerService friend) {
+	public void addFriend(User user, User friend) {
 		implementation.addFriend(user, friend);
 		
 	}
 
 	@Override
-	public void giveALike(CustomerService user) {
+	public void giveALike(User user) {
 		implementation.giveALike(user);
 	}
 
 	@Override
-	public void uploadProfilePhoto(CustomerService user, String url) {
+	public void uploadProfilePhoto(User user, String url) {
 		implementation.uploadProfilePhoto(user, url);
 	}
 

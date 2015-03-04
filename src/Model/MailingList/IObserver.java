@@ -1,4 +1,4 @@
-package Model.MailingList;
+package model.mailingList;
 
 public interface IObserver {
 	

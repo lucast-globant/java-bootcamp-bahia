@@ -1,29 +1,37 @@
-package API;
+package api;
 
 import java.util.List;
 
-import Model.Item;
-import Model.Product;
-import Model.Transaction;
-import Model.paymentMethods.FinancialPayment;
+import model.Cart;
+import model.EcommerceService;
+import model.User;
+import model.Item;
+import model.Product;
+import model.Transaction;
+import model.paymentMethods.FinancialPayment;
+
 
 /**
  * @author Jordan
  * services that a shopping cart expose
  */
 public interface CartService {
-
-	public void add(Product prod, int quantity);
 	
-	public Item removeLastItem();
 	
-	public void removeItem(Item prod);
+	public void addItem(String userName, Product idProduct, int quantity);
 	
-	public List<Item> getItems();
+	public void removeItem(String userName, Item prod);
 	
-	public void cleanCart();
+	public Cart getCart(String username);
+	
+	public void cleanCart(String username);
 		
-	public Transaction checkout(FinancialPayment method); 
-			
+	public Transaction checkout(FinancialPayment method, String username); 
+	
+	public int transactionsDone();
+
+	public void createCart(Cart cart);
+	
+		
 	
 }

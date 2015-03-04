@@ -1,17 +1,17 @@
-package Model.MailingList;
+package model.mailingList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//Subject
+
 public class EmailSender {
 	
-	private List<IObserver> mailingList;
+	private List<String> listOfMailAdresses;
 	private String notification;
 	private static EmailSender instance = null;
 	
 	private EmailSender() {
-		mailingList= new ArrayList<IObserver>();
+		listOfMailAdresses= new ArrayList<String>();
 		notification="";
 	}
 
@@ -27,12 +27,12 @@ public class EmailSender {
 		notifyChanged();		
 	}
 	
-	public void attachToList(IObserver observer){
-		mailingList.add(observer);
+	public void attachToList(String mailAdress){
+		listOfMailAdresses.add(mailAdress);
 	}
 	
-	public void detachFromList(IObserver observer){
-		mailingList.remove(observer);
+	public void detachFromList(String mailAdress){
+		listOfMailAdresses.remove(mailAdress);
 	}
 
 	private String getNotification() {
@@ -40,8 +40,8 @@ public class EmailSender {
 	}
 	
 	private void notifyChanged() {
-		for (IObserver iObserver : mailingList) {
-			iObserver.update(getNotification());
+		for (String mail : listOfMailAdresses) {
+			System.out.println(mail+" received: "+notification);
 		}
 		
 	}

@@ -1,12 +1,12 @@
-package Model;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Model.MailingList.EMailAccount;
-import Model.MailingList.IObserver;
-import Model.MailingList.EmailSender;
-import Model.paymentMethods.FinancialPayment;
+import model.mailingList.EmailSender;
+import model.mailingList.IObserver;
+import model.paymentMethods.FinancialPayment;
+
 
 
 
@@ -47,9 +47,8 @@ public class EcommerceService{
 		transactions=0;
 		this.productListOffer = productListOffer;
 		mailingList=EmailSender.getInstance();
-		
-		IObserver ob=new EMailAccount();
-		mailingList.attachToList(ob);
+				
+		mailingList.attachToList("manager@mail.com");
 		
 	}
 	
@@ -62,8 +61,7 @@ public class EcommerceService{
 		this.productListOffer = new ArrayList<Product>();
 		mailingList=EmailSender.getInstance();
 		
-		IObserver ob=new EMailAccount();
-		mailingList.attachToList(ob);
+		mailingList.attachToList("manager@mail.com");
 	}
 
 	

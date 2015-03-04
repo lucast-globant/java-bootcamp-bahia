@@ -1,9 +1,9 @@
-package Model.paymentMethods;
+package model.paymentMethods;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import Model.Discounts.Discount;
+import model.discounts.Discount;
 
 
 

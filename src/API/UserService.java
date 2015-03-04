@@ -1,6 +1,8 @@
-package API;
+package api;
 
-import Model.CustomerService;
+import model.User;
+
+
 
 
 /**
@@ -10,22 +12,22 @@ import Model.CustomerService;
 public interface UserService {
 
 	//CRUD
-	public void create(CustomerService user); 
+	public void create(User user); 
 
-	public CustomerService getUser(String userName);
+	public User getUser(String userName);
 	
 	public boolean isTheUser(String userName);
 
 	public void delete(String userName);
 
-	public void update(String userName, CustomerService userUpdate);		
+	public void update(String userName, User userUpdate);		
 	
 	//rest of operations
-	public void addFriend(CustomerService user, CustomerService friend);
+	public void addFriend(User user, User friend);
 
-	public void giveALike(CustomerService user);
+	public void giveALike(User user);
 
-	public void uploadProfilePhoto(CustomerService user,String url);
+	public void uploadProfilePhoto(User user,String url);
 
 }
 

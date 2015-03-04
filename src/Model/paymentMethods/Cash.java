@@ -1,6 +1,8 @@
-package Model.paymentMethods;
+package model.paymentMethods;
 
-import Model.Discounts.DiscountCash;
+import model.discounts.DiscountCash;
+
+
 
 
 

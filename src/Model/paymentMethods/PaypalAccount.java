@@ -1,6 +1,7 @@
-package Model.paymentMethods;
+package model.paymentMethods;
 
-import Model.Discounts.DiscountPaypal;
+import model.discounts.DiscountPaypal;
+
 
 
 

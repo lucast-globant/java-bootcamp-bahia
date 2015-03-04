@@ -1,31 +1,34 @@
-package Model;
+package model.servicesImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import API.UserService;
+import model.User;
+import api.UserService;
+
+
 
 
 /**
  * @author Jordan userService's implementation
  */
-public class Users implements UserService {
+public class LocalUserService implements UserService {
 	
-	private List<CustomerService> usersList;
+	private List<User> usersList;
 	
-	public Users(){
-		usersList=new ArrayList<CustomerService>();
+	public LocalUserService(){
+		usersList=new ArrayList<User>();
 	}
 
 	@Override
-	public void create(CustomerService user) {
+	public void create(User user) {
 		usersList.add(user);
 
 	}
 
 	@Override
-	public CustomerService getUser(String userName){
-		for (CustomerService customerAccount : usersList) {
+	public User getUser(String userName){
+		for (User customerAccount : usersList) {
 			if(customerAccount.getUserName().equals(userName))
 				return customerAccount;
 		}
@@ -42,22 +45,22 @@ public class Users implements UserService {
 	}
 
 	@Override
-	public void update(String userName, CustomerService userUpdate) {
-		CustomerService oldCU=getUser(userName);
+	public void update(String userName, User userUpdate) {
+		User oldCU=getUser(userName);
 		oldCU=userUpdate;
 
 	}
 		
-	public void addFriend(CustomerService user, CustomerService friend) {
+	public void addFriend(User user, User friend) {
 		user.addFriend(friend);
 	}
 
-	public void giveALike(CustomerService user) {
+	public void giveALike(User user) {
 		user.giveALike();
 
 	}
 
-	public void uploadProfilePhoto(CustomerService user,String url) {
+	public void uploadProfilePhoto(User user,String url) {
 		user.uploadPerfilPhoto(url);
 
 	}

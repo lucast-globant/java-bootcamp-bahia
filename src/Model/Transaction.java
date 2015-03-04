@@ -1,11 +1,11 @@
-package Model;
+package model;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import API.CartService;
-import API.UserService;
-import Model.paymentMethods.FinancialPayment;
+import api.CartService;
+import model.paymentMethods.FinancialPayment;
+
 
 
 public class Transaction {
@@ -14,12 +14,12 @@ public class Transaction {
 	private List<Item> items;
 	private BigDecimal total;
 
-	public Transaction(FinancialPayment method, CustomerService customer) {
-		init(method, customer);
+	public Transaction(FinancialPayment method, User user) {
+		init(method, user);
 	}
 
-	private void init(FinancialPayment method, CustomerService customer){
-		CartService cart=customer.getCart();
+	private void init(FinancialPayment method, User user){
+		Cart cart=user.getCart();
 		items=cart.getItems();
 		total=new BigDecimal("0.00");
 

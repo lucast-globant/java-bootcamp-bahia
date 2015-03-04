@@ -1,10 +1,11 @@
-package Model.Discounts;
+package model.discounts;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import Model.Item;
-import Model.Product;
+import model.Item;
+import model.Product;
+
 
 
 public class DiscountPaypal implements Discount {

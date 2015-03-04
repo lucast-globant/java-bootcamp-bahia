@@ -1,25 +1,25 @@
-package Model;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import API.CartService;
-import Model.MailingList.EmailSender;
-import Model.paymentMethods.FinancialPayment;
+import api.CartService;
+import model.mailingList.EmailSender;
+import model.paymentMethods.FinancialPayment;
 
 
 /**
  * @author Jordan
  * shopping cart
  */
-public class Cart implements CartService{
+public class Cart {
 
 	protected List<Item> products;
-	private CustomerService userAccount;
+	private User user;
 	
-	public Cart(CustomerService userAccount){
+	public Cart(User userAccount){
 		products=new ArrayList<Item>();
-		this.userAccount=userAccount;
+		this.user=userAccount;
 	}
 	
 	public void add(Product prod, int quantity){
@@ -53,29 +53,26 @@ public class Cart implements CartService{
 		return listByCategory;
 	}
 	
-	@Override
+
 	/**
 	 * make the payment of one customer
 	 * @param method available payment methods (CREDITCARD, PAYPAL, CASH) 
-	 * @param customer
 	 */
  	public Transaction checkout( FinancialPayment method){
 		
-		
-		//begin transaction
-		Transaction t=new Transaction(method, userAccount);				
-
-		EmailSender.getInstance().notifyToList("TRANSACTION_DONE"+"("+t.getId()+")");
-		//end transaction
+	
+		Transaction t=new Transaction(method, user);				
 		
 		return t;
 	}
-	
-	@Override
+
 	public void removeItem(Item prod) {
 		products.remove(prod);
 		
 	}
 	
+	public User getOwnerAccount(){
+		return user;
+	}
 	
 }

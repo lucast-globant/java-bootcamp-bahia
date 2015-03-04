@@ -1,23 +1,22 @@
-package test;
+package test.java;
 
 import static org.junit.Assert.*;
+import model.User;
+import model.servicesImpl.LocalUserService;
+import model.servicesImpl.UserServiceFactory;
 
 import org.junit.Test;
 
-import API.UserService;
-import Model.CustomerAccount;
-import Model.CustomerService;
-import Model.UserServiceFactory;
-import Model.Users;
+import api.UserService;
 
-public class _UserService {
+public class LocalUserServiceTest {
 
 	@Test
 	public void UserService_create_ANewCustomerAccountArrived() {
 		UserService us=UserServiceFactory.getLocalService();
-		CustomerService newcs=new CustomerAccount("jordan");
+		User newcs=new User("jordan");
 		us.create(newcs);
-		CustomerService expectedCs;
+		User expectedCs;
 		expectedCs = us.getUser("jordan");
 		assertEquals(newcs, expectedCs);
 	
@@ -26,8 +25,8 @@ public class _UserService {
 	@Test
 	public void UserService_delete_ALessCustomerAccount() {
 		UserService us=UserServiceFactory.getLocalService();
-		CustomerService newcs=new CustomerAccount("jordan");
-		CustomerService newcs2=new CustomerAccount("laura");
+		User newcs=new User("jordan");
+		User newcs2=new User("laura");
 		us.create(newcs);
 		us.create(newcs2);
 		us.delete("laura");
@@ -39,8 +38,8 @@ public class _UserService {
 	@Test
 	public void UserService_addFriend_ANewFriendContact() {
 		UserService us=UserServiceFactory.getLocalService();
-		CustomerService newcs=new CustomerAccount("jordan");
-		CustomerService newcs2=new CustomerAccount("laura");
+		User newcs=new User("jordan");
+		User newcs2=new User("laura");
 		us.create(newcs);
 		us.create(newcs2);
 
