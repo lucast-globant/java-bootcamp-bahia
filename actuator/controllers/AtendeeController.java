@@ -5,15 +5,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import topic6.actuator.entities.Atendee;
 import topic6.actuator.implementation.AtendeeImp;
 
 @Controller
+@Component
 @RequestMapping("/atendees")
 public class AtendeeController {
 	@Autowired
@@ -34,7 +38,8 @@ public class AtendeeController {
 			return new ResponseEntity<Atendee>(HttpStatus.BAD_REQUEST);
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	@ResponseBody
 	public List<Atendee> getAll() {
 		return service.getAtendees();
 	}

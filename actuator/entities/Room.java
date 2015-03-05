@@ -1,21 +1,21 @@
 package topic6.actuator.entities;
 
 public class Room {
-	private static int uniqueID = 1;
+
 	private String name;
 	private int id;
 
 	public Room(String name) {
 		this.setName(name);
-		id = newUniqueID();
-	}
 
-	private int newUniqueID() {
-		return uniqueID++;
 	}
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {

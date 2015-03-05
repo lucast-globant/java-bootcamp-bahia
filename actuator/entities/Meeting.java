@@ -1,52 +1,51 @@
 package topic6.actuator.entities;
 
+import java.util.List;
+
 public class Meeting {
-	private static int uniqueMeetingID = 1;
-	private int idMeeting;
 	private String name;
+	private int id;
 	private Room room;
-	private Atendee atendee;
+	private List<Atendee> attendees;
 
-	public Meeting(String name, Room room, Atendee atendee) {
-		this.idMeeting = newIdMeeting();
-		this.name = name;
-		this.room = room;
+	public List<Atendee> getAttendees() {
+		return attendees;
 	}
 
-	private int newIdMeeting() {
-		return uniqueMeetingID++;
-	}
-
-	public int getMeetingID() {
-		return idMeeting;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setAttendees(List<Atendee> attendees) {
+		this.attendees = attendees;
 	}
 
 	public Room getRoom() {
 		return room;
 	}
 
-	public void setRoom(Room room) {
+	public void setRoom(Room rooms) {
+		this.room = rooms;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Meeting(String name,Room room, List<Atendee> attendees, int id) {
+
+		this.name = name;
 		this.room = room;
+		this.attendees = attendees;
+		this.setId(id);
 	}
 
-    public String toString(){
-        return "idMeeting: "+idMeeting+"Room: "+room+"\n";
-    }
-
-	public Atendee getAtendee() {
-		return atendee;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setAtendee(Atendee atendee) {
-		this.atendee = atendee;
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

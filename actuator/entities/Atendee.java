@@ -2,17 +2,15 @@ package topic6.actuator.entities;
 
 public class Atendee {
 	private String name;
-	private static int uniqueID = 1;
 	private int id;
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Atendee(String name) {
 		this.setName(name);
-		id = getNewID();
-	}
 
-	private int getNewID() {
-		// TODO Auto-generated method stub
-		return uniqueID++;
 	}
 
 	public String getName() {
@@ -23,8 +21,8 @@ public class Atendee {
 		this.name = name;
 	}
 
-	public Integer getAtendeeID() {
-		// TODO Auto-generated method stub
+	public Integer getId() {
+
 		return id;
 	}
 

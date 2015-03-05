@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 public class Database {
+	AtomicInteger id = new AtomicInteger(0);
 	private Map<Integer, Room> rooms;
 	private Map<Integer, Atendee> atendees;
 	private Map<Integer, Meeting> meetings;
@@ -18,7 +20,7 @@ public class Database {
 		rooms = new HashMap<Integer, Room>();
 		atendees = new HashMap<Integer, Atendee>();
 		meetings = new HashMap<Integer, Meeting>();
-		
+
 	}
 
 	public List<Room> getRooms() {
@@ -38,8 +40,9 @@ public class Database {
 	}
 
 	public Meeting put(Meeting meeting) {
-
-		return meetings.put(meeting.getMeetingID(), meeting);
+		int actual = this.id.incrementAndGet();
+		meeting.setId(actual);
+		return meetings.put(actual, meeting);
 	}
 
 	public Meeting remove(int idMeeting) {
@@ -48,8 +51,8 @@ public class Database {
 	}
 
 	public Meeting update(Meeting meeting) {
-		meetings.remove(meeting.getMeetingID());
-		Meeting m = meetings.put(meeting.getMeetingID(), meeting);
+		meetings.remove(meeting.getId());
+		Meeting m = meetings.put(meeting.getId(), meeting);
 		if (m == null)
 			return meeting;
 		else
@@ -63,7 +66,9 @@ public class Database {
 	}
 
 	public Atendee put(Atendee atendee) {
-		return atendees.put(atendee.getAtendeeID(), atendee);
+		int actual = this.id.incrementAndGet();
+		atendee.setId(actual);
+		return atendees.put(actual, atendee);
 	}
 
 	public Atendee getAtendee(int idAtendee) {
@@ -77,8 +82,9 @@ public class Database {
 	}
 
 	public Room put(Room room) {
-		// TODO Auto-generated method stub
-		return rooms.put(room.getId(), room);
+		int actual = this.id.incrementAndGet();
+		room.setId(actual);
+		return rooms.put(actual, room);
 	}
 
 }
