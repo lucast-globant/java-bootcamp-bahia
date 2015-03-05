@@ -19,9 +19,10 @@ public class Student {
 	private String lastName;
 	@Column(name = "date_of_birth", nullable = false)
 	private String dateOfBirth;
-	
-	public Student(){}
-	
+
+	public Student() {
+	}
+
 	public Student(String firstName, String lastName, String dateOfBirth) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -31,7 +32,7 @@ public class Student {
 	public Integer getRegistrationNumber() {
 		return registrationNumber;
 	}
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -62,6 +63,4 @@ public class Student {
 				+ ", dateOfBirth=" + dateOfBirth + "]";
 	}
 
-	
-	
 }

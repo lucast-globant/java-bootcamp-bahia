@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -18,15 +17,14 @@ public class Course {
 	@Column(name = "name", nullable = false)
 	private String name;
 	@ManyToOne
-	@JoinColumn(name = "id_teacher")
 	private Teacher assignedTeacher;
 	@Column(name = "hours_by_week", nullable = false)
 	private Integer hoursByWeek;
 	@ManyToOne
-	@JoinColumn(name = "id_schedule")
 	private Schedule scheduleTime;
-	
-	public Course() {}
+
+	public Course() {
+	}
 
 	public Course(String name, Teacher assignedTeacher, Integer hoursByWeek, Schedule scheduleTime) {
 		this.name = name;
@@ -34,7 +32,7 @@ public class Course {
 		this.hoursByWeek = hoursByWeek;
 		this.scheduleTime = scheduleTime;
 	}
-	
+
 	public Integer getIdCourse() {
 		return idCourse;
 	}
@@ -76,7 +74,5 @@ public class Course {
 		return "Course [idCourse=" + idCourse + ", name=" + name + ", assignedTeacher=" + assignedTeacher + ", hoursByWeek=" + hoursByWeek
 				+ ", scheduleTime=" + scheduleTime + "]";
 	}
-	
-	
 
 }

@@ -7,28 +7,28 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "notes")
 @IdClass(value = Notes.class)
-public class Notes implements Serializable{
+public class Notes implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1620119303517501679L;
 	@Id
-	@Column(name = "id_course", insertable = false, updatable= false)
+	@Column(name = "id_course", insertable = false, updatable = false)
 	private Integer idCourse;
 	@Id
 	@Column(name = "registration_number", insertable = false, updatable = false)
 	private Integer registrationNumber;
-	
-	@ManyToOne
+
+	@OneToOne
 	@JoinColumn(name = "id_course")
 	private Course course;
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "registration_number")
 	private Student student;
 	@Column(name = "note_one")
@@ -39,9 +39,10 @@ public class Notes implements Serializable{
 	private Integer noteThree;
 	@Column(name = "final_note")
 	private Integer finalNote;
-	
-	public Notes(){}
-	
+
+	public Notes() {
+	}
+
 	public Notes(Course course, Student student, Integer noteOne, Integer noteTwo, Integer noteThree, Integer finalNote) {
 		this.course = course;
 		this.student = student;
@@ -54,16 +55,16 @@ public class Notes implements Serializable{
 	public Course getCourse() {
 		return course;
 	}
-	
-	public void setCourse(Course course){
+
+	public void setCourse(Course course) {
 		this.course = course;
 	}
 
 	public Student getStudent() {
 		return student;
 	}
-	
-	public void setStudent(Student student){
+
+	public void setStudent(Student student) {
 		this.student = student;
 	}
 
@@ -105,8 +106,4 @@ public class Notes implements Serializable{
 				+ noteThree + ", finalNote=" + finalNote + "]";
 	}
 
-	
-	
-	
-	
 }

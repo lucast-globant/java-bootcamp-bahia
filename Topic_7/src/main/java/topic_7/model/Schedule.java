@@ -14,14 +14,15 @@ public class Schedule {
 	@Column(name = "id_schedule", nullable = false)
 	private Integer idSchedule;
 	@Column(name = "day", nullable = false)
-	private String day; 
+	private String day;
 	@Column(name = "init_hour", nullable = false)
 	private String initHour;
 	@Column(name = "finish_hour", nullable = false)
 	private String finishHour;
-	
-	public Schedule(){}
-	
+
+	public Schedule() {
+	}
+
 	public Schedule(String day, String initHour, String finishHour) {
 		this.day = day;
 		this.initHour = initHour;
@@ -31,7 +32,7 @@ public class Schedule {
 	public Integer getIdSchedule() {
 		return idSchedule;
 	}
-	
+
 	public String getDay() {
 		return day;
 	}
@@ -60,7 +61,5 @@ public class Schedule {
 	public String toString() {
 		return "Schedule [idSchedule=" + idSchedule + ", day=" + day + ", initHour=" + initHour + ", finishHour=" + finishHour + "]";
 	}
-
-	
 
 }
