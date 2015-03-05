@@ -12,13 +12,13 @@ public class Shedule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_shedule_time;
-	
+
 	@Column(name = "start_time")
 	private int start_time;
 
 	@Column(name = "end_time")
 	private int end_time;
-	
+
 	@Column(name = "day_name")
 	private String day_name;
 
@@ -67,5 +67,5 @@ public class Shedule {
 				+ start_time + ", end_time=" + end_time + ", day_name="
 				+ day_name + "]";
 	}
-	
+
 }

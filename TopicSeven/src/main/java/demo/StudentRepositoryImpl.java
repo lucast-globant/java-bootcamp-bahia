@@ -9,7 +9,7 @@ public class StudentRepositoryImpl implements StudentRepositoryCustom {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Student> getStudentsOfCourse(String courseName) {

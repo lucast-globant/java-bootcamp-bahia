@@ -18,12 +18,12 @@ public class TeacherController {
 
 	@Autowired
 	private TeacherRepository teacherRepository;
-	
-	public TeacherController(){
-		
+
+	public TeacherController() {
+
 	}
-	
-	public TeacherController(TeacherRepository teacherRepository){
+
+	public TeacherController(TeacherRepository teacherRepository) {
 		this.teacherRepository = teacherRepository;
 	}
 
@@ -32,13 +32,13 @@ public class TeacherController {
 		teacherRepository.save(input);
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setLocation(ServletUriComponentsBuilder
-				.fromCurrentRequest().path("/")
-				.buildAndExpand(input.getId()).toUri());
+				.fromCurrentRequest().path("/").buildAndExpand(input.getId())
+				.toUri());
 		return new ResponseEntity<>(null, httpHeaders, HttpStatus.CREATED);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Teacher> getAll(){
+	public List<Teacher> getAll() {
 		return (List<Teacher>) this.teacherRepository.findAll();
 	}
 }

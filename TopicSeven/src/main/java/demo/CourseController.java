@@ -19,9 +19,9 @@ public class CourseController {
 
 	@Autowired
 	private CourseRepository courseRepository;
-	
+
 	@Autowired
-	private  CourseRepositoryImpl courseCustomRepositoryImp;
+	private CourseRepositoryImpl courseCustomRepositoryImp;
 
 	public CourseController() {
 
@@ -46,9 +46,11 @@ public class CourseController {
 		return (List<Course>) this.courseRepository.findAll();
 	}
 
-	//Usage = http://localhost:8080/courses/get?name=Leonel&lname=Messi
+	// Usage = http://localhost:8080/courses/get?name=Leonel&lname=Messi
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	public List<Course> getCourseOfStudent(@RequestParam(value = "name", required = false) String name,@RequestParam(value = "lname", required = false) String lname) {
-		return this.courseCustomRepositoryImp.getCoursesOfStudent(name,lname);
+	public List<Course> getCoursesOfStudent(
+			@RequestParam(value = "name", required = false) String name,
+			@RequestParam(value = "lname", required = false) String lname) {
+		return this.courseCustomRepositoryImp.getCoursesOfStudent(name, lname);
 	}
 }

@@ -16,19 +16,19 @@ public class Course {
 	@GeneratedValue
 	@Column(name = "id_course")
 	private long id_course;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = " id_assigned_teacher")
 	private long id_assigned_teacher;
-	
+
 	@Column(name = "hours_by_week")
 	private int hours_by_week;
-	
+
 	@Column(name = "id_shedule_time_fk")
 	private long id_shedule_time_fk;
-	
+
 	public Course() {
 		super();
 	}
@@ -85,5 +85,5 @@ public class Course {
 				+ ", hours_by_week=" + hours_by_week + ", id_shedule_time_fk="
 				+ id_shedule_time_fk + "]";
 	}
-	
+
 }

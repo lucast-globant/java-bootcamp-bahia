@@ -19,15 +19,15 @@ public class StudentController {
 
 	@Autowired
 	private StudentRepository studentRepository;
-	
+
 	@Autowired
-	private  StudentRepositoryImpl studentCustomRepositoryImp;
-	
-	public StudentController(){
-		
+	private StudentRepositoryImpl studentCustomRepositoryImp;
+
+	public StudentController() {
+
 	}
-	
-	public StudentController(StudentRepository studentRepository){
+
+	public StudentController(StudentRepository studentRepository) {
 		this.studentRepository = studentRepository;
 	}
 
@@ -40,15 +40,16 @@ public class StudentController {
 				.buildAndExpand(input.getId()).toUri());
 		return new ResponseEntity<>(null, httpHeaders, HttpStatus.CREATED);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Student> getAll(){
+	public List<Student> getAll() {
 		return (List<Student>) this.studentRepository.findAll();
 	}
-	
-	//Usage: http://localhost:8080/students/get?course_name=Math
+
+	// Usage: http://localhost:8080/students/get?course_name=Math
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	public List<Student> getStudentsOfCourse(@RequestParam(value = "course_name", required = false) String name) {
+	public List<Student> getStudentsOfCourse(
+			@RequestParam(value = "course_name", required = false) String name) {
 		return this.studentCustomRepositoryImp.getStudentsOfCourse(name);
 	}
 }
