@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -15,10 +16,18 @@ import javax.persistence.Table;
 @IdClass(value = Notes.class)
 public class Notes implements Serializable {
 	@Id
+	@Column(name = "registration_number")
+	private Integer registrationNumber;
+	@Id
+	@Column(name = "id_course")
+	private Integer idCourse;
+
 	@ManyToOne
+	@JoinColumn(name = "id_course", updatable = false, insertable = false)
 	private Course course;
 	@Id
 	@ManyToOne
+	@JoinColumn(name = "registration_number", updatable = false, insertable = false)
 	private Student student;
 	@Column(name = "note_one")
 	private Integer noteOne;
@@ -93,6 +102,18 @@ public class Notes implements Serializable {
 	public String toString() {
 		return "Notes [course=" + course + ", student=" + student + ", noteOne=" + noteOne + ", noteTwo=" + noteTwo + ", noteThree="
 				+ noteThree + ", finalNote=" + finalNote + "]";
+	}
+
+	public int hashCode() {
+		return (int) registrationNumber + idCourse;
+	}
+
+	public boolean equals(Object object) {
+		if (object instanceof Notes) {
+			Notes otherId = (Notes) object;
+			return (otherId.idCourse == this.idCourse) && (otherId.registrationNumber == this.registrationNumber);
+		}
+		return false;
 	}
 
 }

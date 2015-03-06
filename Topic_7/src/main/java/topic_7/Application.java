@@ -33,26 +33,29 @@ public class Application implements CommandLineRunner {
 	public void run(String... strings) throws Exception {
 		System.out.println("Students: \n");
 		for (Student s : students.findAll()) {
-			System.out.println(s.toString() + "\n");
+			System.out.println(s.toString());
 		}
-		;
+		System.out.println("\n");
 		System.out.println("Teachers: \n");
 		for (Teacher t : teachers.findAll()) {
-			System.out.println(t.toString() + "\n");
+			System.out.println(t.toString());
 		}
-		;
+		System.out.println("\n");
 		System.out.println("Courses: \n");
 		for (Course c : courses.findAll()) {
-			System.out.println(c.toString() + "\n");
+			System.out.println(c.toString());
 		}
-		Course c = courses.findOne(1);
-		for (Student student : notes.findStudentsByCourse(c)) {
-			System.out.println(student.toString());
-		}
-		Student s = students.findOne(1);
-		for (Course course : notes.findCoursesByStudent(s)) {
+		System.out.println("\n");
+		System.out.println("All courses of a given student.\n");
+		for (Course course : notes.findCoursesByStudent(1)) {
 			System.out.println(course.toString());
 		}
+		System.out.println("\n");
+		System.out.println("All students of a given course.\n");
+		for (Student student : notes.findStudentsByCourse(1)) {
+			System.out.println(student.toString());
+		}
+		System.out.println("\n");
 
 	}
 }

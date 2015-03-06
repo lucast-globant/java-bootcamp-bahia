@@ -1,9 +1,12 @@
 package topic_7.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +22,9 @@ public class Student {
 	private String lastName;
 	@Column(name = "date_of_birth", nullable = false)
 	private String dateOfBirth;
+
+	@OneToMany(mappedBy = "student")
+	private List<Notes> notes;
 
 	public Student() {
 	}
@@ -55,6 +61,14 @@ public class Student {
 
 	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	public List<Notes> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(List<Notes> notes) {
+		this.notes = notes;
 	}
 
 	@Override
