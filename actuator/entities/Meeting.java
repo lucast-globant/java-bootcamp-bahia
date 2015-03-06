@@ -42,8 +42,8 @@ public class Meeting {
 		return name;
 	}
 
-	public Meeting(String name, Room room, List<Atendee> atendees, int id) {
-
+	public Meeting(String name, Room room, List<Atendee> atendees, int id, Time time) {
+		this.timeSlot=time;
 		this.name = name;
 		this.room = room;
 		this.atendees = atendees;
