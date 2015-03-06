@@ -1,0 +1,15 @@
+//Query one
+	db.course.aggregate(
+  
+  { $match : {
+     "estudents.final_exam": { $gt: 40 }
+  }},
+  { $unwind : "$estudents" },
+  { $match : {
+     "estudents.final_exam": { $gt: 40 }
+  }},
+  {$match:{_id:1}}
+)
+	
+//Query two
+	db.course.find({teacher:1},{name:1}).sort({name:1})
