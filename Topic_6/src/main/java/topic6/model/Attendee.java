@@ -10,10 +10,11 @@ public class Attendee {
 	@GeneratedValue
 	private Long id;
 	private String name, lastName;
-	
-	public Attendee(){}
-	
-	public Attendee(String name, String lastName){
+
+	public Attendee() {
+	}
+
+	public Attendee(String name, String lastName) {
 		this.name = name;
 		this.lastName = lastName;
 	}
@@ -37,5 +38,5 @@ public class Attendee {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
+
 }

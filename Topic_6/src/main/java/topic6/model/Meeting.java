@@ -18,17 +18,17 @@ public class Meeting {
 	@ManyToOne
 	private Room room;
 	private String initDate, finalDate;
-	
-	
-	public Meeting(){}
-	
-	public Meeting(Room room, List<Attendee> attendees, String initDate, String finalDate){
+
+	public Meeting() {
+	}
+
+	public Meeting(Room room, List<Attendee> attendees, String initDate, String finalDate) {
 		this.attendees = attendees;
 		this.room = room;
 		this.initDate = initDate;
 		this.finalDate = finalDate;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -40,12 +40,12 @@ public class Meeting {
 	public void setAttendees(List<Attendee> attendees) {
 		this.attendees = attendees;
 	}
-	
-	public void addAttendee(Attendee attendee){
+
+	public void addAttendee(Attendee attendee) {
 		attendees.add(attendee);
 	}
-	
-	public void removeAttendee(Attendee attendee){
+
+	public void removeAttendee(Attendee attendee) {
 		attendees.remove(attendee);
 	}
 
@@ -72,9 +72,5 @@ public class Meeting {
 	public void setFinalDate(String finalDate) {
 		this.finalDate = finalDate;
 	}
-	
-	
 
-		
-	
 }

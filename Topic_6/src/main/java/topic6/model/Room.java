@@ -11,10 +11,11 @@ public class Room {
 	private Long id;
 	private String name;
 	private int capacity;
-	
-	public Room(){}
-	
-	public Room(String name, int capacity){
+
+	public Room() {
+	}
+
+	public Room(String name, int capacity) {
 		this.name = name;
 		this.capacity = capacity;
 	}
@@ -38,5 +39,5 @@ public class Room {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-	
+
 }

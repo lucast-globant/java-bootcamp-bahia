@@ -12,30 +12,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import topic6.model.Room;
-import topic6.repositories.RoomRepository;
+import topic6.services.RoomService;
 
 @RestController
 @RequestMapping("/rooms")
 public class RoomsController {
 	@Autowired
-	private RoomRepository rooms;
-	
-	@RequestMapping(value = "/create", method = RequestMethod.POST,
-			consumes="application/json") 
+	private RoomService rooms;
+
+	@RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<Room> createRoom(@RequestBody Room room) {
-		Room r = rooms.save(room);
-	    return new ResponseEntity<Room>(r, HttpStatus.CREATED); 
+		Room r = rooms.create(room);
+		return new ResponseEntity<Room>(r, HttpStatus.CREATED);
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Room> readRoom(@PathVariable Long id) {
-		Room r = rooms.findOne(id);
-		if(r != null) return new ResponseEntity<Room>(r,HttpStatus.OK);
-		else return new ResponseEntity<Room>(HttpStatus.BAD_REQUEST);
+		Room r = rooms.read(id);
+		if (r != null)
+			return new ResponseEntity<Room>(r, HttpStatus.OK);
+		else
+			return new ResponseEntity<Room>(HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public List<Room> getAll(){
+	public List<Room> getAll() {
 		return rooms.findAll();
 	}
 }
