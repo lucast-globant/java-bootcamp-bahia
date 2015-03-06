@@ -31,7 +31,6 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		students.save(new Student("Alejandro", "Durand", "1990-05-29"));
 		System.out.println("Students: \n");
 		for (Student s : students.findAll()) {
 			System.out.println(s.toString() + "\n");
@@ -46,6 +45,14 @@ public class Application implements CommandLineRunner {
 		for (Course c : courses.findAll()) {
 			System.out.println(c.toString() + "\n");
 		}
-		
+		Course c = courses.findOne(1);
+		for (Student student : notes.findStudentsByCourse(c)) {
+			System.out.println(student.toString());
+		}
+		Student s = students.findOne(1);
+		for (Course course : notes.findCoursesByStudent(s)) {
+			System.out.println(course.toString());
+		}
+
 	}
 }

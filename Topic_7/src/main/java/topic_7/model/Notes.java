@@ -6,30 +6,19 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "notes")
 @IdClass(value = Notes.class)
 public class Notes implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1620119303517501679L;
 	@Id
-	@Column(name = "id_course", insertable = false, updatable = false)
-	private Integer idCourse;
-	@Id
-	@Column(name = "registration_number", insertable = false, updatable = false)
-	private Integer registrationNumber;
-
-	@OneToOne
-	@JoinColumn(name = "id_course")
+	@ManyToOne
 	private Course course;
-	@OneToOne
-	@JoinColumn(name = "registration_number")
+	@Id
+	@ManyToOne
 	private Student student;
 	@Column(name = "note_one")
 	private Integer noteOne;
