@@ -29,7 +29,7 @@ public class MeetingController {
 	@ResponseBody
 	public ResponseEntity<Meeting> createMeeting(@RequestBody Meeting meeting) {
 		Meeting m = meetings.add(meeting);
-		return new ResponseEntity<Meeting>(m, HttpStatus.CREATED);
+		return new ResponseEntity<Meeting>(m, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -42,14 +42,14 @@ public class MeetingController {
 			return new ResponseEntity<Meeting>(HttpStatus.BAD_REQUEST);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<Meeting> updateMeeting(@RequestBody Meeting meeting) {
 		if (meetings.getMeeting(meeting.getId()) != null) {
 			Meeting m = meetings.update(meeting);
 			return new ResponseEntity<Meeting>(m, HttpStatus.OK);
 		} else
-			return new ResponseEntity<Meeting>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Meeting>(HttpStatus.NOT_FOUND);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

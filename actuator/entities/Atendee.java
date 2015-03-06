@@ -8,6 +8,9 @@ public class Atendee {
 		this.id = id;
 	}
 
+	public Atendee() {
+	}
+
 	public Atendee(String name) {
 		this.setName(name);
 

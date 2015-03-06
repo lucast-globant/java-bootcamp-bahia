@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -23,19 +24,21 @@ public class AtendeeController {
 	@Autowired
 	private AtendeeImp service;
 
-	@RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
 	public ResponseEntity<Atendee> createAttendee(@RequestBody Atendee atendee) {
 		Atendee a = service.add(atendee);
 		return new ResponseEntity<Atendee>(a, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@ResponseBody
 	public ResponseEntity<Atendee> readAttendee(@PathVariable Integer id) {
 		Atendee a = service.getAtendee(id);
 		if (a != null)
 			return new ResponseEntity<Atendee>(a, HttpStatus.OK);
 		else
-			return new ResponseEntity<Atendee>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Atendee>(HttpStatus.NOT_FOUND);
 	}
 
 	@RequestMapping(value = "/show", method = RequestMethod.GET)

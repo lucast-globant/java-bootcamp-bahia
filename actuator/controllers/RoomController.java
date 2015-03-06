@@ -39,7 +39,7 @@ public class RoomController {
 		if (r != null)
 			return new ResponseEntity<Room>(r, HttpStatus.OK);
 		else
-			return new ResponseEntity<Room>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Room>(HttpStatus.NOT_FOUND);
 	}
 
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
