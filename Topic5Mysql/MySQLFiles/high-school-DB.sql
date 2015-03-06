@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `high_school` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `high_school`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
 -- Host: localhost    Database: high_school
@@ -30,9 +28,9 @@ CREATE TABLE `course` (
   `hours_by_week` int(10) unsigned NOT NULL,
   `schedule_time` int(11) NOT NULL,
   `teacher_assigned` int(11) NOT NULL,
-  PRIMARY KEY (`course_id`),
-  KEY `teacher_id_idx` (`teacher_assigned`),
+  PRIMARY KEY (`course_id`,`course_name`),
   KEY `schedule_id_idx` (`schedule_time`),
+  KEY `teacher_id_idx` (`teacher_assigned`,`course_name`),
   CONSTRAINT `schedule_id` FOREIGN KEY (`schedule_time`) REFERENCES `schedule` (`schedule_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `teacher_id` FOREIGN KEY (`teacher_assigned`) REFERENCES `teacher` (`teacher_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
@@ -63,7 +61,7 @@ CREATE TABLE `notes` (
   `partial_note3` decimal(10,0) unsigned NOT NULL,
   `final_note` decimal(10,0) unsigned NOT NULL,
   PRIMARY KEY (`course_id`,`student_id`),
-  KEY `registration_number_idx` (`student_id`),
+  KEY `registration_number_idx` (`student_id`,`course_id`),
   CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `student_id` FOREIGN KEY (`student_id`) REFERENCES `student` (`registration_number`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
@@ -117,7 +115,8 @@ CREATE TABLE `student` (
   `last_name` varchar(45) NOT NULL,
   `registration_number` int(11) NOT NULL AUTO_INCREMENT,
   `date_of_birth` date NOT NULL,
-  PRIMARY KEY (`registration_number`)
+  PRIMARY KEY (`registration_number`),
+  KEY `name` (`first_name`,`last_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -143,7 +142,8 @@ CREATE TABLE `teacher` (
   `last_name` varchar(45) NOT NULL,
   `date_of_birth` date NOT NULL,
   `teacher_id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`teacher_id`)
+  PRIMARY KEY (`teacher_id`),
+  KEY `name` (`first_name`,`last_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -166,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-27 12:02:27
+-- Dump completed on 2015-03-05 19:11:19
