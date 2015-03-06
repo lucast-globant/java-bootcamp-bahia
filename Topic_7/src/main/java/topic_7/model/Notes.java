@@ -25,10 +25,10 @@ public class Notes implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_course", updatable = false, insertable = false)
 	private Course course;
-	@Id
 	@ManyToOne
 	@JoinColumn(name = "registration_number", updatable = false, insertable = false)
 	private Student student;
+	
 	@Column(name = "note_one")
 	private Integer noteOne;
 	@Column(name = "note_two")
