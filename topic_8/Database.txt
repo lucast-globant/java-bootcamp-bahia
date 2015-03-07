@@ -1,0 +1,189 @@
+use high_school
+db.addUser("high_school_user","hspw")
+db.createUser(
+   {
+     user: "high_school_user",
+     pwd: "hspw",
+     roles: [ "userAdmin" ]
+   }
+);
+
+db.createCollection("student")
+db.createCollection("teacher")
+db.createCollection("course")
+db.createCollection("rinde")
+db.high_school.createIndex( { final_note: 1})
+
+student1 = { first_name : "Name1", last_name: "LastName1", reg_number : 1, birth : new Date (1989,11,27) }
+student2 = { first_name : "Name2", last_name: "LastName2", reg_number : 2, birth : new Date (1992,10,09) }
+student3 = { first_name : "Name3", last_name: "LastName3", reg_number : 3, birth : new Date (1990,08,13) }
+student4 = { first_name : "Name4", last_name: "LastName4", reg_number : 4, birth : new Date (1989,02,15) }
+student5 = { first_name : "Name5", last_name: "LastName5", reg_number : 5, birth : new Date (1989,09,07) }
+student6 = { first_name : "Name6", last_name: "LastName6", reg_number : 6, birth : new Date (1991,09,27) }
+student7 = { first_name : "Name7", last_name: "LastName7", reg_number : 7, birth : new Date (1993,08,27) }
+student8 = { first_name : "Name8", last_name: "LastName8", reg_number : 8, birth : new Date (1994,01,17) }
+student9 = { first_name : "Name9", last_name: "LastName9", reg_number : 9, birth : new Date (1992,07,21) }
+student10 = { first_name : "Name10", last_name: "LastName10", reg_number : 10, birth : new Date (1995,06,20) }
+student11 = { first_name : "Name11", last_name: "LastName11", reg_number : 11, birth : new Date (1992,05,14) }
+student12 = { first_name : "Name12", last_name: "LastName12", reg_number : 12, birth : new Date (1992,03,29) }
+student13 = { first_name : "Name13", last_name: "LastName13", reg_number : 13, birth : new Date (1993,02,27) }
+student14 = { first_name : "Name14", last_name: "LastName14", reg_number : 14, birth : new Date (1991,08,01) }
+student15 = { first_name : "Name15", last_name: "LastName15", reg_number : 15, birth : new Date (1991,12,03) }
+student16 = { first_name : "Name16", last_name: "LastName16", reg_number : 16, birth : new Date (1988,12,25) }
+student17 = { first_name : "Name17", last_name: "LastName17", reg_number : 17, birth : new Date (1987,10,20) }
+student18 = { first_name : "Name18", last_name: "LastName18", reg_number : 18, birth : new Date (1994,09,19) }
+student19 = { first_name : "Name19", last_name: "LastName19", reg_number : 19, birth : new Date (1995,02,12) }
+student20 = { first_name : "Name20", last_name: "LastName20", reg_number : 20, birth : new Date (1994,09,11) }
+student21 = { first_name : "Name21", last_name: "LastName21", reg_number : 21, birth : new Date (1995,05,15) }
+student22 = { first_name : "Name22", last_name: "LastName22", reg_number : 22, birth : new Date (1993,04,18) }
+student23 = { first_name : "Name23", last_name: "LastName23", reg_number : 23, birth : new Date (1996,04,10) }
+student24 = { first_name : "Name24", last_name: "LastName24", reg_number : 24, birth : new Date (1994,11,01) }
+student25 = { first_name : "Name25", last_name: "LastName25", reg_number : 25, birth : new Date (1991,09,03) }
+student26 = { first_name : "Name26", last_name: "LastName26", reg_number : 26, birth : new Date (1990,02,05) }
+student27 = { first_name : "Name27", last_name: "LastName27", reg_number : 27, birth : new Date (1990,07,07) }
+student28 = { first_name : "Name28", last_name: "LastName28", reg_number : 28, birth : new Date (1988,01,09) }
+student29 = { first_name : "Name29", last_name: "LastName29", reg_number : 29, birth : new Date (1989,03,11) }
+student30 = { first_name : "Name30", last_name: "LastName30", reg_number : 30, birth : new Date (1990,05,13) }
+student31 = { first_name : "Name31", last_name: "LastName31", reg_number : 31, birth : new Date (1991,07,15) }
+student32 = { first_name : "Name32", last_name: "LastName32", reg_number : 32, birth : new Date (1992,09,17) }
+student33 = { first_name : "Name33", last_name: "LastName33", reg_number : 33, birth : new Date (1990,11,02) }
+student34 = { first_name : "Name34", last_name: "LastName34", reg_number : 34, birth : new Date (1990,02,21) }
+student35 = { first_name : "Name35", last_name: "LastName35", reg_number : 35, birth : new Date (1989,01,22) }
+students = [student1, student2, student3, student4, student5, student6, student7, student8, student9, student10, student11, student12, student13, student14, student15, student16, student17, student18, student19, student20, student21, student22, student23, student24, student25, student26, student27, student28, student29, student30, student31, student32, student33, student33, student35]
+for (i = 0; i< students.length; i++) { db.student.insert(students[i]) }
+
+teacher1 = { first_name : "NameTeacher1", last_name : "LastNameTeacher1", birth : new Date (1957,10,11) }
+teacher2 = { first_name : "NameTeacher2", last_name : "LastNameTeacher2", birth : new Date (1969,04,27) }
+teacher3 = { first_name : "NameTeacher3", last_name : "LastNameTeacher3", birth : new Date (1975,07,06) }
+teachers = [teacher1, teacher2, teacher3]
+for (i = 0; i< teachers.length; i++) { db.teacher.insert(teachers[i]) }
+
+course1 = {name : "Algebra", id_teacher: db.teacher.find()[0]._id, hours_week : 8, schedule_time: 4, finish : true }
+course2 = {name : "Philosophy", id_teacher: db.teacher.find()[2]._id, hours_week : 6, schedule_time : 3, finish : false }
+course3 = {name : "Literature", id_teacher: db.teacher.find()[1]._id, hours_week : 8, schedule_time : 4, finish : true }
+course4 = {name : "Chemestry", id_teacher: db.teacher.find()[0]._id, hours_week : 4, schedule_time : 2, finish : false }
+course5 = {name : "Physics", id_teacher: db.teacher.find()[0]._id, hours_week : 8, schedule_time : 4, finish : true }
+courses = [course1, course2, course3, course4, course5]
+for (i = 0; i< courses.length; i++) { db.course.insert(courses[i]) }
+
+rinde1 = {id_student: db.student.find()[0]._id, id_course : db.course.find()[0]._id, partial_note_1 : 1, partial_note_2 : 4, partial_note_3 : 7, final_note : 4 }
+rinde2 = {id_student: db.student.find()[1]._id, id_course : db.course.find()[0]._id, partial_note_1 : 4, partial_note_2 : 4, partial_note_3 : 4, final_note : 8 }
+rinde3 = {id_student: db.student.find()[2]._id, id_course : db.course.find()[0]._id, partial_note_1 : 1, partial_note_2 : 1, partial_note_3 : 10, final_note :  10 }
+rinde4 = {id_student: db.student.find()[3]._id, id_course : db.course.find()[0]._id, partial_note_1 : 7, partial_note_2 : 5, partial_note_3 : 4, final_note : 6 }
+rinde5 = {id_student: db.student.find()[4]._id, id_course : db.course.find()[0]._id, partial_note_1 : 6, partial_note_2 : 5, partial_note_3 : 4, final_note : 2 }
+rinde6 = {id_student: db.student.find()[5]._id, id_course : db.course.find()[0]._id, partial_note_1 : 1, partial_note_2 : 4, partial_note_3 : 7, final_note : 4 }
+rinde7 = {id_student: db.student.find()[6]._id, id_course : db.course.find()[0]._id, partial_note_1 : 10, partial_note_2 : 4, partial_note_3 :  6, final_note :  7 }
+rinde8 = {id_student: db.student.find()[7]._id, id_course : db.course.find()[0]._id, partial_note_1 : 9, partial_note_2 : 8, partial_note_3 : 7, final_note : 6 }
+rinde9 = {id_student: db.student.find()[8]._id, id_course : db.course.find()[0]._id, partial_note_1 : 6, partial_note_2 : 7, partial_note_3 : 8, final_note : 9 }
+rinde10 = {id_student: db.student.find()[9]._id, id_course : db.course.find()[0]._id, partial_note_1 : 5, patial_note_2 : 5, partial_note_3 : 5, final_note : 6 }
+rinde11 = {id_student: db.student.find()[10]._id, id_course : db.course.find()[0]._id, partial_note_1 : 4, patial_note_2 : 4, partial_note_3 : 6, final_note : 7 }
+rinde12 = {id_student: db.student.find()[11]._id, id_course : db.course.find()[0]._id, partial_note_1 : 3, patial_note_2 : 2, partial_note_3 : 9, final_note : 1 }
+rinde13 = {id_student: db.student.find()[12]._id, id_course : db.course.find()[0]._id, partial_note_1 : 2, patial_note_2 : 3, partial_note_3 : 10, final_note : 6 }
+rinde14 = {id_student: db.student.find()[13]._id, id_course : db.course.find()[0]._id, partial_note_1 : 3, patial_note_2 : 3, partial_note_3 : 6, final_note : 7 }
+rinde15 = {id_student: db.student.find()[14]._id, id_course : db.course.find()[0]._id, partial_note_1 : 7, patial_note_2 : 4, partial_note_3 : 2, final_note : 8 }
+rinde16 = {id_student: db.student.find()[15]._id, id_course : db.course.find()[0]._id, partial_note_1 : 8, patial_note_2 : 8, partial_note_3 : 2, final_note : 9 }
+rinde17 = {id_student: db.student.find()[16]._id, id_course : db.course.find()[0]._id, partial_note_1 : 7, patial_note_2 : 5, partial_note_3 : 4, final_note : 10 }
+rinde18 = {id_student: db.student.find()[17]._id, id_course : db.course.find()[0]._id, partial_note_1 : 7, patial_note_2 : 3, partial_note_3 : 5, final_note : 6 }
+rinde19 = {id_student: db.student.find()[18]._id, id_course : db.course.find()[0]._id, partial_note_1 : 9, patial_note_2 : 2, partial_note_3 : 2, final_note : 7 }
+rinde20 = {id_student: db.student.find()[19]._id, id_course : db.course.find()[0]._id, partial_note_1 : 4, patial_note_2 : 9, partial_note_3 : 10, final_note : 9 }
+rindeAlgebra = [rinde1 ,rinde2 ,rinde3 ,rinde4 ,rinde5 ,rinde6 ,rinde7 ,rinde8 ,rinde9 ,rinde10 ,rinde11 ,rinde12 ,rinde13 ,rinde14 ,rinde15 ,rinde16 ,rinde17 ,rinde18 ,rinde19 ,rinde20]
+for (i = 0; i< rindeAlgebra.length; i++) { db.rinde.insert(rindeAlgebra[i]) }
+
+rinde21 = {id_student: db.student.find()[0]._id, id_course : db.course.find()[3]._id, partial_note_1 : 8, partial_note_2 : 7, partial_note_3 : 4, final_note : 0 }
+rinde22 = {id_student: db.student.find()[1]._id, id_course : db.course.find()[3]._id, partial_note_1 : 7, partial_note_2 : 7, partial_note_3 : 6, final_note : 0 }
+rinde23 = {id_student: db.student.find()[2]._id, id_course : db.course.find()[3]._id, partial_note_1 : 5, partial_note_2 : 6, partial_note_3 : 5, final_note :  0 }
+rinde24 = {id_student: db.student.find()[3]._id, id_course : db.course.find()[3]._id, partial_note_1 : 8, partial_note_2 : 8, partial_note_3 : 8, final_note : 0 }
+rinde25 = {id_student: db.student.find()[4]._id, id_course : db.course.find()[3]._id, partial_note_1 : 4, partial_note_2 : 4, partial_note_3 : 6, final_note : 0 }
+rinde26 = {id_student: db.student.find()[5]._id, id_course : db.course.find()[3]._id, partial_note_1 : 10, partial_note_2 : 9, partial_note_3 : 8, final_note : 0 }
+rinde27 = {id_student: db.student.find()[6]._id, id_course : db.course.find()[3]._id, partial_note_1 : 10, partial_note_2 : 4, partial_note_3 : 2, final_note : 0 }
+rinde28 = {id_student: db.student.find()[7]._id, id_course : db.course.find()[3]._id, partial_note_1 : 9, partial_note_2 : 4, partial_note_3 : 5, final_note : 0 }
+rinde29 = {id_student: db.student.find()[8]._id, id_course : db.course.find()[3]._id, partial_note_1 : 7, partial_note_2 : 4, partial_note_3 : 3, final_note : 0 }
+rinde30 = {id_student: db.student.find()[9]._id, id_course : db.course.find()[3]._id, partial_note_1 : 6, patial_note_2 : 5, partial_note_3 : 2, final_note : 0 }
+rinde31 = {id_student: db.student.find()[10]._id, id_course : db.course.find()[3]._id, partial_note_1 : 7, patial_note_2 : 4, partial_note_3 : 5, final_note : 0 }
+rinde32 = {id_student: db.student.find()[11]._id, id_course : db.course.find()[3]._id, partial_note_1 : 7, patial_note_2 : 7, partial_note_3 : 7, final_note : 0 }
+rinde33 = {id_student: db.student.find()[12]._id, id_course : db.course.find()[3]._id, partial_note_1 : 8, patial_note_2 : 4, partial_note_3 : 7, final_note : 0 }
+rinde34 = {id_student: db.student.find()[13]._id, id_course : db.course.find()[3]._id, partial_note_1 : 5, patial_note_2 : 4, partial_note_3 : 3, final_note : 0 }
+rinde35 = {id_student: db.student.find()[14]._id, id_course : db.course.find()[3]._id, partial_note_1 : 2, patial_note_2 : 4, partial_note_3 : 3, final_note : 0 }
+rinde36 = {id_student: db.student.find()[15]._id, id_course : db.course.find()[3]._id, partial_note_1 : 8, patial_note_2 : 9, partial_note_3 : 10, final_note : 0 }
+rinde37 = {id_student: db.student.find()[16]._id, id_course : db.course.find()[3]._id, partial_note_1 : 9, patial_note_2 : 7, partial_note_3 : 8, final_note : 0 }
+rinde38 = {id_student: db.student.find()[17]._id, id_course : db.course.find()[3]._id, partial_note_1 : 10, patial_note_2 : 10, partial_note_3 : 10, final_note : 0 }
+rinde39 = {id_student: db.student.find()[18]._id, id_course : db.course.find()[3]._id, partial_note_1 : 9, patial_note_2 : 4, partial_note_3 : 7, final_note : 0 }
+rinde40 = {id_student: db.student.find()[19]._id, id_course : db.course.find()[3]._id, partial_note_1 : 7, patial_note_2 : 5, partial_note_3 : 2, final_note : 0 }
+rindeChemestry =[rinde21 ,rinde22 ,rinde23 ,rinde24 ,rinde25 ,rinde26 ,rinde27 ,rinde28 ,rinde29 ,rinde30 ,rinde31 ,rinde32 ,rinde33 ,rinde34 ,rinde35 ,rinde36 ,rinde37 ,rinde38 ,rinde39 ,rinde40]
+for (i = 0; i< rindeChemestry.length; i++) { db.rinde.insert(rindeChemestry[i]) }
+
+rinde41 = {id_student : db.student.find()[0]._id, id_course : db.course.find()[4]._id, partial_note_1 : 2, partial_note_2 : 5, partial_note_3 : 5, final_note : 5 }
+rinde42 = {id_student : db.student.find()[1]._id, id_course : db.course.find()[4]._id, partial_note_1 : 3, partial_note_2 : 4, partial_note_3 : 7, final_note : 3 }
+rinde43 = {id_student : db.student.find()[2]._id, id_course : db.course.find()[4]._id, partial_note_1 : 6, partial_note_2 : 4, partial_note_3 : 5, final_note : 6 }
+rinde44 = {id_student : db.student.find()[3]._id, id_course : db.course.find()[4]._id, partial_note_1 : 10, partial_note_2 : 5, partial_note_3 : 2, final_note : 9 }
+rinde45 = {id_student : db.student.find()[4]._id, id_course : db.course.find()[4]._id, partial_note_1 : 5, partial_note_2 : 5, partial_note_3 : 2, final_note : 2 }
+rinde46 = {id_student : db.student.find()[5]._id, id_course : db.course.find()[4]._id, partial_note_1 : 9, partial_note_2 : 9, partial_note_3 : 2, final_note : 4 }
+rinde47 = {id_student : db.student.find()[6]._id, id_course : db.course.find()[4]._id, partial_note_1 : 2, partial_note_2 : 4, partial_note_3 : 9, final_note : 9 }
+rinde48 = {id_student : db.student.find()[7]._id, id_course : db.course.find()[4]._id, partial_note_1 : 7, partial_note_2 : 9, partial_note_3 : 7, final_note : 5 }
+rinde49 = {id_student : db.student.find()[8]._id, id_course : db.course.find()[4]._id, partial_note_1 : 5, partial_note_2 : 7, partial_note_3 : 7, final_note : 9 }
+rinde50 = {id_student : db.student.find()[9]._id, id_course : db.course.find()[4]._id, partial_note_1 : 1, partial_note_2 : 8, partial_note_3 : 3, final_note : 6 }
+rinde51 = {id_student : db.student.find()[10]._id, id_course : db.course.find()[4]._id, partial_note_1 : 3, partial_note_2 : 1, partial_note_3 : 8, final_note : 4 }
+rinde52 = {id_student : db.student.find()[11]._id, id_course : db.course.find()[4]._id, partial_note_1 : 10, partial_note_2 : 4, partial_note_3 : 2, final_note : 4 }
+rinde53 = {id_student : db.student.find()[12]._id, id_course : db.course.find()[4]._id, partial_note_1 : 9, partial_note_2 : 6, partial_note_3 : 3, final_note : 8 }
+rinde54 = {id_student : db.student.find()[13]._id, id_course : db.course.find()[4]._id, partial_note_1 : 3, partial_note_2 : 6, partial_note_3 : 9, final_note : 8 }
+rinde55 = {id_student : db.student.find()[14]._id, id_course : db.course.find()[4]._id, partial_note_1 : 10, partial_note_2 : 10, partial_note_3 : 8, final_note : 9 }
+rinde56 = {id_student : db.student.find()[15]._id, id_course : db.course.find()[4]._id, partial_note_1 : 9, partial_note_2 : 9, partial_note_3 : 8, final_note : 10 }
+rinde57 = {id_student : db.student.find()[16]._id, id_course : db.course.find()[4]._id, partial_note_1 : 7, partial_note_2 : 7, partial_note_3 : 10, final_note : 8 }
+rinde58 = {id_student : db.student.find()[17]._id, id_course : db.course.find()[4]._id, partial_note_1 : 8, partial_note_2 : 8, partial_note_3 : 2, final_note : 6 }
+rinde59 = {id_student : db.student.find()[18]._id, id_course : db.course.find()[4]._id, partial_note_1 : 9, partial_note_2 : 4, partial_note_3 : 7, final_note : 6 }
+rinde60 = {id_student : db.student.find()[19]._id, id_course : db.course.find()[4]._id, partial_note_1 : 10, partial_note_2 : 2, partial_note_3 : 2, final_note : 4 }
+rindePhysics =[rinde41 ,rinde42 ,rinde43 ,rinde44 ,rinde45 ,rinde46 ,rinde47 ,rinde48 ,rinde49 ,rinde50 ,rinde51 ,rinde52 ,rinde53 ,rinde54 ,rinde55 ,rinde56 ,rinde57 ,rinde58 ,rinde59 ,rinde60]
+for (i = 0; i< rindePhysics.length; i++) { db.rinde.insert(rindePhysics[i]) }
+
+rinde61 = { id_student : db.student.find()[15]._id, id_course : db.course.find()[1]._id, partial_note_1 : 8, partial_note_2 : 8, partial_note_3 : 2, final_note : 0 }
+rinde62 = { id_student : db.student.find()[16]._id, id_course : db.course.find()[1]._id, partial_note_1 : 4, partial_note_2 : 4, partial_note_3 : 5, final_note : 0 }
+rinde63 = { id_student : db.student.find()[17]._id, id_course : db.course.find()[1]._id, partial_note_1 : 10, partial_note_2 : 7, partial_note_3 : 5, final_note : 0 }
+rinde64 = { id_student : db.student.find()[18]._id, id_course : db.course.find()[1]._id, partial_note_1 : 4, partial_note_2 : 4, partial_note_3 : 8, final_note : 0 }
+rinde65 = { id_student : db.student.find()[19]._id, id_course : db.course.find()[1]._id, partial_note_1 : 4, partial_note_2 : 8, partial_note_3 : 6, final_note : 0 }
+rinde66 = { id_student : db.student.find()[20]._id, id_course : db.course.find()[1]._id, partial_note_1 : 5, partial_note_2 : 6, partial_note_3 : 7, final_note : 0 }
+rinde67 = { id_student : db.student.find()[21]._id, id_course : db.course.find()[1]._id, partial_note_1 : 6, partial_note_2 : 10, partial_note_3 : 8, final_note : 0 }
+rinde68 = { id_student : db.student.find()[22]._id, id_course : db.course.find()[1]._id, partial_note_1 : 9, partial_note_2 : 9, partial_note_3 : 10, final_note : 0 }
+rinde69 = { id_student : db.student.find()[23]._id, id_course : db.course.find()[1]._id, partial_note_1 : 7, partial_note_2 : 7, partial_note_3 : 5, final_note : 0 }
+rinde70 = { id_student : db.student.find()[24]._id, id_course : db.course.find()[1]._id, partial_note_1 : 10, partial_note_2 : 4, partial_note_3 : 2, final_note : 0 }
+rinde71 = { id_student : db.student.find()[25]._id, id_course : db.course.find()[1]._id, partial_note_1 : 5, partial_note_2 : 4, partial_note_3 : 5, final_note : 0 }
+rinde72 = { id_student : db.student.find()[26]._id, id_course : db.course.find()[1]._id, partial_note_1 : 2, partial_note_2 : 5, partial_note_3 : 5, final_note : 0 }
+rinde73 = { id_student : db.student.find()[27]._id, id_course : db.course.find()[1]._id, partial_note_1 : 3, partial_note_2 : 5, partial_note_3 : 5, final_note : 0 }
+rinde74 = { id_student : db.student.find()[28]._id, id_course : db.course.find()[1]._id, partial_note_1 : 7, partial_note_2 : 7, partial_note_3 : 7, final_note : 0 }
+rinde75 = { id_student : db.student.find()[29]._id, id_course : db.course.find()[1]._id, partial_note_1 : 8, partial_note_2 : 8, partial_note_3 : 8, final_note : 0 }
+rinde76 = { id_student : db.student.find()[30]._id, id_course : db.course.find()[1]._id, partial_note_1 : 9, partial_note_2 : 9, partial_note_3 : 2, final_note : 0 }
+rinde77 = { id_student : db.student.find()[31]._id, id_course : db.course.find()[1]._id, partial_note_1 : 3, partial_note_2 : 3, partial_note_3 : 10, final_note : 0 }
+rinde78 = { id_student : db.student.find()[32]._id, id_course : db.course.find()[1]._id, partial_note_1 : 8, partial_note_2 : 8, partial_note_3 : 10, final_note : 0 }
+rinde79 = { id_student : db.student.find()[33]._id, id_course : db.course.find()[1]._id, partial_note_1 : 10, partial_note_2 : 10, partial_note_3 : 5, final_note : 0 }
+rinde80 = { id_student : db.student.find()[34]._id, id_course : db.course.find()[1]._id, partial_note_1 : 5, partial_note_2 : 2, partial_note_3 : 7, final_note : 6 }
+rindePhilosophy=[rinde61 ,rinde62 ,rinde63 ,rinde64 ,rinde65 ,rinde66 ,rinde67 ,rinde68 ,rinde69 ,rinde70 ,rinde71 ,rinde72 ,rinde73 ,rinde74 ,rinde75 ,rinde76 ,rinde77 ,rinde78 ,rinde79 ,rinde80]
+for (i = 0; i< rindePhilosophy.length; i++) { db.rinde.insert(rindePhilosophy[i]) }
+
+rinde81 = {id_student : db.student.find()[25]._id, id_course : db.course.find()[2], partial_note_1 : 7, partial_note_2 : 6, partial_note_3 : 2, final_note : 5 }
+rinde82 = {id_student : db.student.find()[26]._id, id_course : db.course.find()[2], partial_note_1 : 3, partial_note_2 : 4, partial_note_3 : 9, final_note : 5 }
+rinde83 = {id_student : db.student.find()[27]._id, id_course : db.course.find()[2], partial_note_1 : 2, partial_note_2 : 4, partial_note_3 : 6, final_note : 8 }
+rinde84 = {id_student : db.student.find()[28]._id, id_course : db.course.find()[2], partial_note_1 : 5, partial_note_2 : 4, partial_note_3 : 6, final_note : 4 }
+rinde85 = {id_student : db.student.find()[29]._id, id_course : db.course.find()[2], partial_note_1 : 4, partial_note_2 : 9, partial_note_3 : 2, final_note : 2 }
+rinde86 = {id_student : db.student.find()[30]._id, id_course : db.course.find()[2], partial_note_1 : 4, partial_note_2 : 2, partial_note_3 : 6, final_note : 4 }
+rinde87 = {id_student : db.student.find()[31]._id, id_course : db.course.find()[2], partial_note_1 : 6, partial_note_2 : 8, partial_note_3 : 7, final_note : 5 }
+rinde88 = {id_student : db.student.find()[32]._id, id_course : db.course.find()[2], partial_note_1 : 4, partial_note_2 : 6, partial_note_3 : 7, final_note : 9 }
+rinde89 = {id_student : db.student.find()[33]._id, id_course : db.course.find()[2], partial_note_1 : 9, partial_note_2 : 8, partial_note_3 : 2, final_note : 4 }
+rinde90 = {id_student : db.student.find()[34]._id, id_course : db.course.find()[2], partial_note_1 : 10, partial_note_2 : 7, partial_note_3 : 2, final_note : 8 }
+rinde91 = {id_student : db.student.find()[0]._id, id_course : db.course.find()[2]._id, partial_note_1 : 3, partial_note_2 : 6, partial_note_3 : 6, final_note : 6 }
+rinde92 = {id_student : db.student.find()[1]._id, id_course : db.course.find()[2]._id, partial_note_1 : 10, partial_note_2 : 4, partial_note_3 : 10, final_note : 4 }
+rinde93 = {id_student : db.student.find()[2]._id, id_course : db.course.find()[2]._id, partial_note_1 : 9, partial_note_2 : 8, partial_note_3 : 9, final_note : 4 }
+rinde94 = {id_student : db.student.find()[3]._id, id_course : db.course.find()[2]._id, partial_note_1 : 7, partial_note_2 : 5, partial_note_3 : 7, final_note : 5 }
+rinde95 = {id_student : db.student.find()[4]._id, id_course : db.course.find()[2]._id, partial_note_1 : 4, partial_note_2 : 6, partial_note_3 : 6, final_note : 4 }
+rinde96 = {id_student : db.student.find()[5]._id, id_course : db.course.find()[2]._id, partial_note_1 : 10, partial_note_2 : 4, partial_note_3 : 10, final_note : 4 }
+rinde97 = {id_student : db.student.find()[6]._id, id_course : db.course.find()[2]._id, partial_note_1 : 10, partial_note_2 : 10, partial_note_3 : 10, final_note : 10 }
+rinde98 = {id_student : db.student.find()[7]._id, id_course : db.course.find()[2]._id, partial_note_1 : 9, partial_note_2 : 9, partial_note_3 : 9, final_note : 9 }
+rinde99 = {id_student : db.student.find()[8]._id, id_course : db.course.find()[2]._id, partial_note_1 : 8, partial_note_2 : 8, partial_note_3 : 8, final_note : 8 }
+rinde100 = {id_student : db.student.find()[9]._id, id_course : db.course.find()[2]._id, partial_note_1 : 10, partial_note_2 : 10, partial_note_3 : 10, final_note : 10 }
+rindeLiterature=[rinde81 ,rinde82 ,rinde83 ,rinde84 ,rinde85 ,rinde86 ,rinde87 ,rinde88 ,rinde89 ,rinde90 ,rinde91 ,rinde92 ,rinde93 ,rinde94 ,rinde95 ,rinde96 ,rinde97 ,rinde98 ,rinde99 ,rinde100]
+for (i = 0; i< rindeLiterature.length; i++) { db.rinde.insert(rindeLiterature[i]) }
+
+#Fetch all students whose notes in a specific course were greater than 4.
+db.rinde.find({id_course : db.course.find()[4]._id, partial_note_1: {$gt:4}, partial_note_2: {$gt:4}, partial_note_3: {$gt:4}, final_note: {$gt:4}},{id_student:1, _id:0})
+#Fetch all courses ordered by name for a given teacher.
+db.course.find({id_teacher: db.teacher.find()[0]._id}).sort({name:1}) or db.course.find({id_teacher: db.teacher.find()[0]._id}).sort({name:-1})
+#Identify which courses are finished.
+db.course.find({finish : true})
