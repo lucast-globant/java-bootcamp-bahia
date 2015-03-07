@@ -1,12 +1,13 @@
 package topic_8.model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "notes")
 public class Notes {
 	@Id
-	private String id;
+	private ObjectId id;
 	private Course course;
 	private Student student;
 	private Integer noteOne;

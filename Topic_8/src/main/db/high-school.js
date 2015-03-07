@@ -38,9 +38,9 @@ db.notes.insert({course: db.courses.findOne( { idCourse: 1 }), student: db.stude
 db.notes.insert({course: db.courses.findOne( { idCourse: 1 }), student: db.students.findOne( { registrationNumber: 3 }), noteOne: 10, noteTwo: 9, noteThree: 7, finalNote: 8});
 db.notes.insert({course: db.courses.findOne( { idCourse: 1 }), student: db.students.findOne( { registrationNumber: 4 }), noteOne: 10, noteTwo: 9, noteThree: 7, finalNote: 8});
 
-db.notes.insert({_id: 19, course: db.courses.findOne( { idCourse: 2 }), student: db.students.findOne( { registrationNumber: 1 }), noteOne: 3, noteTwo: 4, noteThree: 5, finalNote: 4});
-db.notes.insert({_id: 20, course: db.courses.findOne( { idCourse: 2 }), student: db.students.findOne( { registrationNumber: 3 }), noteOne: 2, noteTwo: 2, noteThree: 1, finalNote: 2});
-db.notes.insert({_id: 21, course: db.courses.findOne( { idCourse: 2 }), student: db.students.findOne( { registrationNumber: 5 }), noteOne: 6, noteTwo: 6, noteThree: 6, finalNote: 6});
+db.notes.insert({course: db.courses.findOne( { idCourse: 2 }), student: db.students.findOne( { registrationNumber: 1 }), noteOne: 3, noteTwo: 4, noteThree: 5, finalNote: 4});
+db.notes.insert({course: db.courses.findOne( { idCourse: 2 }), student: db.students.findOne( { registrationNumber: 3 }), noteOne: 2, noteTwo: 2, noteThree: 1, finalNote: 2});
+db.notes.insert({course: db.courses.findOne( { idCourse: 2 }), student: db.students.findOne( { registrationNumber: 5 }), noteOne: 6, noteTwo: 6, noteThree: 6, finalNote: 6});
 
-db.notes.insert({_id: 22, course: db.courses.findOne( { idCourse: 3 }), student: db.students.findOne( { registrationNumber: 2 }), noteOne: 9, noteTwo: 9, noteThree: 9, finalNote: 9});
-db.notes.insert({_id: 23, course: db.courses.findOne( { idCourse: 3 }), student: db.students.findOne( { registrationNumber: 4 }), noteOne: 1, noteTwo: 1, noteThree: 1, finalNote: 1});
+db.notes.insert({course: db.courses.findOne( { idCourse: 3 }), student: db.students.findOne( { registrationNumber: 2 }), noteOne: 9, noteTwo: 9, noteThree: 9, finalNote: 9});
+db.notes.insert({course: db.courses.findOne( { idCourse: 3 }), student: db.students.findOne( { registrationNumber: 4 }), noteOne: 1, noteTwo: 1, noteThree: 1, finalNote: 1});
