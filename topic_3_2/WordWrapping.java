@@ -1,31 +1,36 @@
 package topic_3_2;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
 public class WordWrapping {
 
-	public WordWrapping() {}
-
-	public String wrapAlg (String word, int row_length) {
-		String result = "";
-		if(row_length>word.length())
-			result=word;
-		else {
-			int endIndex = row_length;
-			int i = 0;
-			while (i<word.length()/row_length) {		
-				String sub_word;
-				if (i==0) {
-					sub_word = word.substring(i*row_length, endIndex);
-					result+=("\""+sub_word+"\""); 
+	public static List<String> wrap (String input, int rows)
+	{
+		List<String> words = new ArrayList<String>(); 
+		if(input.length() < rows) {
+			words.add(input);
+		} else {
+			StringTokenizer st=new StringTokenizer(input);
+			String word;
+			while(st.hasMoreTokens()) {			
+				word=st.nextToken();
+				if(word.length()<=rows) {
+					while((word.length()<rows-1) && st.hasMoreTokens()) {
+						word+=" "+st.nextToken();
+					}
+					words.add(word);
 				} else {
-					sub_word = word.substring(i*row_length+i, endIndex);
-					result+=(", \""+sub_word+"\"");
-				}					
-				i++;
-				endIndex+=row_length+1;
+					String separateWordA = word.substring(0, rows);
+					String separateWordB= word.substring(rows);
+					word=separateWordA;
+					words.add(word);
+					if(!st.hasMoreTokens())
+						words.add(separateWordB);
+				}
 			}
-			if((i*row_length+i)%row_length!=0)
-				result+=(", \""+word.substring(i*row_length, word.length())+"\"");
 		}
-		return result;
+		return words;
 	}
 }

@@ -5,14 +5,12 @@ import java.util.Map;
 
 public class NumberConverter {
 
-	public NumberConverter() {}
-
-	public int romanToInt (String roman) {
-
-		int index = 0;
-		int number = 0;
-		
-		Map<String,Integer> map = new HashMap<String,Integer>();
+	private String onesArray[] = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+	private String tensArray[] = {"X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+	private String hundredsArray[] = {"C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+	private Map<String,Integer> map = new HashMap<String,Integer>();
+	
+	public NumberConverter() {
 		map.put("",0);
 		map.put("I",1);
 		map.put("V",5);
@@ -21,6 +19,12 @@ public class NumberConverter {
 		map.put("C",100);
 		map.put("D",500);
 		map.put("M",1000);
+	}
+
+	public int romanToInt (String roman) {
+
+		int index = 0;
+		int number = 0;
 
 		while (index < roman.length()) {
 
@@ -50,10 +54,6 @@ public class NumberConverter {
 
 	public String intToRoman(int num) {
 		String roman = "";
-
-		String onesArray[] = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
-		String tensArray[] = {"X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
-		String hundredsArray[] = {"C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
 
 		int ones = num % 10; // Get the ones in the number to convert
 
