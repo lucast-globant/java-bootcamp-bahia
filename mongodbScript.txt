@@ -1,0 +1,248 @@
+I made this insertions with RoboMongo, a management tool, so i didn't need to use
+the shell, just create the collections with the insertions. 
+
+TEACHER
+
+{
+ tc_id: "1",
+ tc_firstName: "Laura",
+ tc_lastName: "Mongo",
+ tc_dateOfBirth: "1948-11-11"
+}
+
+{
+ tc_id: "2",
+ tc_firstName: "Monica",
+ tc_lastName: "Las",
+ tc_dateOfBirth: "1948-11-11"
+}
+
+{
+ tc_id: "2",
+ tc_firstName: "Luis",
+ tc_lastName: "Trsec",
+ tc_dateOfBirth: "1958-01-11"
+}
+
+----------------------------------------------------------
+
+STUDENT
+
+{
+ st_id: "1",
+ st_firstName: "Lolo",
+ st_lastName: "Mills",
+ st_regNumber: "10000",
+ st_dateOfBirth: "1948-11-11"
+}
+
+{
+ st_id: "2",
+ st_firstName: "Lucas",
+ st_lastName: "Mas",
+ st_regNumber: "10001",
+ st_dateOfBirth: "1998-11-11"
+}
+
+{
+ st_id: "3",
+ st_firstName: "Leticia",
+ st_lastName: "Mongo",
+ st_regNumber: "10002",
+ st_dateOfBirth: "1998-01-11"
+}
+
+{
+ st_id: "4",
+ st_firstName: "Maria",
+ st_lastName: "Perez",
+ st_regNumber: "10003",
+ st_dateOfBirth: "1998-11-11"
+}
+
+{
+ st_id: "5",
+ st_firstName: "Lucia",
+ st_lastName: "Gonzales",
+ st_regNumber: "10004",
+ st_dateOfBirth: "1998-11-01"
+}
+-----------------------------------------------------------
+
+WEEK DAYS
+
+{
+    wd_id : "1",
+    wd_descripion : "Lunes"
+}
+{
+    wd_id : "2",
+    wd_descripion : "Martes"
+}
+{
+    wd_id : "3",
+    wd_descripion : "Miercoles"
+}
+{
+    wd_id : "4",
+    wd_descripion : "Jueves"
+}
+{
+    wd_id : "5",
+    wd_descripion : "Viernes"
+}
+
+----------------------------------------------------------
+HOURLYDAY
+
+{
+    hd_id: "1",
+    hd_description: "08:00"
+}
+{
+    hd_id: "2",
+    hd_description: "10:00"
+}
+{
+    hd_id: "3",
+    hd_description: "12:00"
+}
+-----------------------------------------------------------
+
+SCHEDULETIME
+
+{
+ st_id: "1",
+ st_dayWeek: "1",
+ st_hourStart: "1",
+ st_hourFinish: "2"
+}
+{
+ st_id: "2",
+ st_dayWeek: "1",
+ st_hourStart: "2",
+ st_hourFinish: "3"
+}
+{
+ st_id: "3",
+ st_dayWeek: "2",
+ st_hourStart: "1",
+ st_hourFinish: "2"
+}
+{
+ st_id: "4",
+ st_dayWeek: "2",
+ st_hourStart: "2",
+ st_hourFinish: "3"
+}
+{
+ st_id: "5",
+ st_dayWeek: "3",
+ st_hourStart: "1",
+ st_hourFinish: "2"
+}
+{
+ st_id: "6",
+ st_dayWeek: "3",
+ st_hourStart: "2",
+ st_hourFinish: "3"
+}
+{
+ st_id: "7",
+ st_dayWeek: "4",
+ st_hourStart: "1",
+ st_hourFinish: "2"
+}
+{
+ st_id: "8",
+ st_dayWeek: "4",
+ st_hourStart: "2",
+ st_hourFinish: "3"
+}
+{
+ st_id: "9",
+ st_dayWeek: "5",
+ st_hourStart: "1",
+ st_hourFinish: "2"
+}
+{
+ st_id: "10",
+ st_dayWeek: "5",
+ st_hourStart: "2",
+ st_hourFinish: "3"
+}
+-----------------------------------------------------------------
+
+COURSE
+
+{
+ cs_id: "1",
+ cs_name: "C1",
+ cs_assignedTeacher: "1",
+ cs_hourByTeacher: "2",
+ cs_scheduleTime: "1" 
+}
+
+{
+ cs_id: "2",
+ cs_name: "C2",
+ cs_assignedTeacher: "2",
+ cs_hourByTeacher: "2",
+ cs_scheduleTime: "2" 
+}
+
+{
+ cs_id: "3",
+ cs_name: "C3",
+ cs_assignedTeacher: "3",
+ cs_hourByTeacher: "2",
+ cs_scheduleTime: "3" 
+}
+
+----------------------------------------------------------
+
+STUDENTCOURSE
+
+{
+ sc_id: "1",
+ sc_course: "1",
+ sc_student: "1",
+ sc_partial1: "2",
+ sc_partial2: "3", 
+ sc_partial3: "2",
+ sc_finalNote: "3" ,
+ sc_year: "2014"    
+}
+
+{
+ sc_id: "2",
+ sc_course: "1",
+ sc_student: "2",
+ sc_partial1: "8",
+ sc_partial2: "8" ,
+ sc_partial3: "8",
+ sc_finalNote: "8" ,
+ sc_year: "2014"    
+}
+
+{
+ sc_id: "3",
+ sc_course: "1",
+ sc_student: "3",
+ sc_partial1: "9",
+ sc_partial2: "3" ,
+ sc_partial3: "4",
+ sc_finalNote: "5" ,
+ sc_year: "2014"    
+}
+
+{
+ sc_id: "4",
+ sc_course: "1",
+ sc_student: "4",
+ sc_partial1: "6",
+ sc_partial2: "6" ,
+ sc_partial3: "6",
+ sc_finalNote: "6" ,
+ sc_year: "2014"    
+}
