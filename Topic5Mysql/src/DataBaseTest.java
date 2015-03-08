@@ -23,11 +23,11 @@ public class DataBaseTest {
 
 		int course_id = 2;
 
-		String query1 = "SELECT course.course_name, teacher.last_name, teacher.first_name " + "FROM course, teacher " + "WHERE course_id ="
-				+ course_id + " AND course.teacher_assigned = teacher_id;";
+		String query1 = "SELECT name, first_name, last_name FROM (teacher T NATURAL JOIN course C) WHERE (C.id_course=" + course_id
+				+ ") +  AND course.teacher_assigned = teacher_id";
 
-		String query2 = "SELECT first_name,last_name " + "FROM notes, student " + "WHERE course_id =" + course_id + " AND course_id = "
-				+ course_id + " AND notes.student_id=student.registration_number " + " ORDER BY last_name";
+		String query2 = "SELECT last_name, first_name FROM (rinde R NATURAL JOIN student S) WHERE (R.id_course=" + course_id
+				+ ") ORDER BY last_name";
 
 		resultSet1 = dataBaseManager.doQuery(query1, dataBaseConnection);
 		resultSet2 = dataBaseManager.doQuery(query2, dataBaseConnection);
@@ -53,7 +53,8 @@ public class DataBaseTest {
 		String query3 = "SELECT course.course_name, notes.final_note " + "FROM notes, course " + "WHERE notes.student_id = " + reg_num
 				+ " AND course.course_id = notes.course_id " + "ORDER BY notes.final_note DESC, course.course_name;";
 
-		String query4 = " SELECT student.first_name, student.last_name FROM student WHERE registration_number= " + reg_num;
+		String query4 = "SELECT name, final_note FROM (rinde R NATURAL JOIN course C) WHERE (R.reg_number=" + reg_num
+				+ ") ORDER BY final_note DESC, name";
 
 		resultSet3 = dataBaseManager.doQuery(query3, dataBaseConnection);
 		resultSet4 = dataBaseManager.doQuery(query4, dataBaseConnection);
