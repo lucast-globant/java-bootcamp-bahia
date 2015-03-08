@@ -1,6 +1,8 @@
-package models;
+package data;
 
 import javax.transaction.Transactional;
+
+import models.Notes;
 
 @Transactional
 public interface NotesDao extends MongoRepository<Notes, String> {

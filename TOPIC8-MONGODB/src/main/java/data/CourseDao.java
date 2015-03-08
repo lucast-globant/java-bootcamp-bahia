@@ -1,6 +1,8 @@
-package models;
+package data;
 
 import javax.transaction.Transactional;
+
+import models.Course;
 
 import org.springframework.data.repository.CrudRepository;
 
