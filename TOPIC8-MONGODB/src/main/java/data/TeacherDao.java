@@ -1,10 +1,9 @@
 package data;
 
-import javax.transaction.Transactional;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import models.Teacher;
 
-@Transactional
 public interface TeacherDao extends MongoRepository<Teacher, Long> {
 
 }

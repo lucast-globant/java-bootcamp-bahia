@@ -1,17 +1,15 @@
 package data;
 
-import javax.transaction.Transactional;
+import java.util.List;
 
 import models.Course;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
-@Transactional
-public interface CourseDao extends MongoRepository<Course, String> {
-
-	public Course findByCourse(String name);
+public interface CourseDao extends MongoRepository<Course, Long> {
 
 	@Query(value = "{ $and [ { teacherAssigned.idTeacher: ?0 }, { courseName :?0 }}")
-	public Course findByNameForTeacher(String name, String teacherId);
+	public List<Course> findByTeacherId(Long teacherId);
 
 }

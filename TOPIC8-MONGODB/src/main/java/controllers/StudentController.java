@@ -7,20 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import services.StudentService;
 import data.StudentDao;
 
 @Controller
 public class StudentController {
 
 	@Autowired
-	private StudentDao _studentDao;
+	private StudentService studentService;
 
 	@RequestMapping("/create")
 	@ResponseBody
 	public String create(String name, String lastName) {
 		try {
 			Student student = new Student(name, lastName);
-			_studentDao.save(student);
+			studentService.saveStudent(student);
 		} catch (Exception ex) {
 			return "Error creating the user: " + ex.toString();
 		}
@@ -29,10 +30,9 @@ public class StudentController {
 
 	@RequestMapping("/delete")
 	@ResponseBody
-	public String delete(long id) {
+	public String delete(Long studentId) {
 		try {
-			Student user = new Student(id);
-			_studentDao.delete(user);
+			studentService.deleteStudent(studentId);
 		} catch (Exception ex) {
 			return "Error deleting the student:" + ex.toString();
 		}
@@ -43,7 +43,7 @@ public class StudentController {
 	@ResponseBody
 	public String findAll() {
 		try {
-			_studentDao.findAll();
+			studentService.findAll();
 		} catch (Exception ex) {
 			return "Error finding:" + ex.toString();
 		}
