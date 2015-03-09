@@ -1,0 +1,86 @@
+use highschool
+
+person= {
+	_id: "p1",
+	"dni" : 2,
+	"firstname" : "Pedro",
+	"lastname" : "Perez",
+	"birthday" : "1989/06/12"
+}
+
+db.persons.insert(person)
+
+person= {
+	_id: "p2",
+	"dni" : 3,
+	"firstname" : "Juan",
+	"lastname" : "Perez",
+	"birthday" : "1989/06/12"
+}
+
+db.persons.insert(person)
+
+student= {
+	_id: "s1",  
+	"registerNumber" : 2,
+	parent : "p1" 
+}
+
+db.students.insert(student)
+
+teacher= {
+	_id: "t1",  
+	"teacherNumber" : 2,
+	parent : "p2" 
+}
+
+db.teachers.insert(teacher)
+
+course= {
+	_id: "c1",  
+	"name" : "Mongo programing",
+	"hoursperWeek" : 4 
+}
+
+db.courses.insert(course)
+
+studentCourse={
+	_id: "sc1",
+	"studentId": "s1",
+	"courseId": "c1",
+	"partial_1_note":5,
+	"partial_2_note":3,
+	"partial_3_note":6,
+	"final_note":5 
+}
+
+db.studentTakesCourse.insert(studentCourse)
+
+teacherCourse={
+	_id:"tc1",
+	courseId:"c1",
+	teacherId:"t1",
+	hour:"13:00",
+	day:"LU"
+}
+
+db.teacherDictateCourse.insert(teacherCourse)
+
+teacherCourse={
+	_id:"tc2",
+	courseId:"c2",
+	teacherId:"t1",
+	hour:"13:00",
+	day:"MA"
+}
+
+db.teacherDictateCourse.insert(teacherCourse)
+
+//-------consults
+//students with final note>4, for a given course (c1)
+db.studentTakesCourse.find({
+	"final_note":{$gt:4}, "courseId":"c1"},{studentId:1})
+
+//courses for a given teacher order ascendent by name
+db.teacherDictateCourse.find({
+	"teacherId":"t1"},{teacherId:1, courseId:1}).sort({courseId:1})
