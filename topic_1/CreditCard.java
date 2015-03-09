@@ -38,4 +38,9 @@ public class CreditCard implements Payment {
 		return discount;
 	}
 
+	@Override
+	public String toString() {
+		return "CreditCard [name=" + name + ", creditNumber=" + creditNumber + "]";
+	}
+
 }

@@ -2,7 +2,7 @@ package topic_1_7;
 
 import java.util.ArrayList;
 
-public class AudioPlayer {
+public class AudioPlayer implements Player {
 	
 	private ArrayList<Track> trackList;
 	private Track actualTrack;
@@ -38,6 +38,10 @@ public class AudioPlayer {
 	
 	public void selectTrack (Track track) {
 		actualTrack = track;
+	}
+
+	public void deleteTrack(Track track) {
+		trackList.remove(track);		
 	}
 	
 }

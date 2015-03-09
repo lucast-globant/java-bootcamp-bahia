@@ -1,21 +1,24 @@
 package topic_1;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ShoppingCart extends ConcreteSubject {
+public class ShoppingCart implements MailSubject {
 	
 	private ArrayList<Article> articles;
 	private User user;
 	private Payment payment;
+	private List<MailObserver> mailist;
 	
 	public ShoppingCart(User user) {
 		this.user = user;
 		articles = new ArrayList<Article>();
+		mailist = new ArrayList<MailObserver>();
 	}
 	
 	public void addArticle (Article a) {
 		articles.add(a);
-		notifyArticleAdded();
+		doNotify("New article added.\n" + a.getInformation());
 	}
 	
 	public Transaction checkOut() {
@@ -23,7 +26,7 @@ public class ShoppingCart extends ConcreteSubject {
 		float discount = payment.getDiscount(articles);
 		float totalPrice = totalCost - discount;
 		Transaction transaction = new Transaction(payment,totalPrice);
-		notifyTransactionMade();
+		doNotify("New transaction made.\n" + transaction.toString());
 		emptyCart();
 		return transaction;
 	}
@@ -61,5 +64,22 @@ public class ShoppingCart extends ConcreteSubject {
 		else
 			result = "No information.";
 		return result;
+	}
+
+	@Override
+	public void doNotify (String message) {
+		for(MailObserver mail : mailist)
+			mail.update(message);		
+	}
+
+	@Override
+	public void attach (MailObserver observer) {
+		if(!mailist.contains(observer))
+			mailist.add(observer);
+	}
+
+	@Override
+	public void detach(MailObserver observer) {
+		mailist.remove(observer);	
 	}
 }

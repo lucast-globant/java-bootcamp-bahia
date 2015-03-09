@@ -7,8 +7,8 @@ public class Test {
 	public static void main (String[] args) {
 		
 		CatalogWeb cw = new CatalogWeb();
-		MarketManager mm = new MarketManager();
-		cw.attach(mm);
+		EmailNotificationService mail = new EmailNotificationService("marketmanager@gmail.com");
+		cw.attach(mail);
 		
 		Article a = new Item("item1",100);
 		Article b = new Item("item2",100);
@@ -30,7 +30,7 @@ public class Test {
 		System.out.println(cw.informationCatalog());
 		
 		ShoppingCart sp = new ShoppingCart(user);
-		sp.attach(mm);
+		sp.attach(mail);
 		sp.addArticle(a);
 		
 		System.out.println("SHOPPING CART:");
