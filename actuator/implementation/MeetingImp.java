@@ -3,12 +3,14 @@ package topic6.actuator.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import topic6.actuator.entities.Database;
 import topic6.actuator.entities.Meeting;
 import topic6.actuator.interfaces.MeetingService;
 
 import java.util.List;
-
+@Service
 @Component
 public class MeetingImp implements MeetingService {
 	@Autowired

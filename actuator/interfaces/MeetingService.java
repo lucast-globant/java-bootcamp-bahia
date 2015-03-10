@@ -2,6 +2,7 @@ package topic6.actuator.interfaces;
 
 
 import org.springframework.stereotype.Component;
+
 import topic6.actuator.entities.Meeting;
 
 import java.util.List;

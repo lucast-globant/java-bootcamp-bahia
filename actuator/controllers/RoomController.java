@@ -28,8 +28,11 @@ public class RoomController {
 	@RequestMapping(value = "/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<Room> createRoom(@RequestBody Room room) {
-		Room m = rooms.add(room);
-		return new ResponseEntity<Room>(m, HttpStatus.CREATED);
+		Room r = rooms.add(room);
+		if (r != null)
+			return new ResponseEntity<Room>(r, HttpStatus.CREATED);
+		return new ResponseEntity<Room>(r, HttpStatus.BAD_REQUEST);
+
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

@@ -5,11 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import topic6.actuator.entities.Atendee;
 import topic6.actuator.entities.Database;
 import topic6.actuator.interfaces.AtendeeService;
-
+@Service
 @Component
 public class AtendeeImp implements AtendeeService {
 	@Autowired

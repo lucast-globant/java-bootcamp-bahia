@@ -27,8 +27,13 @@ public class AtendeeController {
 	@RequestMapping(value = "/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<Atendee> createAttendee(@RequestBody Atendee atendee) {
+
 		Atendee a = service.add(atendee);
-		return new ResponseEntity<Atendee>(a, HttpStatus.CREATED);
+		if (a != null)
+			return new ResponseEntity<Atendee>(a, HttpStatus.CREATED);
+		else
+			return new ResponseEntity<Atendee>(a, HttpStatus.BAD_REQUEST);
+
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

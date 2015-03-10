@@ -40,9 +40,12 @@ public class Database {
 	}
 
 	public Meeting put(Meeting meeting) {
-		int actual = this.id.incrementAndGet();
-		meeting.setId(actual);
-		return meetings.put(actual, meeting);
+		if (meetings.get(meeting) != null) {
+			int actual = this.id.incrementAndGet();
+			meeting.setId(actual);
+			return meetings.put(actual, meeting);
+		} else
+			return null;
 	}
 
 	public Meeting remove(int idMeeting) {
@@ -66,9 +69,12 @@ public class Database {
 	}
 
 	public Atendee put(Atendee atendee) {
-		int actual = this.id.incrementAndGet();
-		atendee.setId(actual);
-		return atendees.put(actual, atendee);
+		if (atendees.get(atendee) != null) {
+			int actual = this.id.incrementAndGet();
+			atendee.setId(actual);
+			return atendees.put(actual, atendee);
+		}
+		return null;
 	}
 
 	public Atendee getAtendee(int idAtendee) {
@@ -82,9 +88,12 @@ public class Database {
 	}
 
 	public Room put(Room room) {
-		int actual = this.id.incrementAndGet();
-		room.setId(actual);
-		return rooms.put(actual, room);
+		if (rooms.get(room) != null) {
+			int actual = this.id.incrementAndGet();
+			room.setId(actual);
+			return rooms.put(actual, room);
+		}
+		return null;
 	}
 
 }

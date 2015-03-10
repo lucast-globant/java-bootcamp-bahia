@@ -29,7 +29,9 @@ public class MeetingController {
 	@ResponseBody
 	public ResponseEntity<Meeting> createMeeting(@RequestBody Meeting meeting) {
 		Meeting m = meetings.add(meeting);
-		return new ResponseEntity<Meeting>(m, HttpStatus.OK);
+		if (m != null)
+			return new ResponseEntity<Meeting>(m, HttpStatus.OK);
+		return new ResponseEntity<Meeting>(m, HttpStatus.BAD_REQUEST);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
