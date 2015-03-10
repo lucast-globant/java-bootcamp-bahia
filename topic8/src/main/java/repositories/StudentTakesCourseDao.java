@@ -1,7 +1,9 @@
-package demo;
+package repositories;
 
 
 import java.util.List;
+
+import model.StudentTakesCourse;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;

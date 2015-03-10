@@ -3,9 +3,17 @@ package demo;
 import java.util.Collections;
 import java.util.List;
 
+import model.Course;
+import model.Person;
+import model.Student;
+import model.StudentTakesCourse;
+import model.Teacher;
+import model.TeacherDictateCourse;
+
 import org.apache.tools.ant.taskdefs.optional.junit.TearDownOnVmCrash;
 import org.bson.types.ObjectId;
 import org.codehaus.jackson.schema.JsonSchema;
+import org.neo4j.cypher.internal.compiler.v2_1.perty.docbuilders.scalaDocBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,11 +21,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.converter.json.GsonFactoryBean;
+import org.springframework.test.context.ContextConfiguration;
+
+import repositories.CourseDao;
+import repositories.StudentDao;
+import repositories.StudentTakesCourseDao;
+import repositories.TeacherDao;
+import repositories.TeacherDictateCourseDao;
 
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
@@ -26,25 +42,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Comparator;
 
+import javax.security.auth.login.AppConfigurationEntry;
+
 @SpringBootApplication
 public class MongoHighschoolApplication implements CommandLineRunner{
 
-	@Autowired
-	private StudentDao studentRepository;
-	
-	@Autowired 
-	CourseDao courseRepository;
-	
-	@Autowired 
-	StudentTakesCourseDao studentCourseRepository;
-		
-	@Autowired 
-	TeacherDao teacherRepository;
-	
-	@Autowired 
-	TeacherDictateCourseDao teacherCourseRepository;
-	
-	
 	
     public static void main(String[] args) {
         SpringApplication.run(MongoHighschoolApplication.class, args);
@@ -52,10 +54,16 @@ public class MongoHighschoolApplication implements CommandLineRunner{
     
     @Override
     public void run(String... args) throws Exception {
-    	ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
-    	MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
 
-    		
+    	ApplicationContext ctx = new GenericXmlApplicationContext("SpringConfig.xml");
+    	MongoOperations mongoOperation = (MongoOperations)ctx.getBean("mongoTemplate");
+    	
+    	TeacherDictateCourseDao teacherCourseRepository=ctx.getBean("teacherDictateCourseDao", TeacherDictateCourseDao.class);
+    	StudentTakesCourseDao studentCourseRepository=ctx.getBean("studentTakesCourseDao", StudentTakesCourseDao.class);
+    	CourseDao courseRepository=ctx.getBean("courseDao", CourseDao.class);
+    	StudentDao studentRepository=ctx.getBean("studentDao", StudentDao.class);
+    	TeacherDao teacherRepository=ctx.getBean("teacherDao", TeacherDao.class);
+    	
     	
 		studentRepository.deleteAll();
 		teacherRepository.deleteAll();
