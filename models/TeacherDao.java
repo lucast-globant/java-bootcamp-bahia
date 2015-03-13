@@ -2,11 +2,11 @@ package models;
 
 import javax.transaction.Transactional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 @Transactional
-public interface TeacherDao extends CrudRepository<Teacher, Long> {
+public interface TeacherDao extends JpaRepository<Teacher, Long> {
 
-	public Student findByNameAndLastName(String name, String lastname);
+	//public Student findByLastnameAndFirstname(String lastName, String firstName);
 	
 }

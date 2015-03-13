@@ -6,7 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 @Transactional
 public interface CourseDao extends CrudRepository<Course, Long> {
-
-	public Course findByName(String name);
-
+	
 }

@@ -1,5 +1,10 @@
 package topic7;
 
+import java.util.List;
+
+import models.Course;
+import models.Student;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
