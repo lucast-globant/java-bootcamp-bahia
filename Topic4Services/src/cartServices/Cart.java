@@ -1,9 +1,9 @@
 package cartServices;
 
-import items.Item;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import repositoryServices.Item;
 
 /* Represent a  shopping cart , contains a list of items that the costumer its buying */
 

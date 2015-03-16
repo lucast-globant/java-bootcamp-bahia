@@ -1,7 +1,7 @@
 package discounts;
-import items.Item;
-
 import java.util.List;
+
+import repositoryServices.Item;
 
 
 

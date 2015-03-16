@@ -1,9 +1,6 @@
 package cartServices;
 
 import static org.junit.Assert.*;
-import items.Container;
-import items.Item;
-import items.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +10,10 @@ import org.junit.Test;
 
 import payments.PayPalPayment;
 import payments.Payment;
+import repositoryServices.Container;
+import repositoryServices.Item;
+import repositoryServices.Product;
+import repositoryServices.RepositoryService;
 
 public class ShoppingCartImpTest {
 
@@ -21,6 +22,7 @@ public class ShoppingCartImpTest {
 	private List<Item> items;
 	private ShoppingCartService shoppingCartService;
 	private Container container;
+	private RepositoryService repositoryService;
 
 	@Before
 	public void setUp() {
@@ -60,7 +62,7 @@ public class ShoppingCartImpTest {
 	@Test
 	public void findItemTest() {
 
-		Item item = shoppingCartService.findItem(" Plate ", " Plates ");
+		Item item = repositoryService.findItem(" Plate ", " Plates ");
 		assertEquals(" Plate ", item.getName());
 
 	}
@@ -82,7 +84,7 @@ public class ShoppingCartImpTest {
 	@Test
 	public void getItemsTest() {
 
-		assertEquals(container.items(), shoppingCartService.getItems());
+		assertEquals(container.items(), repositoryService.getItems());
 
 	}
 

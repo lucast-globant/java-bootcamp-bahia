@@ -1,20 +1,17 @@
 package cartServices;
 
-import items.Container;
-import items.Item;
-
 import java.util.List;
 
 import payments.Payment;
+import repositoryServices.Container;
+import repositoryServices.Item;
 
 public class ShoppingCartImp implements ShoppingCartService {
 
 	private Cart cart;
-	private Container container;
 
 	public ShoppingCartImp(Cart cart, Container container) {
 		this.cart = cart;
-		this.container = container;
 
 	}
 
@@ -22,19 +19,6 @@ public class ShoppingCartImp implements ShoppingCartService {
 	public double purchaseCart(Cart cart, Payment paymentMethod) {
 		Transaction transaction = new Transaction(cart, paymentMethod);
 		return transaction.Purchase();
-	}
-
-	@Override
-	public Item findItem(String name, String category) {
-
-		for (Item i : container.items())
-
-			if (i.getName().equals(name))
-
-				return i;
-
-		return null;
-
 	}
 
 	@Override
@@ -47,11 +31,6 @@ public class ShoppingCartImp implements ShoppingCartService {
 		this.cart = cart;
 		return true;
 
-	}
-
-	@Override
-	public List<Item> getItems() {
-		return container.items();
 	}
 
 }

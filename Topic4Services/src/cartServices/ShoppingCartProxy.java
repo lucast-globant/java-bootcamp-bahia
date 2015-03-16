@@ -1,10 +1,9 @@
 package cartServices;
 
-import items.Item;
-
 import java.util.List;
 
 import payments.Payment;
+import repositoryServices.Item;
 
 public class ShoppingCartProxy implements ShoppingCartService {
 
@@ -16,11 +15,6 @@ public class ShoppingCartProxy implements ShoppingCartService {
 	}
 
 	@Override
-	public Item findItem(String name, String category) {
-		return shoppingCartImp.findItem(name, category);
-	}
-
-	@Override
 	public Cart getCart() {
 		return shoppingCartImp.getCart();
 	}
@@ -28,11 +22,6 @@ public class ShoppingCartProxy implements ShoppingCartService {
 	@Override
 	public boolean saveCart(Cart cart) {
 		return shoppingCartImp.saveCart(cart);
-	}
-
-	@Override
-	public List<Item> getItems() {
-		return shoppingCartImp.getItems();
 	}
 
 }

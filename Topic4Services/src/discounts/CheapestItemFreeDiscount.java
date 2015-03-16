@@ -1,8 +1,8 @@
 package discounts;
 
-import items.Item;
-
 import java.util.List;
+
+import repositoryServices.Item;
 
 /* A concrete discount ; the cheapest item its for free */
 
