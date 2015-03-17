@@ -5,10 +5,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.aguirre.topic8.models.StudentCourse;
-import com.aguirre.topic8.repositories.StudentCourseDao;
-import com.google.gson.Gson;
+import com.aguirre.topic8.services.StudentCourseService;
 
 @ContextConfiguration
 @RestController
@@ -16,22 +16,29 @@ import com.google.gson.Gson;
 public class StudentCourseController {
 
 	@Autowired
-	private StudentCourseDao studentCourseDao;
+	private StudentCourseService studentCourseService;
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addStudentCourse(String jsonString) {
-		Gson gson = new Gson();
-		StudentCourse studentCourse = gson.fromJson(jsonString, StudentCourse.class);
-		studentCourseDao.save(studentCourse);
-		return gson.toJson(studentCourse);
+	@ResponseBody
+	public StudentCourse addStudentCourse(int registrationNumber, int idCourse, Integer note1, Integer note2, Integer note3, Integer finalNote) {
+		try {
+			StudentCourse studentCourse = new StudentCourse(registrationNumber, idCourse, note1, note2, note3, finalNote);
+			studentCourseService.addStudentCourse(studentCourse);
+			return studentCourse;
+		} catch (Exception exception) {
+			return null;
+		}
 	}
 
 	@RequestMapping(value = "/delete/{idStudentCourse}", method = RequestMethod.DELETE)
-	public String deleteStudent(@PathVariable Long idStudentCourse) {
-		StudentCourse studentCourseDeleted = studentCourseDao.findOne(idStudentCourse);
-		studentCourseDao.delete(idStudentCourse);
-		Gson gson = new Gson();
-		return gson.toJson(studentCourseDeleted);
+	@ResponseBody
+	public StudentCourse deleteStudent(@PathVariable Long idStudentCourse) {
+		try {
+			StudentCourse studentCourseDeleted = studentCourseService.getStudentCourse(idStudentCourse);
+			studentCourseService.deleteStudentCourse(studentCourseDeleted);
+			return studentCourseDeleted;
+		} catch (Exception exception) {
+			return null;
+		}
 	}
-
 }

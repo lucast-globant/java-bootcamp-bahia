@@ -1,17 +1,18 @@
 package com.aguirre.topic8;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.aguirre.topic8.controllers.StudentController;
+import com.aguirre.topic8.models.Course;
 import com.aguirre.topic8.models.Student;
-import com.google.gson.Gson;
+import com.aguirre.topic8.services.CourseService;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
+
+	@Autowired
+	private CourseService courseService;
 
 	public static void main(String[] args) {
 
@@ -20,10 +21,12 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... arg0) throws Exception {
-		
-		ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
-		
-		
-	}
 
+		for (Student student : courseService.getStudentIdAprovvedByCourseId(new Long(1)))
+			System.out.println(student.getLastName() + ", " + student.getFirstName());
+
+		for (Course course : courseService.getCoursesNameByTeacherId(new Long(2))) {
+			System.out.println(course.getCourseName());
+		}
+	}
 }

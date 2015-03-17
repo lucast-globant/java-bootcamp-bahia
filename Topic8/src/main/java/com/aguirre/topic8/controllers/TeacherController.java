@@ -1,16 +1,18 @@
 package com.aguirre.topic8.controllers;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.aguirre.topic8.models.Course;
 import com.aguirre.topic8.models.Teacher;
-import com.aguirre.topic8.repositories.CourseDao;
-import com.aguirre.topic8.repositories.TeacherDao;
-import com.google.gson.Gson;
+import com.aguirre.topic8.services.CourseService;
+import com.aguirre.topic8.services.TeacherService;
 
 @ContextConfiguration
 @RestController
@@ -18,31 +20,42 @@ import com.google.gson.Gson;
 public class TeacherController {
 
 	@Autowired
-	private TeacherDao teacherDao;
+	private TeacherService teacherService;
 
 	@Autowired
-	private CourseDao courseDao;
+	private CourseService courseService;
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addTeacher(String jsonString) {
-		Gson gson = new Gson();
-		Teacher teacher = gson.fromJson(jsonString, Teacher.class);
-		teacherDao.save(teacher);
-		return gson.toJson(teacher);
+	@ResponseBody
+	public Teacher addTeacher(String firstName, String lastName, String dateOfBirth) {
+		try {
+			Teacher teacher = new Teacher(firstName, lastName, dateOfBirth);
+			teacherService.addTeacher(teacher);
+			return teacher;
+		} catch (Exception exception) {
+			return null;
+		}
 	}
 
 	@RequestMapping(value = "/delete/{idTeacher}", method = RequestMethod.DELETE)
-	public String deleteTeacher(@PathVariable Long idTeacher) {
-		Teacher teacherDeleted = teacherDao.findOne(idTeacher);
-		teacherDao.delete(idTeacher);
-		Gson gson = new Gson();
-		return gson.toJson(teacherDeleted);
+	@ResponseBody
+	public Teacher deleteTeacher(@PathVariable Long idTeacher) {
+		try {
+			Teacher teacherDeleted = teacherService.getTeacher(idTeacher);
+			teacherService.deleteTeacher(teacherDeleted);
+			return teacherDeleted;
+		} catch (Exception exception) {
+			return null;
+		}
 	}
 
 	@RequestMapping(value = "/{idTeacher}/courses", method = RequestMethod.GET)
-	public String getCoursesByTeacherId(@PathVariable Long teacherId) {
-		List<String> courses = courseDao.findCoursesByTeacherId(teacherId);
-		Gson gson = new Gson();
-		return gson.toJson(courses);
+	@ResponseBody
+	public List<Course> getCoursesNameByTeacherId(@PathVariable Long idTeacher) {
+		try {
+			return courseService.getCoursesNameByTeacherId(idTeacher);
+		} catch (Exception exception) {
+			return null;
+		}
 	}
 }

@@ -11,7 +11,7 @@ import com.aguirre.topic8.models.Course;
 @Component
 public interface CourseDao extends MongoRepository<Course, Long> {
 
-	@Query(value = "{ fileNumber' : ?0 }", fields = "{ courseName : 1 }")
-	public List<String> findCoursesByTeacherId(@Param("teacherId") Long idTeacher);
+	@Query("{ fileNumber' : ?0 }")
+	public List<Course> findCoursesByTeacherId(@Param("teacherId") Long idTeacher);
 
 }

@@ -3,19 +3,19 @@ package com.aguirre.topic8.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "studentCourses")
 public class StudentCourse {
 
 	@Id
 	private Long id;
 	private int registrationNumber;
 	private int idCourse;
-	private double note1;
-	private double note2;
-	private double note3;
-	private double finalNote;
+	private Integer note1;
+	private Integer note2;
+	private Integer note3;
+	private Integer finalNote;
 
-	public StudentCourse(int registrationNumber, int idCourse, double note1, double note2, double note3, double finalNote) {
+	public StudentCourse(int registrationNumber, int idCourse, Integer note1, Integer note2, Integer note3, Integer finalNote) {
 		this.registrationNumber = registrationNumber;
 		this.idCourse = idCourse;
 		this.note1 = note1;
@@ -48,35 +48,35 @@ public class StudentCourse {
 		this.idCourse = idCourse;
 	}
 
-	public double getNote1() {
+	public Integer getNote1() {
 		return note1;
 	}
 
-	public void setNote1(double note1) {
+	public void setNote1(Integer note1) {
 		this.note1 = note1;
 	}
 
-	public double getNote2() {
+	public Integer getNote2() {
 		return note2;
 	}
 
-	public void setNote2(double note2) {
+	public void setNote2(Integer note2) {
 		this.note2 = note2;
 	}
 
-	public double getNote3() {
+	public Integer getNote3() {
 		return note3;
 	}
 
-	public void setNote3(double note3) {
+	public void setNote3(Integer note3) {
 		this.note3 = note3;
 	}
 
-	public double getFinalNote() {
+	public Integer getFinalNote() {
 		return finalNote;
 	}
 
-	public void setFinalNote(double finalNote) {
+	public void setFinalNote(Integer finalNote) {
 		this.finalNote = finalNote;
 	}
 }
