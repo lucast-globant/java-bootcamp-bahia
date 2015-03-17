@@ -5,8 +5,8 @@ db.teachers.insert({fileNumber: 1, firstName: "Benjamin", lastName: "Garcia", da
 db.teachers.insert({fileNumber: 2, firstName: "Marcelo", lastName: "Falappa", dateOfBirth: new Date('1970,10,01')});
 
 db.createCollection("courses");
-db.courses.insert({idCourse: 1, courseName: "PHP", fileNumber: 1, hoursByWeek: 8});
-db.courses.insert({idCourse: 2, courseName: "Java", fileNumber: 2, hoursByWeek: 6});
+db.courses.insert({idCourse: 1, courseName: "PHP", fileNumber: 1, hoursByWeek: 8, isFinished: false});
+db.courses.insert({idCourse: 2, courseName: "Java", fileNumber: 2, hoursByWeek: 6, isFinished: false});
 
 db.createCollection("students");
 db.students.insert({registrationNumber: 1, firstName: "Amilcar", lastName: "Infante", dateOfBirth: new Date('1985,06,05')});

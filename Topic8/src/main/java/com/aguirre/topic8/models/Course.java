@@ -11,11 +11,13 @@ public class Course {
 	private String courseName;
 	private Long fileNumber;
 	private int hoursByWeek;
+	private boolean isFinished;
 
 	public Course(String courseName, Long fileNumber, int hoursByWeek) {
 		this.courseName = courseName;
 		this.fileNumber = fileNumber;
 		this.hoursByWeek = hoursByWeek;
+		this.isFinished = false;
 	}
 
 	public Long getCourseId() {
@@ -53,5 +55,13 @@ public class Course {
 	public String toString() {
 		return "Course name: " + courseName + "Course id: " + idCourse + " " + " Teacher id: " + fileNumber + " Hours by week: "
 				+ hoursByWeek;
+	}
+	
+	public void finishCourse() {
+		this.isFinished = true;
+	}
+	
+	public boolean isFinished() {
+		return isFinished;
 	}
 }
